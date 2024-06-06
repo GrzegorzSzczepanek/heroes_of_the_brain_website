@@ -5,12 +5,11 @@
 <footer class="bg-gray-800 opacity-85 py-4">
     <div class="container mx-auto px-4">
         <div class="flex justify-between items-center">
-            <div class="text-white ">
-                <!-- Add your links and info here -->
-                <a href="https://heroes-of-the-brain-website.vercel.app/">Link 1</a>
-                <a href="https://heroes-of-the-brain-website.vercel.app/">Link 2</a>
-                <a href="https://heroes-of-the-brain-website.vercel.app/">Link 3</a>
-            </div>
+            <div class="text-white">
+                <a href="javascript:void(0)">Link 1</a>
+                <a href="javascript:void(0)">Link 2</a>
+                <a href="javascript:void(0)">Link 3</a>
+              </div>
             <div class="text-gray-400">
                 &copy; 2024 Neuronki. All rights reserved.
             </div>

@@ -1,29 +1,23 @@
-import preprocess from 'svelte-preprocess';
-import adapter from '@sveltejs/adapter-static';
-import path from 'path';
+import adapter from '@sveltejs/adapter-auto';
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
-export default {
-  preprocess: preprocess(),
-  kit: {
-    adapter: adapter(),
-    vite: {
-      resolve: {
-        alias: {
-          $components: path.resolve('src/lib/components'),
-        }
-      },
-      css: {
-        preprocessorOptions: {
-          scss: {
-            additionalData: `@import 'leaflet/dist/leaflet.css';`
-          }
-        }
-      },
-      build: {
-        rollupOptions: {
-          external: ['leaflet']
-        }
-      }
-    }
-  }
+/** @type {import('@sveltejs/kit').Config} */
+const config = {
+	// Consult https://kit.svelte.dev/docs/integrations#preprocessors
+	// for more information about preprocessors
+	preprocess: vitePreprocess(),
+
+	kit: {
+		adapter: adapter({
+		  // default options are shown
+		  pages: 'build',
+		  assets: 'build',
+		  fallback: null
+		}),
+		paths: {
+		  base: process.env.NODE_ENV === 'production' ? '/heroes_of_the_brain_website' : ''
+		}
+	  }
 };
+
+export default config;
