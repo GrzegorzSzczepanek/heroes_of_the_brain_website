@@ -7,9 +7,9 @@
         <div class="flex justify-between items-center">
             <div class="text-white ">
                 <!-- Add your links and info here -->
-                <a href="#">Link 1</a>
-                <a href="#">Link 2</a>
-                <a href="#">Link 3</a>
+                <a href="https://heroes-of-the-brain-website.vercel.app/">Link 1</a>
+                <a href="https://heroes-of-the-brain-website.vercel.app/">Link 2</a>
+                <a href="https://heroes-of-the-brain-website.vercel.app/">Link 3</a>
             </div>
             <div class="text-gray-400">
                 &copy; 2024 Neuronki. All rights reserved.
