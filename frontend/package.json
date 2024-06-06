@@ -10,7 +10,9 @@
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
     "lint": "prettier --check . && eslint .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "@playwright/test": "^1.28.1",
@@ -22,6 +24,7 @@
     "eslint": "^9.0.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-svelte": "^2.36.0",
+    "gh-pages": "^6.1.1",
     "globals": "^15.0.0",
     "postcss": "^8.4.38",
     "prettier": "^3.1.1",
@@ -34,5 +37,8 @@
     "typescript-eslint": "^8.0.0-alpha.20",
     "vite": "^5.0.3"
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "@sveltejs/adapter-static": "^3.0.1"
+  }
 }
