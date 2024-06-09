@@ -11,4 +11,20 @@
 	<body data-sveltekit-preload-data="hover">
 		<div style="display: contents">%sveltekit.body%</div>
 	</body>
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+		  const fadeElements = document.querySelectorAll('.fade-in-left');
+		  const observer = new IntersectionObserver(entries => {
+			entries.forEach(entry => {
+			  if (entry.isIntersecting) {
+				entry.target.classList.add('show');
+			  }
+			});
+		  }, { threshold: 0.1 });
+	
+		  fadeElements.forEach(element => {
+			observer.observe(element);
+		  });
+		});
+	  </script>
 </html>

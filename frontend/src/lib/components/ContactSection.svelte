@@ -29,6 +29,7 @@
     #kontakt {
         min-height: 100vh;
     }
+    
   </style>
   
   <section class="flex flex-col md:flex-row bg-blue-900 text-white py-8 md:py-16 px-4 md:px-8" id="kontakt">

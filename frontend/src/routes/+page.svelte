@@ -2,7 +2,9 @@
 	import Carousel from '$lib/components/Carousel.svelte';
 import ContactSection from '$lib/components/ContactSection.svelte';
 	import MainSection from '$lib/components/MainSection.svelte';
+	import Sponsors from '$lib/components/ElementsContainer.svelte';
   import '../app.css';
+	import CategorySection from '$lib/components/CategorySection.svelte';
 
 </script>
 
@@ -13,8 +15,9 @@ import ContactSection from '$lib/components/ContactSection.svelte';
 </section> -->
 
 <MainSection />
+<CategorySection />
 <ContactSection />
-<Carousel />
+<!-- <Carousel /> -->
 
 <style>
 
