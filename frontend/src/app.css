@@ -13,7 +13,7 @@ html {
 }
 
 section {
-  scroll-snap-align: start;
+  /* scroll-snap-align: start; */
 }
 
 ::-webkit-scrollbar {

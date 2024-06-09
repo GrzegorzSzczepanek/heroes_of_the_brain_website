@@ -1,7 +1,7 @@
 <script>
 	import Carousel from '$lib/components/Carousel.svelte';
 import ContactSection from '$lib/components/ContactSection.svelte';
-	import MainSection from '$lib/components/MainSection.svelte';
+	import MainSection from '$lib/components/LandingPage.svelte';
 	import Sponsors from '$lib/components/ElementsContainer.svelte';
   import '../app.css';
 	import CategorySection from '$lib/components/CategorySection.svelte';
@@ -14,10 +14,10 @@ import ContactSection from '$lib/components/ContactSection.svelte';
   
 </section> -->
 
-<MainSection />
+
 <CategorySection />
 <ContactSection />
-<!-- <Carousel /> -->
+<Carousel />
 
 <style>
 
