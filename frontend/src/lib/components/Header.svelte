@@ -38,7 +38,7 @@
   }
 </style>
 
-<header class="{isScrolled ?  'bg-black' : 'bg-semi-transparent' } text-white py-4 fixed top-0 left-0 right-0 z-50 transition duration-300">
+<header class="{isScrolled ?  'bg-black bg-semi-transparent' : 'bg-transparent' } text-white py-4 fixed top-0 left-0 right-0 z-50 transition duration-300">
   <div class="container mx-auto flex justify-between items-center px-4">
     <div class="flex items-center">
       <img src={logoSrc} alt="Student Cybersym SCS Logo" class="h-12 mr-4" />
@@ -48,7 +48,7 @@
       </div>
     </div>
     <div class="flex items-center">
-      <img src={placeholderLogo} alt="Neuron Logo" class="h-12 mr-8" />
+      <!-- <img src={placeholderLogo} alt="Neuron Logo" class="h-12 mr-8" /> -->
       <nav class="space-x-6">
         {#each navItems as item}
           <a href={item.href} class="hover:underline">{item.name}</a>

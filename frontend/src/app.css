@@ -1,7 +1,9 @@
+@import 'leaflet/dist/leaflet.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import 'leaflet/dist/leaflet.css';
+
 
 
 *{
@@ -48,8 +50,10 @@ section {
   }
 
 body {
-    background-color: #543f6b;
-    background-image:  linear-gradient(30deg, #8f45f7 12%, transparent 12.5%, transparent 87%, #8f45f7 87.5%, #8f45f7), linear-gradient(150deg, #8f45f7 12%, transparent 12.5%, transparent 87%, #8f45f7 87.5%, #8f45f7), linear-gradient(30deg, #8f45f7 12%, transparent 12.5%, transparent 87%, #8f45f7 87.5%, #8f45f7), linear-gradient(150deg, #8f45f7 12%, transparent 12.5%, transparent 87%, #8f45f7 87.5%, #8f45f7), linear-gradient(60deg, #8f45f777 25%, transparent 25.5%, transparent 75%, #8f45f777 75%, #8f45f777), linear-gradient(60deg, #8f45f777 25%, transparent 25.5%, transparent 75%, #8f45f777 75%, #8f45f777);
+    /* background-color: #36454F; */
+    /* background: linear-gradient(135deg, #4c3877 0%, #52378B 100%); */
+    background: linear-gradient(135deg, #36454F 0%, #52378B 100%);
+        /* background-image:  linear-gradient(30deg, #8f45f7 12%, transparent 12.5%, transparent 87%, #8f45f7 87.5%, #8f45f7), linear-gradient(150deg, #8f45f7 12%, transparent 12.5%, transparent 87%, #8f45f7 87.5%, #8f45f7), linear-gradient(30deg, #8f45f7 12%, transparent 12.5%, transparent 87%, #8f45f7 87.5%, #8f45f7), linear-gradient(150deg, #8f45f7 12%, transparent 12.5%, transparent 87%, #8f45f7 87.5%, #8f45f7), linear-gradient(60deg, #8f45f777 25%, transparent 25.5%, transparent 75%, #8f45f777 75%, #8f45f777), linear-gradient(60deg, #8f45f777 25%, transparent 25.5%, transparent 75%, #8f45f777 75%, #8f45f777);
     background-size: 52px 91px;
-    background-position: 0 0, 0 0, 26px 46px, 26px 46px, 0 0, 26px 46px;
+    background-position: 0 0, 0 0, 26px 46px, 26px 46px, 0 0, 26px 46px; */
 }
