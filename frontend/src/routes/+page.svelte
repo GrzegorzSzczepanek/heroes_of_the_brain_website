@@ -7,6 +7,7 @@
 	import HackatonInfoSection from '$lib/components/HackatonInfoSection.svelte';
 	import Agenda from '$lib/components/Agenda.svelte';
 	import Partners from '$lib/components/Partners.svelte';
+	import Faq from '$lib/components/Faq.svelte';
 
 </script>
 
@@ -18,3 +19,4 @@
 <Partners />
 <Carousel />
 <ContactSection />
+<Faq />

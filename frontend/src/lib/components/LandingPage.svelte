@@ -16,6 +16,9 @@
       window.removeEventListener('scroll', handleScroll);
     };
   });
+
+  let textVar = 'Heroes of The Brain';
+  let introText = textVar.split('').map(char => `<span class="intro-text">${char}</span>`).join('');
 </script>
 
 <style>
@@ -24,6 +27,12 @@
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.1);
     transition: transform 0.1s ease-out;
+  }
+  .intro-text {
+    transition: 0.3s ease-in-out;
+  }
+  .intro-text:hover {
+    color: #fbbf24;
   }
   .dot-1 {
     width: 100px;
@@ -52,8 +61,10 @@
     <div class="bg-dots dot-3" style="transform: translateY({scrollY * 0.15}px);"></div>
   </div>
   <div class="relative z-10">
-    <h1 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">Największy Hackaton BCI w Polsce</h1>
-    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">Heroes of The Brain</h2>
+    <h2 class="text-2xl md:text-3xl lg:text-3xl mb-4">Największy Hackaton BCI w Polsce</h2>
+    <h1 class="text-3xl md:text-4xl lg:text-6xl font-bold mb-4 intro-text-container" id="intro-text">
+      {@html introText}
+    </h1>
   </div>
   <div class="relative flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-8 my-6 z-10">
     <p class="flex items-center text-lg md:text-xl">
@@ -69,7 +80,4 @@
     <a href="#learn-more" class="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded-md transition">Dowiedz się więcej</a>
     <a href="#schedule" class="bg-gray-700 hover:bg-gray-800 text-white font-semibold py-2 px-4 rounded-md transition">Zobacz harmonogram</a>
   </div>
-  <!-- <div class="relative z-10 mt-8">
-    <img src={backgroundImage} alt="Person using BCI technology" class="max-w-full h-auto" />
-  </div> -->
 </section>

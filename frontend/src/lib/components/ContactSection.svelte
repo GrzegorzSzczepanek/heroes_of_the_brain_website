@@ -27,11 +27,11 @@ onMount(async () => {
   }
 
   .contact-info {
-      @apply bg-white flex-1 p-8 rounded-lg md:h-auto shadow-lg md:mb-0 md:mr-8 w-full md:w-auto transform hover:scale-105 transition-transform duration-300 ease-in-out;
+      @apply bg-white flex-1 p-8 rounded-lg shadow-lg md:mb-0 md:mr-8 w-full transform hover:scale-105 transition-transform duration-300 ease-in-out;
   }
 
   .map-container {
-      @apply w-full h-96 md:w-2/5 md:h-auto md:aspect-square rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 ease-in-out;
+      @apply w-full h-96 md:w-2/5 md:aspect-square rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 ease-in-out;
   }
 
   .contact-title {
