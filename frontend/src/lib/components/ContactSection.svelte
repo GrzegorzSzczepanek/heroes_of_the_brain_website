@@ -27,7 +27,7 @@ onMount(async () => {
   }
 
   .contact-info {
-      @apply bg-white flex-1 p-8 rounded-lg shadow-lg md:mb-0 md:mr-8 w-full md:w-auto transform hover:scale-105 transition-transform duration-300 ease-in-out;
+      @apply bg-white flex-1 p-8 rounded-lg md:h-auto shadow-lg md:mb-0 md:mr-8 w-full md:w-auto transform hover:scale-105 transition-transform duration-300 ease-in-out;
   }
 
   .map-container {
