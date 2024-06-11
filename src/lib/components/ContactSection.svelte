@@ -1,12 +1,14 @@
 <script>
-    import { onMount } from 'svelte';
+  import 'leaflet/dist/leaflet.css';
+  import L from 'leaflet';
+  import { onMount } from 'svelte';
 
     let map;
 
     onMount(async () => {
         if (typeof window !== 'undefined') {
         const L = await import('leaflet');
-        await import('leaflet/dist/leaflet.css');
+        // await import('leaflet/dist/leaflet.css');
 
         map = L.map('map').setView([51.107883, 17.038538], 13); // Coordinates for Wroclaw
 
@@ -21,7 +23,8 @@
     });
 </script>
 
-<style>
+<style lang="de">
+  @import 'leaflet/dist/leaflet.css';
   .contact-container {
     display: flex;
     flex-direction: column;
