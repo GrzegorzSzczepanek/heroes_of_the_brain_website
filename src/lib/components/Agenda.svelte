@@ -52,15 +52,16 @@
     }
   
     .agenda-content {
+      margin: 0;
       background-color: rgba(0, 0, 0, 0.7);
-      padding: 20px;
+      /* padding: 20px; */
       border-radius: 8px;
       height: 100%;
     }
   </style>
   
-  <section class="parallax text-white py-20 px-4">
-    <div class="agenda-content text-center md:w-1/1">
+  <section class="parallax text-white">
+    <div class="agenda-content text-center md:w-1/1 py-20">
       <h1 class="text-3xl font-bold mb-8 relative inline-block">
         AGENDA
         <div class="category-header"></div>
