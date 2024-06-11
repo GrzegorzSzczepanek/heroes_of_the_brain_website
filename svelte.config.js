@@ -9,8 +9,12 @@ const config = {
 	preprocess: vitePreprocess(),
 
 	kit: {
-		adapter: adapter(),
-		target: '#svelte',
+		adapter: adapter({
+		  // default options are shown
+		  pages: 'build',
+		  assets: 'build',
+		  fallback: null
+		}),
 		paths: {
 		  base: process.env.NODE_ENV === 'production' ? '/heroes_of_the_brain_website' : ''
 		}
