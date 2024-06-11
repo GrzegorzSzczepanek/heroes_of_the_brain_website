@@ -1,4 +1,5 @@
 <script>
+    import { fly } from 'svelte/transition';
     export let navItems;
   
     const handleItemClick = () => {
@@ -40,7 +41,7 @@
     }
   </style>
   
-  <div class="side-menu">
+  <div class="side-menu" id='side-menu' in:fly={{ x: 300, delay: 0, duration: 300 }} out:fly={{ x: 300, duration: 300 }}>
     <nav>
       {#each navItems as item}
         <a href={item.href} on:click={handleItemClick}>{item.name}</a>

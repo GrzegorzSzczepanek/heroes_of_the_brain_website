@@ -83,6 +83,9 @@
   </div>
 
 </header>
+<div>
 {#if showMenu}
 <SideMenu {navItems} />
 {/if}
+
+</div>
