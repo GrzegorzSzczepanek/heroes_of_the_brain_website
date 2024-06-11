@@ -6,20 +6,11 @@
         open: true
       },
       {
-        question: "Czy BEST Hacking League to wydarzenie tylko dla programistów, czy osoby z innych dziedzin również mogą wziąć udział?",
+        question: "Czy osoby z innych dziedzin również mogą wziąć udział?",
         answer: "Oczywiście, że mogą. Wydarzenie jest otwarte dla osób z różnych dziedzin.",
         open: false
       },
-      {
-        question: "Jak mogę się zapisać na wydarzenie?",
-        answer: "Rejestracja odbywa się przez naszą stronę internetową. Kliknij przycisk 'Zarejestruj się' i postępuj zgodnie z instrukcjami.",
-        open: false
-      },
-      {
-        question: "Czy jest możliwość tworzenia zespołów przed wydarzeniem lub na miejscu, czy trzeba przyjść już z gotową drużyną?",
-        answer: "Możesz utworzyć zespół zarówno przed wydarzeniem, jak i na miejscu.",
-        open: false
-      },
+
       {
         question: "Czy będę potrzebował własnego sprzętu komputerowego, aby wziąć udział?",
         answer: "Tak, uczestnicy powinni przynieść własny sprzęt komputerowy.",
@@ -37,7 +28,7 @@
       },
       {
         question: "Czy będzie możliwość noclegu na miejscu?",
-        answer: "Tak, organizatorzy zapewniają miejsce do noclegu dla uczestników.",
+        answer: "Tak, na podłodze.",
         open: false
       },
       {
@@ -73,7 +64,7 @@
   
   <section class="bg-transparent py-12 text-white" id="faq-section">
     <div class="max-w-4xl mx-auto px-6 border-b " id="faq">
-      <h1 class="text-3xl md:text-4xl font-bold text-center mb-8">Najczęściej zadawane pytania</h1>
+      <h1 class="text-3xl md:text-4xl font-bold text-center mb-8">FAQ</h1>
       {#each faqs as faq, index}
         <div class="mb-4 border-b border-gray-300">
           <button class="w-full text-left text-lg md:text-xl font-semibold py-4 flex justify-between items-center focus:outline-none" on:click={() => toggleFaq(index)}>
