@@ -25,7 +25,7 @@ Welcome to the Heroes of the Brain website! This project is a static site built 
 
     ```sh
     git clone https://github.com/your-username/heroes_of_the_brain_website.git
-    cd heroes_of_the_brain_website/frontend
+    cd heroes_of_the_brain_website
     ```
 
 2. **Install dependencies:**

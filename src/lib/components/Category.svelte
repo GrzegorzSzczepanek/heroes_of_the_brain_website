@@ -1,45 +1,50 @@
 <script>
-  export let name;
-  export let description;
-  export let prizes;
+  export let category = { title: "Artificial Intelligence", prize: "3,000 PLN" };
 </script>
 
+<div class="bg-gray-800 border border-purple-600 rounded-lg w-full md:w-1/2 lg:w-1/3 xl:w-1/4 p-6 text-white transform transition-transform duration-500 hover:scale-105 px-5">
+  <div class="bg-purple-600 text-center text-lg md:text-xl lg:text-2xl font-bold py-2 rounded-t-md">{category.title}</div>
+  <div class="bg-teal-700 text-center text-sm md:text-base lg:text-lg font-bold py-1 rounded-b-md mb-4">OPEN TASKS</div>
+  <div class="text-center text-sm md:text-base lg:text-lg font-bold mb-2">GUARANTEED PRIZE POOL</div>
+  <div class="text-center mb-4">
+    <span class="glitch" data-text={category.prize}>{category.prize}</span>
+  </div>
+  <p class="text-sm md:text-base lg:text-lg text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae eros eget tellus tristique bibendum. Donec rutrum sed sem quis venenatis.</p>
+</div>
+
 <style>
-  .fade-in-left {
-    opacity: 0;
-    transform: translateX(-50px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-  }
-  .fade-in-left {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  .card {
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-  }
-  .category-header {
-    background: linear-gradient(to right, #333, #444);
+  .glitch {
+    position: relative;
+    display: inline-block;
     color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  .glitch::before, .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+  }
+  .glitch::before {
+    left: 2px;
+    text-shadow: -2px 0 red;
+    animation: glitch 1s infinite;
+  }
+  .glitch::after {
+    left: -2px;
+    text-shadow: -2px 0 blue;
+    animation: glitch 1s infinite reverse;
+  }
+  @keyframes glitch {
+    0% { clip: rect(24px, 9999px, 44px, 0); }
+    20% { clip: rect(94px, 9999px, 34px, 0); }
+    40% { clip: rect(64px, 9999px, 54px, 0); }
+    60% { clip: rect(84px, 9999px, 14px, 0); }
+    80% { clip: rect(34px, 9999px, 64px, 0); }
+    100% { clip: rect(24px, 9999px, 44px, 0); }
   }
 </style>
-
-<div class="category-header text-center mb-8 fade-in-left">
-  <h2 class="text-3xl font-bold">{name}</h2>
-  <p class="text-xl">{description}</p>
-</div>
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 fade-in-left">
-  {#each prizes as prize}
-    <div class="card bg-gradient-to-r from-blue-500 to-purple-600 p-6 rounded-lg shadow-lg">
-      <h3 class="text-2xl font-bold mb-4">{prize.position}</h3>
-      <p class="text-xl">{prize.amount} zł</p>
-      <p class="mt-2">{prize.title}</p>
-    </div>
-  {/each}
-</div>

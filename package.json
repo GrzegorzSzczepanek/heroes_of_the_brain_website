@@ -46,6 +46,8 @@
     "@fortawesome/svelte-fontawesome": "^0.2.2",
     "@sveltejs/adapter-static": "^3.0.1",
     "leaflet": "^1.9.4",
-    "svelte-fa": "^4.0.2"
+    "svelte-fa": "^4.0.2",
+    "svelte-routing": "^2.13.0",
+    "svelte-spa-router": "^4.0.1"
   }
 }

@@ -56,14 +56,14 @@
     }
     #faq {
       border-radius: 8px;
-      padding: 20px;
+      /* padding: 20px; */
       border: 1px solid white;
       width: 70%;
     }
   </style>
   
-  <section class="bg-transparent py-12 text-white" id="faq-section">
-    <div class="max-w-4xl mx-auto px-6 border-b " id="faq">
+  <section class="bg-transparent py-32 text-white" id="faq-section">
+    <div class="max-w-4xl mx-auto px-6 border-b" id="faq">
       <h1 class="text-3xl md:text-4xl font-bold text-center mb-8">FAQ</h1>
       {#each faqs as faq, index}
         <div class="mb-4 border-b border-gray-300">
