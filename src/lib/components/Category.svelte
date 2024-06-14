@@ -1,5 +1,10 @@
 <script>
-  export let category = { title: "Artificial Intelligence", prize: "3,000 PLN" };
+  export let category = { 
+    title: "Artificial Intelligence", 
+    prize: "3,000 PLN", 
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae eros eget tellus tristique bibendum. Donec rutrum sed sem quis venenatis. Praesent vitae eros eget tellus tristique bibendum. Donec rutrum sed sem quis venenatis. Praesent vitae eros eget tellus tristique bibendum. Donec rutrum sed sem quis venenatis." 
+  };
+
 </script>
 
 <div class="bg-gray-800 border border-purple-600 rounded-lg w-full md:w-1/2 lg:w-1/3 xl:w-1/4 p-6 text-white transform transition-transform duration-500 hover:scale-105 px-5">

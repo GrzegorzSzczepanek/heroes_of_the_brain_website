@@ -1,13 +1,12 @@
 <script>
-    import Footer from '$lib/components/Footer.svelte';
-import Header from '$lib/components/Header.svelte';
-  </script>
-  
-  <Header />
-  
-  
-  <main class="pt-16">
-    <slot></slot>
-  </main>
+  import Header from '$lib/components/Header.svelte';
+  import Footer from '$lib/components/Footer.svelte';
+</script>
 
-  <Footer />
+<Header />
+
+<main>
+  <slot />
+</main>
+
+<Footer />

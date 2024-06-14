@@ -1,4 +1,3 @@
-// import adapter from '@sveltejs/adapter-auto';
 import adapter from '@sveltejs/adapter-vercel';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
@@ -10,15 +9,15 @@ const config = {
 
 	kit: {
 		adapter: adapter({
-		  // default options are shown
-		  pages: 'build',
-		  assets: 'build',
-		  fallback: null
+			// default options are shown
+			pages: 'build',
+			assets: 'build',
+			fallback: null
 		}),
 		paths: {
-		  base: process.env.NODE_ENV === 'production' ? '/heroes_of_the_brain_website' : ''
+			base: process.env.NODE_ENV === 'production' ? '/heroes_of_the_brain_website' : ''
 		}
-	  }
+	}
 };
 
 export default config;

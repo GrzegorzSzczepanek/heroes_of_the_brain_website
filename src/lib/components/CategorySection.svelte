@@ -3,8 +3,8 @@
   import UnderlinedHeader from "./UnderlinedHeader.svelte";
 
   let categories = [
-      { title: "Artificial Intelligence", prize: "3,000 PLN" },
-      { title: "Education", prize: "3,000 PLN" },
+      { title: "Artificial Intelligence", prize: "3,000 PLN", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla rutrum imperdiet porttitor. Aenean eget pellentesque augue, in facilisis est. Aliquam erat volutpat. Curabitur faucibus lacinia quam, id fermentum sem maximus quis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean fringilla eros urna, non porttitor mauris pulvinar a. Aliquam placerat id velit non tempor. Quisque lacinia felis in blandit consequat.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla rutrum imperdiet porttitor. Aenean eget pellentesque augue, in facilisis est. Aliquam erat volutpat. Curabitur faucibus lacinia quam, id fermentum sem maximus quis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean fringilla eros urna, non porttitor mauris pulvinar a. Aliquam placerat id velit non tempor. Quisque lacinia felis in blandit consequat." },
+      { title: "Education", prize: "3,000 PLN", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla rutrum imperdiet porttitor. Aenean eget pellentesque augue, in facilisis est. Aliquam erat volutpat. Curabitur faucibus lacinia quam, id fermentum sem maximus quis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean fringilla eros urna, non porttitor mauris pulvinar a. Aliquam placerat id velit non tempor. Quisque lacinia felis in blandit consequat." },
 
   ];
 </script>

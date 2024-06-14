@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "vite dev",
+    "dev": "vite dev --port 8082 --open --host", 
     "build": "vite build",
     "preview": "vite preview",
     "test": "playwright test",
@@ -18,7 +18,7 @@
     "@playwright/test": "^1.28.1",
     "@sveltejs/adapter-auto": "^3.0.0",
     "@sveltejs/adapter-vercel": "^5.3.1",
-    "@sveltejs/kit": "^2.0.0",
+    "@sveltejs/kit": "^2.5.10",
     "@sveltejs/vite-plugin-svelte": "^3.0.0",
     "@types/eslint": "^8.56.7",
     "autoprefixer": "^10.4.19",
@@ -36,7 +36,7 @@
     "tslib": "^2.4.1",
     "typescript": "^5.0.0",
     "typescript-eslint": "^8.0.0-alpha.20",
-    "vite": "^5.0.3"
+    "vite": "^5.3.0"
   },
   "type": "module",
   "dependencies": {
@@ -46,8 +46,6 @@
     "@fortawesome/svelte-fontawesome": "^0.2.2",
     "@sveltejs/adapter-static": "^3.0.1",
     "leaflet": "^1.9.4",
-    "svelte-fa": "^4.0.2",
-    "svelte-routing": "^2.13.0",
-    "svelte-spa-router": "^4.0.1"
+    "svelte-fa": "^4.0.2"
   }
 }
