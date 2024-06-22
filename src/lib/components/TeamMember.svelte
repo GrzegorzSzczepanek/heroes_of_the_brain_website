@@ -13,6 +13,7 @@
   <style>
     .card {
       width: 200px; /* Slim card */
+      height: 350px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       color: black;
     }
