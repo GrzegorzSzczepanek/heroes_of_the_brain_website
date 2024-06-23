@@ -9,5 +9,5 @@
 
 <div transition:fade={{ duration: 400 }}>
   <OrganizationLandingPage />
-  <TeamSection />
+  <!-- <TeamSection /> -->
 </div>

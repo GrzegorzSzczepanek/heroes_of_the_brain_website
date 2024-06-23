@@ -1,5 +1,5 @@
 <script>
-    import TeamSection from './TeamSection.svelte';
+    import TeamSection from './Team.svelte';
     let activeSection = 'Marketing';
     
     const sections = {
