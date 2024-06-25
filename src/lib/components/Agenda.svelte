@@ -51,7 +51,7 @@ import UnderlinedHeader from "./UnderlinedHeader.svelte";
     }
   </style>
   
-  <section class="parallax text-white">
+  <section id="agenda" class="parallax text-white">
     <div class="agenda-content items-center text-center md:w-1/1 py-20 px-5">
       <UnderlinedHeader title="Agenda" />
 

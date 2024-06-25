@@ -11,7 +11,7 @@
 </script>
 
 <div class="bg-white p-8 rounded-lg shadow-lg transition-transform transform md:mr-8 mb-8 md:mb-0">
-    <h2 class="text-3xl font-bold mb-4 text-blue-600">{header}</h2>
+    <h2 class="text-3xl font-bold mb-4 text-black-800">{header}</h2>
     <p class="text-lg mb-4">
       <!-- <strong>{strong}</strong><br> -->
       <strong class="text-blue-600">Adres: </strong>{address}

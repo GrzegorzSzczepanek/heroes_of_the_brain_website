@@ -1,19 +1,31 @@
 <script>
   import { onMount, onDestroy } from "svelte";
+  import { page } from "$app/stores";
   import Fa from 'svelte-fa';
   import { faBars } from '@fortawesome/free-solid-svg-icons';
   import SideMenu from "./SideMenu.svelte";
   import "../../app.css";
 
   export let logoSrc = "https://knneuron.pwr.edu.pl/_next/image?url=http%3A%2F%2F127.0.0.1%3A1337%2Fuploads%2Fkn_neuron_logo_c3c1075271.png&w=640&q=75";
-  export let navItems = [
+
+  let navItemsMain = [
     { name: "Zaproszenie", href: "#zaproszenie" },
-    { name: "Tematyka Hackatonu", href: "#tematyka-Hackatonu" },
+    { name: "Tematyka Hackatonu", href: "#HackatonInfo" },
     { name: "Agenda", href: "#agenda" },
     { name: "FAQ", href: "#faq" },
-    { name: "Kontakt", href: "#kontakt" },
+    { name: "Kontakt", href: "#contact" },
     { name: "Organizatorzy", href: "/organizatorzy" }
   ];
+
+  let navItemsOrganizatorzy = [
+    { name: "O nas", href: "#about" },
+    { name: "Zespół", href: "#team" },
+    { name: "Projekty", href: "#projects" },
+    { name: "Współpraca", href: "#collaboration" },
+    { name: "Kontakt", href: "#contact" }
+  ];
+
+  let navItems = navItemsMain;
 
   let isScrolled = false;
   let showMenu = false;
@@ -50,6 +62,15 @@
       window.removeEventListener("closeMenu", closeMenu);
     };
   });
+
+  // Watch for route changes
+  $: {
+    if ($page.url.pathname === '/organizatorzy') {
+      navItems = navItemsOrganizatorzy;
+    } else {
+      navItems = navItemsMain;
+    }
+  }
 </script>
 
 <style>
@@ -82,11 +103,9 @@
       </button>
     </div>
   </div>
-
 </header>
 <div>
 {#if showMenu}
 <SideMenu {navItems} />
 {/if}
-
 </div>

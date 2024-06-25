@@ -7,6 +7,7 @@
     position: relative;
     display: inline-block;
     padding-bottom: 10px; /* Added padding to ensure space for the underline */
+    color: aliceblue;
   }
   
   .category-header::after {

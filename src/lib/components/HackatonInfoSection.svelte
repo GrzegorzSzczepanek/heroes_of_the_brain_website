@@ -4,7 +4,7 @@
 <style>
 </style>
 
-<section class="bg-gray-900 text-white py-20 px-6 md:px-12 lg:px-24">
+<section class="bg-gray-900 text-white py-20 px-6 md:px-12 lg:px-24" id="HackatonInfo">
   <div class="max-w-5xl mx-auto text-center">
     <h1 class="text-4xl md:text-5xl font-bold mb-6">Welcome to the BCI Neurohackathon</h1>
     <p class="text-lg md:text-xl mb-8">
