@@ -12,7 +12,7 @@
       undiscovered spaces with us!
     `;
   </script>
-  <section class="flex flex-col md:flex-row items-center justify-center max-w-5xl mx-auto p-8 bg-white rounded-lg shadow-md">
+  <section class="flex flex-col md:flex-row items-center justify-center max-w-5xl mx-auto p-8 bg-white rounded-lg shadow-md" id="collaboration">
     
     <div class="md:w-1/2 p-4">
       <img src={imageUrl} alt="Team Photo" class="w-full h-auto rounded-lg shadow-lg" />
