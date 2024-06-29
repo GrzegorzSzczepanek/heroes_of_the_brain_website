@@ -104,28 +104,66 @@
 
 <style>
   #faq-section {
-    /* background-color: rgba(255, 255, 255, 0.1); */
-    min-height: 80svh;
-    max-height: 100svh;
+    min-height: 80vh;
+    max-height: 100vh;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    align-self: center;
+    padding: 1rem;
   }
+
   #faq {
     border-radius: 8px;
     border: 1px solid white;
-    width: 70%;
+    width: 100%;
+    max-width: 800px;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 1rem;
+  }
+
+  .faq-item {
+    margin-bottom: 1rem;
+    border-bottom: 1px solid gray;
+  }
+
+  .faq-button {
+    width: 100%;
+    text-align: left;
+    font-size: 1rem;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: white;
+  }
+
+  .faq-answer {
+    padding: 0.5rem;
+    color: white;
+  }
+
+  @media (min-width: 600px) {
+    .faq-button {
+      font-size: 1.25rem;
+      padding: 1rem;
+    }
+    .faq-answer {
+      font-size: 1.125rem;
+      padding: 1rem;
+    }
   }
 </style>
 
-<section class="bg-transparent text-white" id="faq-section">
-  <div class="max-w-4xl mx-auto px-6 border-b" id="faq">
-    <h1 class="text-3xl md:text-4xl font-bold text-center mb-8">FAQ</h1>
+<section id="faq-section">
+  <div id="faq">
+    <h1 class="text-3xl md:text-4xl font-bold text-center mb-8 text-white">FAQ</h1>
     {#each currentFaqs as faq, index}
-      <div class="mb-4 border-b border-gray-300">
-        <button class="w-full text-left text-lg md:text-xl font-semibold py-4 flex justify-between items-center focus:outline-none" on:click={() => toggleFaq(index)}>
+      <div class="faq-item">
+        <button class="faq-button" on:click={() => toggleFaq(index)}>
           {faq.question}
           <span class="text-2xl md:text-3xl">
             {#if faq.open}
@@ -136,7 +174,7 @@
           </span>
         </button>
         {#if faq.open}
-          <div class="py-2 text-white text-base md:text-lg" transition:slide>
+          <div class="faq-answer" transition:slide>
             {faq.answer}
           </div>
         {/if}

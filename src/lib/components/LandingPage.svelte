@@ -4,7 +4,6 @@
   import { FontAwesomeIcon } from '@fortawesome/svelte-fontawesome';
   import "../../app.css";
   import { isPolish } from '../../stores/languageStore';
-  import { onDestroy } from 'svelte';
   import { get } from 'svelte/store';
 
   let backgroundImage = '../src/lib/images/brain.png';
@@ -25,9 +24,6 @@
 
   textVar = 'Heroes of The Brain';
   introText = textVar.split('').map(char => `<span class="intro-text">${char}</span>`).join('');
-
-  // updateText();
-  // $: $isPolish, updateText();
 
   $: title = $isPolish ? 'Największy Hackaton BCI w Polsce' : 'The Biggest BCI Hackathon in Poland';
   $: location = $isPolish ? 'Politechnika Wrocławska' : 'Wroclaw University of Technology';
@@ -69,14 +65,14 @@
   }
 </style>
 
-<section class="relative flex flex-col items-center justify-center h-screen bg-gradient text-white text-center p-4">
+<section class="relative flex flex-col items-center justify-center min-h-screen bg-gradient text-white text-center p-4">
   <div class="absolute inset-0 z-0">
     <div class="bg-dots dot-1" style="transform: translateY({scrollY * 0.1}px);"></div>
     <div class="bg-dots dot-2" style="transform: translateY({scrollY * 0.2}px);"></div>
     <div class="bg-dots dot-3" style="transform: translateY({scrollY * 0.15}px);"></div>
   </div>
   <div class="relative z-10">
-    <h2 class="text-2xl md:text-3xl lg:text-3xl mb-4">{title}</h2>
+    <h2 class="text-xl md:text-2xl lg:text-3xl mb-4">{title}</h2>
     <h1 class="text-3xl md:text-4xl lg:text-6xl font-bold mb-4 intro-text-container" id="intro-text">
       {@html introText}
     </h1>
@@ -91,7 +87,7 @@
       21.10.2024 - 23.10.2024
     </p>
   </div>
-  <div class="relative z-10 space-x-4">
+  <div class="relative z-10 flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4">
     <a href="#HackatonInfo" class="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded-md transition">{moreInfo}</a>
     <a href="#agenda" class="bg-gray-700 hover:bg-gray-800 text-white font-semibold py-2 px-4 rounded-md transition">{seeAgenda}</a>
   </div>

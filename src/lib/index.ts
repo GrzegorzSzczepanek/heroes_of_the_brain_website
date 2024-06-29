@@ -2,5 +2,6 @@
 import 'leaflet/dist/leaflet.css';
 import { isPolish } from './stores/languageStore';
 
+
 // Optionally, export the store for use in other components
 export { isPolish };

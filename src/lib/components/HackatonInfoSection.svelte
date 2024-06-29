@@ -2,7 +2,6 @@
   import { isPolish } from '../../stores/languageStore';
   import { derived } from 'svelte/store';
 
-  // Define content for both languages
   const contentPL = {
     title: "Witamy na BCI Neurohackathonie",
     intro: "Dołącz do nas w niesamowitej podróży do świata technologii Brain-Computer Interface (BCI). Nasz Neurohackathon gromadzi najbłyskotliwsze umysły, aby innowować i tworzyć przełomowe rozwiązania w dziedzinie neurobiologii.",
@@ -41,12 +40,10 @@
     ]
   };
 
-  // Derived store to get the current content based on the language
   const content = derived(isPolish, $isPolish => $isPolish ? contentPL : contentEN);
 
   let currentContent;
 
-  // Subscribe to the derived store to update the local variables
   content.subscribe(value => {
     currentContent = value;
   });
@@ -63,7 +60,7 @@
     display: flex;
     flex-direction: column;
   }
-  
+
   .agenda-content {
     margin: 0;
     background-color: rgba(0, 0, 0, 0.8);
@@ -79,14 +76,14 @@
 
 <section class="bg-gray-900 text-white py-20 px-6 md:px-12 lg:px-24" id="HackatonInfo">
   <div class="max-w-5xl mx-auto text-center">
-    <h1 class="text-4xl md:text-5xl font-bold mb-6">{currentContent.title}</h1>
-    <p class="text-lg md:text-xl mb-8">
+    <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">{currentContent.title}</h1>
+    <p class="text-base md:text-lg lg:text-xl mb-8">
       {currentContent.intro}
     </p>
     <div class="flex flex-col md:flex-row justify-around items-center gap-8 md:gap-12">
       {#each currentContent.sections as section}
         <div class="bg-gray-800 rounded-lg p-6 w-full md:w-1/3 text-left">
-          <h2 class="text-2xl font-semibold mb-4">{section.heading}</h2>
+          <h2 class="text-xl md:text-2xl font-semibold mb-4">{section.heading}</h2>
           <p class="text-sm md:text-base text-gray-400">
             {section.text}
           </p>
