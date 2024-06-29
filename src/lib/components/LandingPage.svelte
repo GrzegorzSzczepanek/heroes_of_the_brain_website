@@ -3,6 +3,9 @@
   import { faCalendarAlt, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
   import { FontAwesomeIcon } from '@fortawesome/svelte-fontawesome';
   import "../../app.css";
+  import { isPolish } from '../../stores/languageStore';
+  import { onDestroy } from 'svelte';
+  import { get } from 'svelte/store';
 
   let backgroundImage = '../src/lib/images/brain.png';
   let scrollY = 0;
@@ -17,8 +20,19 @@
     };
   });
 
-  let textVar = 'Heroes of The Brain';
-  let introText = textVar.split('').map(char => `<span class="intro-text">${char}</span>`).join('');
+  let textVar;
+  let introText;
+
+  textVar = 'Heroes of The Brain';
+  introText = textVar.split('').map(char => `<span class="intro-text">${char}</span>`).join('');
+
+  // updateText();
+  // $: $isPolish, updateText();
+
+  $: title = $isPolish ? 'Największy Hackaton BCI w Polsce' : 'The Biggest BCI Hackathon in Poland';
+  $: location = $isPolish ? 'Politechnika Wrocławska' : 'Wroclaw University of Technology';
+  $: moreInfo = $isPolish ? 'Dowiedz się więcej' : 'Learn more';
+  $: seeAgenda = $isPolish ? 'Zobacz harmonogram' : 'See agenda';
 </script>
 
 <style>
@@ -39,19 +53,13 @@
     height: 100px;
     top: 10%;
     left: 20%;
-    /* opacity: 0.3;
-    background: url("https://knneuron.pwr.edu.pl/_next/image?url=http%3A%2F%2F127.0.0.1%3A1337%2Fuploads%2Fkn_neuron_logo_c3c1075271.png&w=640&q=75");
-    background-size: cover; */
   }
   .dot-2 {
     width: 150px;
     height: 150px;
     top: 50%;
     left: 40%;
-    /* background: url("https://i0.wp.com/www.iskierkawroc.pl/wp-content/uploads/2019/04/logo-PWr-kolor-pion-bez-tla.png?fit=378%2C550&ssl=1&w=640"); */
-    /* background-size: cover; */
     opacity: 0.3;
-    /* filter: saturate(150%) brightness(90%); */
   }
   .dot-3 {
     width: 120px;
@@ -68,7 +76,7 @@
     <div class="bg-dots dot-3" style="transform: translateY({scrollY * 0.15}px);"></div>
   </div>
   <div class="relative z-10">
-    <h2 class="text-2xl md:text-3xl lg:text-3xl mb-4">Największy Hackaton BCI w Polsce</h2>
+    <h2 class="text-2xl md:text-3xl lg:text-3xl mb-4">{title}</h2>
     <h1 class="text-3xl md:text-4xl lg:text-6xl font-bold mb-4 intro-text-container" id="intro-text">
       {@html introText}
     </h1>
@@ -76,7 +84,7 @@
   <div class="relative flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-8 my-6 z-10">
     <p class="flex items-center text-lg md:text-xl">
       <FontAwesomeIcon icon={faMapMarkerAlt} class="text-purple-400 mr-2" />
-      Politechnika Wrocławska
+      {location}
     </p>
     <p class="flex items-center text-lg md:text-xl">
       <FontAwesomeIcon icon={faCalendarAlt} class="text-purple-400 mr-2" />
@@ -84,7 +92,7 @@
     </p>
   </div>
   <div class="relative z-10 space-x-4">
-    <a href="#learn-more" class="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded-md transition">Dowiedz się więcej</a>
-    <a href="#schedule" class="bg-gray-700 hover:bg-gray-800 text-white font-semibold py-2 px-4 rounded-md transition">Zobacz harmonogram</a>
+    <a href="#HackatonInfo" class="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded-md transition">{moreInfo}</a>
+    <a href="#agenda" class="bg-gray-700 hover:bg-gray-800 text-white font-semibold py-2 px-4 rounded-md transition">{seeAgenda}</a>
   </div>
 </section>

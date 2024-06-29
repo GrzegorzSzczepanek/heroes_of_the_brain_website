@@ -1,89 +1,146 @@
 <script>
-    let faqs = [
-      {
-        question: "Kto może wziąć udział w wydarzeniu?",
-        answer: "W wydarzeniu mogą wziąć udział tylko i wyłącznie osoby mające aktywny status studenta.",
-        open: true
-      },
-      {
-        question: "Czy osoby z innych dziedzin również mogą wziąć udział?",
-        answer: "Oczywiście, że mogą. Wydarzenie jest otwarte dla osób z różnych dziedzin.",
-        open: false
-      },
+  import { isPolish } from '../../stores/languageStore';
+  import { derived } from 'svelte/store';
+  import { slide } from 'svelte/transition';
 
-      {
-        question: "Czy będę potrzebował własnego sprzętu komputerowego, aby wziąć udział?",
-        answer: "Tak, uczestnicy powinni przynieść własny sprzęt komputerowy.",
-        open: false
-      },
-      {
-        question: "Czy uczestnicy otrzymują pomoc podczas wydarzenia?",
-        answer: "Tak, na miejscu będą dostępni mentorzy i organizatorzy, którzy chętnie pomogą.",
-        open: false
-      },
-      {
-        question: "Czy przewidywane są nagrody dla zwycięzców?",
-        answer: "Tak, dla najlepszych drużyn przewidziane są atrakcyjne nagrody.",
-        open: false
-      },
-      {
-        question: "Czy będzie możliwość noclegu na miejscu?",
-        answer: "Tak, na podłodze.",
-        open: false
-      },
-      {
-        question: "Czy na miejscu będzie dostępny parking?",
-        answer: "Tak, na miejscu dostępny jest parking dla uczestników.",
-        open: false
+  // Define FAQ content for both languages
+  const faqsPL = [
+    {
+      question: "Kto może wziąć udział w wydarzeniu?",
+      answer: "W wydarzeniu mogą wziąć udział tylko i wyłącznie osoby mające aktywny status studenta.",
+      open: true
+    },
+    {
+      question: "Czy osoby z innych dziedzin również mogą wziąć udział?",
+      answer: "Oczywiście, że mogą. Wydarzenie jest otwarte dla osób z różnych dziedzin.",
+      open: false
+    },
+    {
+      question: "Czy będę potrzebował własnego sprzętu komputerowego, aby wziąć udział?",
+      answer: "Tak, uczestnicy powinni przynieść własny sprzęt komputerowy.",
+      open: false
+    },
+    {
+      question: "Czy uczestnicy otrzymują pomoc podczas wydarzenia?",
+      answer: "Tak, na miejscu będą dostępni mentorzy i organizatorzy, którzy chętnie pomogą.",
+      open: false
+    },
+    {
+      question: "Czy przewidywane są nagrody dla zwycięzców?",
+      answer: "Tak, dla najlepszych drużyn przewidziane są atrakcyjne nagrody.",
+      open: false
+    },
+    {
+      question: "Czy będzie możliwość noclegu na miejscu?",
+      answer: "Tak, na podłodze.",
+      open: false
+    },
+    {
+      question: "Czy na miejscu będzie dostępny parking?",
+      answer: "Tak, na miejscu dostępny jest parking dla uczestników.",
+      open: false
+    }
+  ];
+
+  const faqsEN = [
+    {
+      question: "Who can participate in the event?",
+      answer: "Only individuals with active student status can participate in the event.",
+      open: true
+    },
+    {
+      question: "Can people from other fields also participate?",
+      answer: "Of course, they can. The event is open to people from various fields.",
+      open: false
+    },
+    {
+      question: "Will I need my own computer equipment to participate?",
+      answer: "Yes, participants should bring their own computer equipment.",
+      open: false
+    },
+    {
+      question: "Do participants receive help during the event?",
+      answer: "Yes, mentors and organizers will be available on-site to assist.",
+      open: false
+    },
+    {
+      question: "Are there prizes for the winners?",
+      answer: "Yes, attractive prizes are provided for the best teams.",
+      open: false
+    },
+    {
+      question: "Will there be accommodation on-site?",
+      answer: "Yes, on the floor.",
+      open: false
+    },
+    {
+      question: "Will there be parking available on-site?",
+      answer: "Yes, there is parking available for participants on-site.",
+      open: false
+    }
+  ];
+
+  // Derived store to get the current content based on the language
+  const faqs = derived(isPolish, $isPolish => $isPolish ? faqsPL : faqsEN);
+
+  let currentFaqs;
+
+  // Subscribe to the derived store to update the local variables
+  faqs.subscribe(value => {
+    currentFaqs = value;
+  });
+
+  function toggleFaq(index) {
+    currentFaqs = currentFaqs.map((faq, i) => {
+      if (i === index) {
+        faq.open = !faq.open;
+      } else {
+        faq.open = false;
       }
-    ];
-  
-    function toggleFaq(index) {
-      faqs = faqs.map((faq, i) => {
-        if (i === index) {
-          faq.open = !faq.open;
-        } else {
-          faq.open = false;
-        }
-        return faq;
-      });
-    }
-  </script>
-  
-  <style>
-    #faq-section {
-      background-color: rgba(255, 255, 255, 0.1);
-    }
-    #faq {
-      border-radius: 8px;
-      /* padding: 20px; */
-      border: 1px solid white;
-      width: 70%;
-    }
-  </style>
-  
-  <section class="bg-transparent py-32 text-white" id="faq-section">
-    <div class="max-w-4xl mx-auto px-6 border-b" id="faq">
-      <h1 class="text-3xl md:text-4xl font-bold text-center mb-8">FAQ</h1>
-      {#each faqs as faq, index}
-        <div class="mb-4 border-b border-gray-300">
-          <button class="w-full text-left text-lg md:text-xl font-semibold py-4 flex justify-between items-center focus:outline-none" on:click={() => toggleFaq(index)}>
-            {faq.question}
-            <span class="text-2xl md:text-3xl">
-              {#if faq.open}
-                <span class="text-purple-500">-</span>
-              {:else}
-                <span class="text-purple-500">+</span>
-              {/if}
-            </span>
-          </button>
-          {#if faq.open}
-            <div class="py-2 text-white text-base md:text-lg">
-              {faq.answer}
-            </div>
-          {/if}
-        </div>
-      {/each}
-    </div>
-  </section>
-  
+      return faq;
+    });
+  }
+</script>
+
+<style>
+  #faq-section {
+    /* background-color: rgba(255, 255, 255, 0.1); */
+    min-height: 80svh;
+    max-height: 100svh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+  }
+  #faq {
+    border-radius: 8px;
+    border: 1px solid white;
+    width: 70%;
+  }
+</style>
+
+<section class="bg-transparent text-white" id="faq-section">
+  <div class="max-w-4xl mx-auto px-6 border-b" id="faq">
+    <h1 class="text-3xl md:text-4xl font-bold text-center mb-8">FAQ</h1>
+    {#each currentFaqs as faq, index}
+      <div class="mb-4 border-b border-gray-300">
+        <button class="w-full text-left text-lg md:text-xl font-semibold py-4 flex justify-between items-center focus:outline-none" on:click={() => toggleFaq(index)}>
+          {faq.question}
+          <span class="text-2xl md:text-3xl">
+            {#if faq.open}
+              <span class="text-purple-500">-</span>
+            {:else}
+              <span class="text-purple-500">+</span>
+            {/if}
+          </span>
+        </button>
+        {#if faq.open}
+          <div class="py-2 text-white text-base md:text-lg" transition:slide>
+            {faq.answer}
+          </div>
+        {/if}
+      </div>
+    {/each}
+  </div>
+</section>

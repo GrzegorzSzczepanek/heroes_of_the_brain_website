@@ -5,11 +5,12 @@
   import { faBars } from '@fortawesome/free-solid-svg-icons';
   import SideMenu from "./SideMenu.svelte";
   import "../../app.css";
+  import { isPolish } from '../../stores/languageStore'; // Import the store
 
+ 
   export let logoSrc = "https://knneuron.pwr.edu.pl/_next/image?url=http%3A%2F%2F127.0.0.1%3A1337%2Fuploads%2Fkn_neuron_logo_c3c1075271.png&w=640&q=75";
 
-  let navItemsMain = [
-    { name: "Zaproszenie", href: "#zaproszenie" },
+  let navItemsMainPL = [
     { name: "Tematyka Hackatonu", href: "#HackatonInfo" },
     { name: "Agenda", href: "#agenda" },
     { name: "FAQ", href: "#faq" },
@@ -17,15 +18,29 @@
     { name: "Organizatorzy", href: "/organizatorzy" }
   ];
 
-  let navItemsOrganizatorzy = [
-    { name: "O nas", href: "#about" },
-    { name: "Zespół", href: "#team" },
-    { name: "Projekty", href: "#projects" },
-    { name: "Współpraca", href: "#collaboration" },
-    { name: "Kontakt", href: "#contact" }
+  let navItemsMainEN = [
+    { name: "Hackathon Topics", href: "#HackatonInfo" },
+    { name: "Agenda", href: "#agenda" },
+    { name: "FAQ", href: "#faq" },
+    { name: "Contact", href: "#contact" },
+    { name: "Organizers", href: "/organizatorzy" }
   ];
 
-  let navItems = navItemsMain;
+  let navItemsOrganizatorzyPL = [
+    { name: "O nas", href: "#about-us" },
+    { name: "Zespół", href: "#team" },
+    { name: "Współpraca", href: "#collaboration" }
+  ];
+
+  let navItemsOrganizatorzyEN = [
+    { name: "About Us", href: "#about-us" },
+    { name: "Team", href: "#team" },
+    { name: "Collaboration", href: "#collaboration" }
+  ];
+
+  let navItems = navItemsMainPL;
+  $: $isPolish ? navItems = $page.url.pathname === '/organizatorzy' ? navItemsOrganizatorzyPL : navItemsMainPL
+              : navItems = $page.url.pathname === '/organizatorzy' ? navItemsOrganizatorzyEN : navItemsMainEN;
 
   let isScrolled = false;
   let showMenu = false;
@@ -62,15 +77,6 @@
       window.removeEventListener("closeMenu", closeMenu);
     };
   });
-
-  // Watch for route changes
-  $: {
-    if ($page.url.pathname === '/organizatorzy') {
-      navItems = navItemsOrganizatorzy;
-    } else {
-      navItems = navItemsMain;
-    }
-  }
 </script>
 
 <style>
@@ -81,7 +87,7 @@
   }
 </style>
 
-<header class="{isScrolled ?  'bg-black bg-semi-transparent' : 'bg-transparent' } text-white py-6 fixed top-0 left-0 right-0 z-50 transition duration-300">
+<header class="{isScrolled ? 'bg-black bg-semi-transparent' : 'bg-transparent'} text-white py-6 fixed top-0 left-0 right-0 z-50 transition duration-300">
   <div class="container mx-auto flex justify-between items-center px-4 md:px-8">
     <div class="flex items-center">
       <a href="/"><img src={logoSrc} alt="Student Cybersym SCS Logo" class="h-12 mr-4" /></a>
@@ -90,22 +96,28 @@
         <div class="text-sm">PWR</div>
       </div>
     </div>
-    <div class="hidden md:flex items-center space-x-6">
-      <nav class="space-x-6">
+    <div class="flex items-center space-x-4">
+      <nav class="hidden md:flex items-center space-x-6">
         {#each navItems as item}
-            <a href={item.href} class="hover:underline">{item.name}</a>
+          <a href={item.href} class="hover:underline">{item.name}</a>
         {/each}
       </nav>
-    </div>
-    <div class="md:hidden flex items-center">
-      <button class="outline-none mobile-menu-button" on:click={toggleMenu}>
-        <Fa icon={faBars} size="1.6x" color="#8f9a9c"/>
+      <button on:click={() => isPolish.set(true)} class="p-2">
+        <img src="src/lib/images/icons/pl.svg" alt="Polish Flag" class="h-6" />
       </button>
+      <button on:click={() => isPolish.set(false)} class="p-2">
+        <img src="src/lib/images/icons/gb.svg" alt="British Flag" class="h-6" />
+      </button>
+      <div class="md:hidden flex items-center">
+        <button class="outline-none mobile-menu-button" on:click={toggleMenu}>
+          <Fa icon={faBars} size="1.6x" color="#8f9a9c"/>
+        </button>
+      </div>
     </div>
   </div>
 </header>
 <div>
-{#if showMenu}
-<SideMenu {navItems} />
-{/if}
+  {#if showMenu}
+    <SideMenu {navItems} />
+  {/if}
 </div>
