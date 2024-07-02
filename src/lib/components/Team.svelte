@@ -78,6 +78,7 @@
   // Derived store to get the current content based on the language
   const teams = derived(isPolish, $isPolish => $isPolish ? teamsPL : teamsEN);
 
+
   let currentTeams;
 
   // Subscribe to the derived store to update the local variables
@@ -88,27 +89,28 @@
   function setActiveTab(tab) {
     activeTab = tab;
   }
+  
 </script>
 
 <section class="max-w-full lg:max-w-3xl mx-auto p-4" id="team">
   <div class="flex flex-col items-center mb-6 space-y-4 md:flex-row md:space-x-4 md:space-y-0">
     <div class="w-full max-w-xs">
       <Button
-        text={isPolish ? 'Techniczny' : 'Technical'}
+        text={$isPolish ? 'Techniczny' : 'Technical'}
         isActive={activeTab === 'Technical'}
         onClick={() => setActiveTab('Technical')}
       />
     </div>
     <div class="w-full max-w-xs">
       <Button
-        text={isPolish ? 'Sponsorzy' : 'Sponsor'}
+        text={$isPolish ? 'Sponsorzy' : 'Sponsor'}
         isActive={activeTab === 'Sponsor'}
         onClick={() => setActiveTab('Sponsor')}
       />
     </div>
     <div class="w-full max-w-xs">
       <Button
-        text={isPolish ? 'Organizatorzy' : 'Organisator'}
+        text={$isPolish ? 'Organizatorzy' : 'Organisator'}
         isActive={activeTab === 'Organisator'}
         onClick={() => setActiveTab('Organisator')}
       />

@@ -87,7 +87,7 @@
   }
 </style>
 
-<header class="{isScrolled ? 'bg-black bg-semi-transparent' : 'bg-transparent'} text-white py-6 fixed top-0 left-0 right-0 z-50 transition duration-300">
+<header class="{isScrolled ? 'bg-black bg-semi-transparent' : 'bg-transparent'} text-white  fixed top-0 left-0 right-0 z-50 transition duration-300 py-2 md:py-6">
   <div class="container mx-auto flex justify-between items-center px-4 md:px-8">
     <div class="flex items-center">
       <a href="/"><img src={logoSrc} alt="Student Cybersym SCS Logo" class="h-12 mr-4" /></a>
