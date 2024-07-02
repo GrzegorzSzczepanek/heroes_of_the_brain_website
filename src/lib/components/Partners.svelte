@@ -6,23 +6,23 @@
 
   // Define text content for both languages
   const partnersPL = [
-    { category: "PARTNER", logos: ["https://via.placeholder.com/150"] },
-    // { category: "REGION GOSPODARZ", logos: ["https://via.placeholder.com/150"] },
-    // { category: "PARTNERZY WIEDZY", logos: ["https://via.placeholder.com/150"] },
-    // { category: "PARTNERZY UNIWERSYTETU", logos: ["https://via.placeholder.com/150"] },
-    // { category: "MEDIA PARTNERZY", logos: ["https://via.placeholder.com/150", "https://via.placeholder.com/150"] },
-    { category: "Ci fajniejsi sponsorzy", logos: ["https://via.placeholder.com/150", "https://via.placeholder.com/150", "https://via.placeholder.com/150", "https://via.placeholder.com/150"] },
-    { category: "PARTNER SIECIOWY", logos: ["https://via.placeholder.com/150"] }
+    { category: "PARTNER", logos: ["https://picsum.photos/200?random=17"] },
+    // { category: "REGION GOSPODARZ", logos: ["https://picsum.photos/200?random=17"] },
+    // { category: "PARTNERZY WIEDZY", logos: ["https://picsum.photos/200?random=17"] },
+    // { category: "PARTNERZY UNIWERSYTETU", logos: ["https://picsum.photos/200?random=17"] },
+    // { category: "MEDIA PARTNERZY", logos: ["https://picsum.photos/200?random=17", "https://picsum.photos/200?random=17"] },
+    { category: "Ci fajniejsi sponsorzy", logos: ["https://picsum.photos/200?random=16", "https://picsum.photos/200?random=1657", "https://picsum.photos/200?random=147", "https://picsum.photos/200?random=171"] },
+    { category: "PARTNER SIECIOWY", logos: ["https://picsum.photos/200?random=137"] }
   ];
 
   const partnersEN = [
-    { category: "PARTNER", logos: ["https://via.placeholder.com/150"] },
-    // { category: "HOST REGION", logos: ["https://via.placeholder.com/150"] },
-    // { category: "KNOWLEDGE PARTNERS", logos: ["https://via.placeholder.com/150"] },
-    // { category: "UNIVERSITY PARTNERS", logos: ["https://via.placeholder.com/150"] },
-    // { category: "MEDIA PARTNERS", logos: ["https://via.placeholder.com/150", "https://via.placeholder.com/150"] },
-    { category: "The Cooler Sponsors", logos: ["https://via.placeholder.com/150", "https://via.placeholder.com/150", "https://via.placeholder.com/150", "https://via.placeholder.com/150"] },
-    { category: "NETWORK PARTNER", logos: ["https://via.placeholder.com/150"] }
+    { category: "PARTNER", logos: ["https://picsum.photos/200?random=1237"] },
+    // { category: "HOST REGION", logos: ["https://picsum.photos/200?random=17"] },
+    // { category: "KNOWLEDGE PARTNERS", logos: ["https://picsum.photos/200?random=17"] },
+    // { category: "UNIVERSITY PARTNERS", logos: ["https://picsum.photos/200?random=17"] },
+    // { category: "MEDIA PARTNERS", logos: ["https://picsum.photos/200?random=17", "https://picsum.photos/200?random=17"] },
+    { category: "The Cooler Sponsors", logos: ["https://picsum.photos/200?random=1347", "https://picsum.photos/200?random=147", "https://picsum.photos/200?random=147", "https://picsum.photos/200?random=1427"] },
+    { category: "NETWORK PARTNER", logos: ["https://picsum.photos/200?random=1547"] }
   ];
 
   // Derived store to get the current content based on the language

@@ -99,7 +99,7 @@
     <div class="flex items-center space-x-4">
       <nav class="hidden md:flex items-center space-x-6">
         {#each navItems as item}
-          <a href={item.href} class="hover:underline">{item.name}</a>
+          <a href={item.href} class=" hover:underline transition-all">{item.name}</a>
         {/each}
       </nav>
       <button on:click={() => isPolish.set(true)} class="p-2">

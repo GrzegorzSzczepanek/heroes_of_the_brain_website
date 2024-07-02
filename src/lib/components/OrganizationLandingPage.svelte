@@ -37,10 +37,11 @@
     <header class="text-center">
       <UnderlinedHeader title={currentContent.jury} />
     </header>
-    <div class="flex flex-row gap-5 align-middle justify-center">
+    <div class="flex flex-col items-center md:flex-row gap-5 justify-center">
       <TeamMember name="John Doe" role="CEO" imageUrl="https://picsum.photos/200?random=2137" />
       <TeamMember name="Jane Doe" role="CTO" imageUrl="https://picsum.photos/200?random=2421" />
     </div>
+    
   </div>
   <div class="container mx-auto mt-10">
     <header class="text-center ">

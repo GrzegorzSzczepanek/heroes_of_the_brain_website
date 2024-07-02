@@ -4,6 +4,7 @@
   import { fade } from 'svelte/transition';
   import TeamMember from './TeamMember.svelte';
   import UnderlinedHeader from './UnderlinedHeader.svelte';
+  import Button from './Button.svelte';
 
   let activeTab = 'Technical';
 
@@ -90,19 +91,28 @@
 </script>
 
 <section class="max-w-full lg:max-w-3xl mx-auto p-4" id="team">
-  <div class="flex justify-center mb-6 space-x-4">
-    <button class:active={activeTab === 'Technical'} class="px-4 py-2 mx-2 bg-blue-500 text-white rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600" on:click={() => setActiveTab('Technical')}>
-      {#if $isPolish} Techniczny {/if}
-      {#if !$isPolish} Technical {/if}
-    </button>
-    <button class:active={activeTab === 'Sponsor'} class="px-4 py-2 mx-2 bg-blue-500 text-white rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600" on:click={() => setActiveTab('Sponsor')}>
-      {#if $isPolish} Sponsorzy {/if}
-      {#if !$isPolish} Sponsor {/if}
-    </button>
-    <button class:active={activeTab === 'Organisator'} class="px-4 py-2 mx-2 bg-blue-500 text-white rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600" on:click={() => setActiveTab('Organisator')}>
-      {#if $isPolish} Organizatorzy {/if}
-      {#if !$isPolish} Organisator {/if}
-    </button>
+  <div class="flex flex-col items-center mb-6 space-y-4 md:flex-row md:space-x-4 md:space-y-0">
+    <div class="w-full max-w-xs">
+      <Button
+        text={isPolish ? 'Techniczny' : 'Technical'}
+        isActive={activeTab === 'Technical'}
+        onClick={() => setActiveTab('Technical')}
+      />
+    </div>
+    <div class="w-full max-w-xs">
+      <Button
+        text={isPolish ? 'Sponsorzy' : 'Sponsor'}
+        isActive={activeTab === 'Sponsor'}
+        onClick={() => setActiveTab('Sponsor')}
+      />
+    </div>
+    <div class="w-full max-w-xs">
+      <Button
+        text={isPolish ? 'Organizatorzy' : 'Organisator'}
+        isActive={activeTab === 'Organisator'}
+        onClick={() => setActiveTab('Organisator')}
+      />
+    </div>
   </div>
 
   {#key activeTab}
