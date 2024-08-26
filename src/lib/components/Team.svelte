@@ -3,85 +3,94 @@
   import { derived } from 'svelte/store';
   import { fade } from 'svelte/transition';
   import TeamMember from './TeamMember.svelte';
-  import UnderlinedHeader from './UnderlinedHeader.svelte';
   import Button from './Button.svelte';
 
   let activeTab = 'Technical';
 
-  // Define content for both languages
   const teamsPL = {
     Technical: [
-      { name: 'Andrzej Andrzej', role: 'Lider Wydziału Mechanicznego', imageUrl: 'https://picsum.photos/200?random=1' },
-      { name: 'Andrzej Andrzej', role: 'Zastępca Lidera Wydziału Mechanicznego', imageUrl: 'https://picsum.photos/200?random=2' },
-      { name: 'Anna Kowalska', role: 'Inżynier Mechaniczny', imageUrl: 'https://picsum.photos/200?random=3' },
-      { name: 'Piotr Nowak', role: 'Projektant Mechaniczny', imageUrl: 'https://picsum.photos/200?random=4' },
-      { name: 'Marta Wiśniewska', role: 'Inżynier Sponsorów', imageUrl: 'https://picsum.photos/200?random=5' },
-      { name: 'Kamil Lewandowski', role: 'Deweloper Sponsorów', imageUrl: 'https://picsum.photos/200?random=6' },
-      { name: 'Alicja Dąbrowska', role: 'Inżynier Elektryk', imageUrl: 'https://picsum.photos/200?random=7' },
-      { name: 'Tomasz Kaczmarek', role: 'Technik Elektryk', imageUrl: 'https://picsum.photos/200?random=8' }
+      { name: 'Kacper Daniel', role: 'Członek Sekcji Technicznej', imageUrl: 'https://picsum.photos/200?random=1' },
+      { name: 'Adam Pawłowski', role: 'Członek Sekcji Technicznej', imageUrl: 'https://picsum.photos/200?random=1' },
+      { name: 'Grzegorz Szczepanek', role: 'Członek Sekcji Technicznej', imageUrl: 'https://picsum.photos/200?random=1' },
+      { name: 'Adrian Goral', role: 'Członek Sekcji Technicznej', imageUrl: 'https://picsum.photos/200?random=1' },
+      { name: 'Michał Wiśniewski', role: 'Członek Sekcji Technicznej', imageUrl: 'https://picsum.photos/200?random=1' },
+      { name: 'Filip Grzywacz', role: 'Członek Sekcji Technicznej', imageUrl: 'https://picsum.photos/200?random=1' },
+      { name: 'Adam Łaput', role: 'Członek Sekcji Technicznej', imageUrl: 'https://picsum.photos/200?random=1' },
     ],
     Sponsor: [
-      { name: 'Paweł Dzikiweicz', role: 'Lider Wydziału Sponsorów', imageUrl: 'https://picsum.photos/200?random=9' },
-      { name: 'Andrzej Andrzej', role: 'Zastępca Lidera Wydziału Sponsorów', imageUrl: 'https://picsum.photos/200?random=10' },
-      { name: 'John Smith', role: 'Inżynier Sponsorów', imageUrl: 'https://picsum.photos/200?random=11' },
-      { name: 'Emily Johnson', role: 'Projektant Sponsorów', imageUrl: 'https://picsum.photos/200?random=12' },
-      { name: 'Michael Davis', role: 'Inżynier Sponsorów', imageUrl: 'https://picsum.photos/200?random=13' },
-      { name: 'Jessica Brown', role: 'Deweloper Sponsorów', imageUrl: 'https://picsum.photos/200?random=14' },
-      { name: 'David Wilson', role: 'Inżynier Sponsorów', imageUrl: 'https://picsum.photos/200?random=15' },
-      { name: 'Jennifer Taylor', role: 'Technik Sponsorów', imageUrl: 'https://picsum.photos/200?random=16' }
+      { name: 'Patrycja Vogel', role: 'Członek Sekcji Sponsorskiej', imageUrl: 'https://picsum.photos/200?random=1' },
+      { name: 'Maja Wiśniewska', role: 'Członek Sekcji Sponsorskiej', imageUrl: 'https://picsum.photos/200?random=1' },
+      { name: 'Mateusz Michalski', role: 'Członek Sekcji Sponsorskiej', imageUrl: 'https://picsum.photos/200?random=1' },
+      { name: 'Kacper Majtyka', role: 'Członek Sekcji Sponsorskiej', imageUrl: 'https://picsum.photos/200?random=1' },
     ],
     Organisator: [
-      { name: 'Robert Johnson', role: 'Lider Wydziału Organizacyjnego', imageUrl: 'https://picsum.photos/200?random=17' },
-      { name: 'Sarah Thompson', role: 'Zastępca Lidera Wydziału Organizacyjnego', imageUrl: 'https://picsum.photos/200?random=18' },
-      { name: 'Daniel Miller', role: 'Planista Wydarzeń', imageUrl: 'https://picsum.photos/200?random=19' },
-      { name: 'Emily Wilson', role: 'Koordynator Logistyki', imageUrl: 'https://picsum.photos/200?random=20' },
-      { name: 'Matthew Davis', role: 'Specjalista ds. Marketingu', imageUrl: 'https://picsum.photos/200?random=21' },
-      { name: 'Olivia Brown', role: 'Menadżer ds. Public Relations', imageUrl: 'https://picsum.photos/200?random=22' },
-      { name: 'William Taylor', role: 'Koordynator Wolontariuszy', imageUrl: 'https://picsum.photos/200?random=23' },
-      { name: 'Sophia Anderson', role: 'Menadżer ds. Sponsoringu', imageUrl: 'https://picsum.photos/200?random=24' }
+      { name: 'Igor Kowalczyk', role: 'Członek Sekcji Organizacyjnej', imageUrl: 'https://picsum.photos/200?random=1' },
+      { name: 'Aleksandra Walczyk', role: 'Członek Sekcji Organizacyjnej', imageUrl: 'https://picsum.photos/200?random=1' },
+      { name: 'Jakub Morawiec', role: 'Członek Sekcji Organizacyjnej', imageUrl: 'https://picsum.photos/200?random=1' },
+      { name: 'Iwo Chwiszczuk', role: 'Członek Sekcji Organizacyjnej', imageUrl: 'https://picsum.photos/200?random=1' },
+    ],
+    Coordinator: [
+      { name: 'Marta Bołd', role: 'Koordynator', imageUrl: 'https://picsum.photos/200?random=1' },
+      { name: 'Jakub Morawiec', role: 'Koordynator', imageUrl: 'https://picsum.photos/200?random=1' },
+      { name: 'Szymon Matyja', role: 'Koordynator', imageUrl: 'https://picsum.photos/200?random=1' },
+      { name: 'Izabela Paniczek', role: 'Koordynator', imageUrl: 'https://picsum.photos/200?random=1' },
+      { name: 'Paweł Dzikiewicz', role: 'Koordynator', imageUrl: 'https://picsum.photos/200?random=1' },
+      { name: 'Iuliia Kapustinskaia', role: 'Koordynator', imageUrl: 'https://picsum.photos/200?random=1' },
+      { name: 'Krzysztof Mola', role: 'Koordynator', imageUrl: 'https://picsum.photos/200?random=1' },
+    ],
+    Promotion: [
+      { name: 'Kacper Sroka', role: 'Członek Sekcji Promocji', imageUrl: 'https://picsum.photos/200?random=1' },
+      { name: 'Gabrysia Senyszyn', role: 'Członek Sekcji Promocji', imageUrl: 'https://picsum.photos/200?random=1' },
+      { name: 'Weronika Walczuk', role: 'Członek Sekcji Promocji', imageUrl: 'https://picsum.photos/200?random=1' },
+      { name: 'Konrad Bąchór', role: 'Członek Sekcji Promocji', imageUrl: 'https://picsum.photos/200?random=1' },
     ]
   };
 
   const teamsEN = {
     Technical: [
-      { name: 'Andrzej Andrzej', role: 'Mechanical Department Leader', imageUrl: 'https://picsum.photos/200?random=1' },
-      { name: 'Andrzej Andrzej', role: 'Mechanical Department Vice-Leader', imageUrl: 'https://picsum.photos/200?random=2' },
-      { name: 'Anna Kowalska', role: 'Mechanical Engineer', imageUrl: 'https://picsum.photos/200?random=3' },
-      { name: 'Piotr Nowak', role: 'Mechanical Designer', imageUrl: 'https://picsum.photos/200?random=4' },
-      { name: 'Marta Wiśniewska', role: 'Sponsor Engineer', imageUrl: 'https://picsum.photos/200?random=5' },
-      { name: 'Kamil Lewandowski', role: 'Sponsor Developer', imageUrl: 'https://picsum.photos/200?random=6' },
-      { name: 'Alicja Dąbrowska', role: 'Electrical Engineer', imageUrl: 'https://picsum.photos/200?random=7' },
-      { name: 'Tomasz Kaczmarek', role: 'Electrical Technician', imageUrl: 'https://picsum.photos/200?random=8' }
+      { name: 'Kacper Daniel', role: 'Technical Section Member', imageUrl: 'https://picsum.photos/200?random=1' },
+      { name: 'Adam Pawłowski', role: 'Technical Section Member', imageUrl: 'https://picsum.photos/200?random=1' },
+      { name: 'Grzegorz Szczepanek', role: 'Technical Section Member', imageUrl: 'https://picsum.photos/200?random=1' },
+      { name: 'Adrian Góral', role: 'Technical Section Member', imageUrl: 'https://picsum.photos/200?random=1' },
+      { name: 'Michał Wiśniewski', role: 'Technical Section Member', imageUrl: 'https://picsum.photos/200?random=1' },
+      { name: 'Filip Grzywacz', role: 'Technical Section Member', imageUrl: 'https://picsum.photos/200?random=1' },
+      { name: 'Adam Łaput', role: 'Technical Section Member', imageUrl: 'https://picsum.photos/200?random=1' },
     ],
     Sponsor: [
-      { name: 'Paweł Dzikiweicz', role: 'Sponsor Department Leader', imageUrl: 'https://picsum.photos/200?random=9' },
-      { name: 'Andrzej Andrzej', role: 'Sponsor Department Vice-Leader', imageUrl: 'https://picsum.photos/200?random=10' },
-      { name: 'John Smith', role: 'Sponsor Engineer', imageUrl: 'https://picsum.photos/200?random=11' },
-      { name: 'Emily Johnson', role: 'Sponsor Designer', imageUrl: 'https://picsum.photos/200?random=12' },
-      { name: 'Michael Davis', role: 'Sponsor Engineer', imageUrl: 'https://picsum.photos/200?random=13' },
-      { name: 'Jessica Brown', role: 'Sponsor Developer', imageUrl: 'https://picsum.photos/200?random=14' },
-      { name: 'David Wilson', role: 'Sponsor Engineer', imageUrl: 'https://picsum.photos/200?random=15' },
-      { name: 'Jennifer Taylor', role: 'Sponsor Technician', imageUrl: 'https://picsum.photos/200?random=16' }
+      { name: 'Patrycja Vogel', role: 'Sponsor Section Member', imageUrl: 'https://picsum.photos/200?random=1' },
+      { name: 'Maja Wiśniewska', role: 'Sponsor Section Member', imageUrl: 'https://picsum.photos/200?random=1' },
+      { name: 'Mateusz Michalski', role: 'Sponsor Section Member', imageUrl: 'https://picsum.photos/200?random=1' },
+      { name: 'Kacper Majtyka', role: 'Sponsor Section Member', imageUrl: 'https://picsum.photos/200?random=1' },
     ],
     Organisator: [
-      { name: 'Robert Johnson', role: 'Organisator Department Leader', imageUrl: 'https://picsum.photos/200?random=17' },
-      { name: 'Sarah Thompson', role: 'Organisator Department Vice-Leader', imageUrl: 'https://picsum.photos/200?random=18' },
-      { name: 'Daniel Miller', role: 'Event Planner', imageUrl: 'https://picsum.photos/200?random=19' },
-      { name: 'Emily Wilson', role: 'Logistics Coordinator', imageUrl: 'https://picsum.photos/200?random=20' },
-      { name: 'Matthew Davis', role: 'Marketing Specialist', imageUrl: 'https://picsum.photos/200?random=21' },
-      { name: 'Olivia Brown', role: 'Public Relations Manager', imageUrl: 'https://picsum.photos/200?random=22' },
-      { name: 'William Taylor', role: 'Volunteer Coordinator', imageUrl: 'https://picsum.photos/200?random=23' },
-      { name: 'Sophia Anderson', role: 'Sponsorship Manager', imageUrl: 'https://picsum.photos/200?random=24' }
+      { name: 'Igor Kowalczyk', role: 'Organisational Section Member', imageUrl: 'https://picsum.photos/200?random=1' },
+      { name: 'Aleksandra Walczyk', role: 'Organisational Section Member', imageUrl: 'https://picsum.photos/200?random=1' },
+      { name: 'Jakub Morawiec', role: 'Organisational Section Member', imageUrl: 'https://picsum.photos/200?random=1' },
+      { name: 'Iwo Chwiszczuk', role: 'Organisational Section Member', imageUrl: 'https://picsum.photos/200?random=1' },
+    ],
+    Coordinator: [
+      { name: 'Marta Bołd', role: 'Coordinator', imageUrl: 'https://picsum.photos/200?random=1' },
+      { name: 'Jakub Morawiec', role: 'Coordinator', imageUrl: 'https://picsum.photos/200?random=1' },
+      { name: 'Szymon Matyja', role: 'Coordinator', imageUrl: 'https://picsum.photos/200?random=1' },
+      { name: 'Izabela Paniczek', role: 'Coordinator', imageUrl: 'https://picsum.photos/200?random=1' },
+      { name: 'Paweł Dzikiewicz', role: 'Coordinator', imageUrl: 'https://picsum.photos/200?random=1' },
+      { name: 'Iuliia Kapustinskaia', role: 'Coordinator', imageUrl: 'https://picsum.photos/200?random=1' },
+      { name: 'Krzysztof Mola', role: 'Coordinator', imageUrl: 'https://picsum.photos/200?random=1' },
+    ],
+    Promotion: [
+      { name: 'Kacper Sroka', role: 'Promotion Section Member', imageUrl: 'https://picsum.photos/200?random=1' },
+      { name: 'Gabrysia Senyszyn', role: 'Promotion Section Member', imageUrl: 'https://picsum.photos/200?random=1' },
+      { name: 'Weronika Walczuk', role: 'Promotion Section Member', imageUrl: 'https://picsum.photos/200?random=1' },
+      { name: 'Konrad Bąchór', role: 'Promotion Section Member', imageUrl: 'https://picsum.photos/200?random=1' },
     ]
   };
 
-  // Derived store to get the current content based on the language
+
   const teams = derived(isPolish, $isPolish => $isPolish ? teamsPL : teamsEN);
 
 
   let currentTeams;
 
-  // Subscribe to the derived store to update the local variables
   teams.subscribe(value => {
     currentTeams = value;
   });
@@ -115,6 +124,22 @@
         onClick={() => setActiveTab('Organisator')}
       />
     </div>
+
+    <div class="w-full max-w-xs">
+      <Button
+        text={$isPolish ? 'Koordynatorzy' : 'Coordinators'}
+        isActive={activeTab === 'Coordinator'}
+        onClick={() => setActiveTab('Coordinator')}
+      />
+    </div>
+
+    <div class="w-full max-w-xs">
+      <Button
+        text={$isPolish ? 'Promocja' : 'Promotion'}
+        isActive={activeTab === 'Promotion'}
+        onClick={() => setActiveTab('Promotion')}
+      />
+    </div>
   </div>
 
   {#key activeTab}
@@ -128,6 +153,6 @@
 
 <style>
   .active {
-    background-color: #303d59; /* Active background color */
+    background-color: #303d59;
   }
 </style>

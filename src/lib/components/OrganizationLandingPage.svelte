@@ -6,9 +6,6 @@
   import { isPolish } from '../../stores/languageStore';
   import { derived } from 'svelte/store';
 
-  export let teams = ["Team A", "Team B", "Team C", "Team D"];
-
-  // Define content for both languages
   const contentPL = {
     jury: "Jury",
     ourTeam: "Nasz Zespół",
@@ -21,12 +18,10 @@
     idk: "I have no idea"
   };
 
-  // Derived store to get the current content based on the language
   const content = derived(isPolish, $isPolish => $isPolish ? contentPL : contentEN);
 
   let currentContent;
 
-  // Subscribe to the derived store to update the local variables
   content.subscribe(value => {
     currentContent = value;
   });
@@ -38,8 +33,8 @@
       <UnderlinedHeader title={currentContent.jury} />
     </header>
     <div class="flex flex-col items-center md:flex-row gap-5 justify-center">
-      <TeamMember name="John Doe" role="CEO" imageUrl="https://picsum.photos/200?random=2137" />
-      <TeamMember name="Jane Doe" role="CTO" imageUrl="https://picsum.photos/200?random=2421" />
+      <TeamMember name="Katarzyna Białas" role="Opiekun Naukowy" imageUrl="https://picsum.photos/200?random=2137" />
+      <TeamMember name="Michał Kędziora" role="Opiekun Naukowy" imageUrl="https://picsum.photos/200?random=2421" />
     </div>
     
   </div>

@@ -4,9 +4,7 @@
   import { FontAwesomeIcon } from '@fortawesome/svelte-fontawesome';
   import "../../app.css";
   import { isPolish } from '../../stores/languageStore';
-  import { get } from 'svelte/store';
-
-  let backgroundImage = '../src/lib/images/brain.png';
+  
   let scrollY = 0;
 
   onMount(() => {
@@ -38,12 +36,7 @@
     background-color: rgba(255, 255, 255, 0.1);
     transition: transform 0.1s ease-out;
   }
-  .intro-text {
-    transition: 0.3s ease-in-out;
-  }
-  .intro-text:hover {
-    color: #fbbf24;
-  }
+
   .dot-1 {
     width: 100px;
     height: 100px;
@@ -63,6 +56,7 @@
     top: 70%;
     left: 70%;
   }
+  
 </style>
 
 <section class="relative flex flex-col items-center justify-center min-h-screen bg-gradient text-white text-center p-4">
