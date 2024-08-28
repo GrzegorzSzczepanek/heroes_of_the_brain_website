@@ -5,7 +5,7 @@
   import { faBars } from '@fortawesome/free-solid-svg-icons';
   import SideMenu from "./SideMenu.svelte";
   import "../../app.css";
-  import { isPolish } from '../../stores/languageStore'; // Import the store
+  import { isPolish } from '../../stores/languageStore'; 
 
  
   export let logoSrc = "https://knneuron.pwr.edu.pl/_next/image?url=http%3A%2F%2F127.0.0.1%3A1337%2Fuploads%2Fkn_neuron_logo_c3c1075271.png&w=640&q=75";
@@ -103,11 +103,11 @@
         {/each}
       </nav>
       <button on:click={() => isPolish.set(true)} class="p-2">
-        <img src="src/lib/images/icons/pl.svg" alt="Polish Flag" class="h-6" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Flag_of_Poland.svg/16px-Flag_of_Poland.png" alt="Polish Flag" class="h-6" />
       </button>
       <button on:click={() => isPolish.set(false)} class="p-2">
-        <img src="src/lib/images/icons/gb.svg" alt="British Flag" class="h-6" />
-      </button>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_the_U.S..svg/1920px-Flag_of_the_U.S..svg.png" alt="American Flag" class="h-6" />
+      </button>      
       <div class="md:hidden flex items-center">
         <button class="outline-none mobile-menu-button" on:click={toggleMenu}>
           <Fa icon={faBars} size="1.6x" color="#8f9a9c"/>
