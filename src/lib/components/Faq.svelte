@@ -3,7 +3,6 @@
   import { derived } from 'svelte/store';
   import { slide } from 'svelte/transition';
 
-  // Define FAQ content for both languages
   const faqsPL = [
     {
       question: "Kto może wziąć udział w wydarzeniu?",
@@ -80,12 +79,10 @@
     }
   ];
 
-  // Derived store to get the current content based on the language
   const faqs = derived(isPolish, $isPolish => $isPolish ? faqsPL : faqsEN);
 
   let currentFaqs;
 
-  // Subscribe to the derived store to update the local variables
   faqs.subscribe(value => {
     currentFaqs = value;
   });

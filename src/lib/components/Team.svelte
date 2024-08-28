@@ -8,82 +8,83 @@
   let activeTab = 'Technical';
 
   const teamsPL = {
-    Technical: [
-      { name: 'Kacper Daniel', role: 'Członek Sekcji Technicznej', imageUrl: 'https://picsum.photos/200?random=1' },
-      { name: 'Adam Pawłowski', role: 'Członek Sekcji Technicznej', imageUrl: 'https://picsum.photos/200?random=1' },
-      { name: 'Grzegorz Szczepanek', role: 'Członek Sekcji Technicznej', imageUrl: 'https://picsum.photos/200?random=1' },
-      { name: 'Adrian Goral', role: 'Członek Sekcji Technicznej', imageUrl: 'https://picsum.photos/200?random=1' },
-      { name: 'Michał Wiśniewski', role: 'Członek Sekcji Technicznej', imageUrl: 'https://picsum.photos/200?random=1' },
-      { name: 'Filip Grzywacz', role: 'Członek Sekcji Technicznej', imageUrl: 'https://picsum.photos/200?random=1' },
-      { name: 'Adam Łaput', role: 'Członek Sekcji Technicznej', imageUrl: 'https://picsum.photos/200?random=1' },
-    ],
-    Sponsor: [
-      { name: 'Patrycja Vogel', role: 'Członek Sekcji Sponsorskiej', imageUrl: 'https://picsum.photos/200?random=1' },
-      { name: 'Maja Wiśniewska', role: 'Członek Sekcji Sponsorskiej', imageUrl: 'https://picsum.photos/200?random=1' },
-      { name: 'Mateusz Michalski', role: 'Członek Sekcji Sponsorskiej', imageUrl: 'https://picsum.photos/200?random=1' },
-      { name: 'Kacper Majtyka', role: 'Członek Sekcji Sponsorskiej', imageUrl: 'https://picsum.photos/200?random=1' },
-    ],
-    Organisator: [
-      { name: 'Igor Kowalczyk', role: 'Członek Sekcji Organizacyjnej', imageUrl: 'https://picsum.photos/200?random=1' },
-      { name: 'Aleksandra Walczyk', role: 'Członek Sekcji Organizacyjnej', imageUrl: 'https://picsum.photos/200?random=1' },
-      { name: 'Jakub Morawiec', role: 'Członek Sekcji Organizacyjnej', imageUrl: 'https://picsum.photos/200?random=1' },
-      { name: 'Iwo Chwiszczuk', role: 'Członek Sekcji Organizacyjnej', imageUrl: 'https://picsum.photos/200?random=1' },
-    ],
-    Coordinator: [
-      { name: 'Marta Bołd', role: 'Koordynator', imageUrl: 'https://picsum.photos/200?random=1' },
-      { name: 'Jakub Morawiec', role: 'Koordynator', imageUrl: 'https://picsum.photos/200?random=1' },
-      { name: 'Szymon Matyja', role: 'Koordynator', imageUrl: 'https://picsum.photos/200?random=1' },
-      { name: 'Izabela Paniczek', role: 'Koordynator', imageUrl: 'https://picsum.photos/200?random=1' },
-      { name: 'Paweł Dzikiewicz', role: 'Koordynator', imageUrl: 'https://picsum.photos/200?random=1' },
-      { name: 'Iuliia Kapustinskaia', role: 'Koordynator', imageUrl: 'https://picsum.photos/200?random=1' },
-      { name: 'Krzysztof Mola', role: 'Koordynator', imageUrl: 'https://picsum.photos/200?random=1' },
-    ],
-    Promotion: [
-      { name: 'Kacper Sroka', role: 'Członek Sekcji Promocji', imageUrl: 'https://picsum.photos/200?random=1' },
-      { name: 'Gabrysia Senyszyn', role: 'Członek Sekcji Promocji', imageUrl: 'https://picsum.photos/200?random=1' },
-      { name: 'Weronika Walczuk', role: 'Członek Sekcji Promocji', imageUrl: 'https://picsum.photos/200?random=1' },
-      { name: 'Konrad Bąchór', role: 'Członek Sekcji Promocji', imageUrl: 'https://picsum.photos/200?random=1' },
-    ]
-  };
+  Technical: [
+    { name: 'Kacper Daniel', role: 'Członek Sekcji Technicznej', imageUrl: '/src/lib/images/Sekcja Techniczna/KacperDaniel.jpg' },
+    { name: 'Adam Pawłowski', role: 'Członek Sekcji Technicznej', imageUrl: '/src/lib/images/Sekcja Techniczna/adam_pawłowski.jpg' },
+    { name: 'Grzegorz Szczepanek', role: 'Członek Sekcji Technicznej', imageUrl: '/src/lib/images/Sekcja Techniczna/grzegorz_szczepanek.jpg' },
+    { name: 'Adrian Goral', role: 'Członek Sekcji Technicznej', imageUrl: '/src/lib/images/Sekcja Techniczna/AdrianGoral.jpg' },
+    { name: 'Michał Wiśniewski', role: 'Członek Sekcji Technicznej', imageUrl: '/src/lib/images/Sekcja Techniczna/Michał_Wiśniewski.jpg' },
+    { name: 'Filip Grzywacz', role: 'Członek Sekcji Technicznej', imageUrl: '/src/lib/images/Sekcja Techniczna/filip_grzywacz.jpg' },
+    { name: 'Adam Łaput', role: 'Członek Sekcji Technicznej', imageUrl: '/src/lib/images/Sekcja Techniczna/Adam Łaput.jpg' },
+  ],
+  Sponsor: [
+    { name: 'Patrycja Vogel', role: 'Członek Sekcji Sponsorskiej', imageUrl: '/src/lib/images/Sekcja Sponsorska/Patrycja_Vogel.jpg' },
+    { name: 'Maja Wiśniewska', role: 'Członek Sekcji Sponsorskiej', imageUrl: '/src/lib/images/Sekcja Sponsorska/Maja Wiśniewska.jpg' },
+    { name: 'Mateusz Michalski', role: 'Członek Sekcji Sponsorskiej', imageUrl: '/src/lib/images/Sekcja Sponsorska/Mateusz Michalski.jpeg' },
+    { name: 'Kacper Majtyka', role: 'Członek Sekcji Sponsorskiej', imageUrl: '/src/lib/images/Sekcja Sponsorska/Kacper Majtyka.jpg' },
+  ],
+  Organisator: [
+    { name: 'Igor Kowalczyk', role: 'Członek Sekcji Organizacyjnej', imageUrl: '/src/lib/images/Sekcja Organizacyjna/Igor Kowalczyk.jpg' },
+    { name: 'Aleksandra Walczyk', role: 'Członek Sekcji Organizacyjnej', imageUrl: '/src/lib/images/Sekcja Organizacyjna/Aleksandra_Walczybok.jpg' },
+    { name: 'Jakub Morawiec', role: 'Członek Sekcji Organizacyjnej', imageUrl: '/src/lib/images/Sekcja Organizacyjna/Jakub Morawiec.jpg' },
+    { name: 'Iwo Chwiszczuk', role: 'Członek Sekcji Organizacyjnej', imageUrl: '/src/lib/images/Sekcja Organizacyjna/Iwo Chwiszczuk.jpg' },
+  ],
+  Coordinator: [
+    { name: 'Marta Bołd', role: 'Koordynator', imageUrl: '/src/lib/images/Koordynatorzy/Marta Bołd.jpg' },
+    { name: 'Jakub Morawiec', role: 'Koordynator', imageUrl: '/src/lib/images/Koordynatorzy/Jakub Morawiec.jpg' },
+    { name: 'Szymon Matyja', role: 'Koordynator', imageUrl: '/src/lib/images/Koordynatorzy/Szymon Matyja.jpg' },
+    { name: 'Izabela Paniczek', role: 'Koordynator', imageUrl: '/src/lib/images/Koordynatorzy/Izabela Paniczek.jpg' },
+    { name: 'Paweł Dzikiewicz', role: 'Koordynator', imageUrl: '/src/lib/images/Koordynatorzy/Paweł Dzikiewicz.jpg' },
+    { name: 'Iuliia Kapustinskaia', role: 'Koordynator', imageUrl: '/src/lib/images/Koordynatorzy/Iuliia Kapustinskaia.JPG' },
+    { name: 'Krzysztof Mola', role: 'Koordynator', imageUrl: '/src/lib/images/Koordynatorzy/Krzysztof_Mola.png' },
+  ],
+  Promotion: [
+    { name: 'Kacper Sroka', role: 'Członek Sekcji Promocji', imageUrl: '/src/lib/images/Sekcja Promocji/Kacper_Sroka.png' },
+    { name: 'Gabrysia Senyszyn', role: 'Członek Sekcji Promocji', imageUrl: '/src/lib/images/Sekcja Promocji/Gabrysia_Senyszyn.jpg' },
+    { name: 'Weronika Walczuk', role: 'Członek Sekcji Promocji', imageUrl: '/src/lib/images/Sekcja Promocji/Weronika_Walczuk.JPG' },
+    { name: 'Konrad Bąchór', role: 'Członek Sekcji Promocji', imageUrl: '/src/lib/images/Sekcja Promocji/Konrad_Bąchór.jpg' },
+  ]
+};
 
-  const teamsEN = {
-    Technical: [
-      { name: 'Kacper Daniel', role: 'Technical Section Member', imageUrl: 'https://picsum.photos/200?random=1' },
-      { name: 'Adam Pawłowski', role: 'Technical Section Member', imageUrl: 'https://picsum.photos/200?random=1' },
-      { name: 'Grzegorz Szczepanek', role: 'Technical Section Member', imageUrl: 'https://picsum.photos/200?random=1' },
-      { name: 'Adrian Góral', role: 'Technical Section Member', imageUrl: 'https://picsum.photos/200?random=1' },
-      { name: 'Michał Wiśniewski', role: 'Technical Section Member', imageUrl: 'https://picsum.photos/200?random=1' },
-      { name: 'Filip Grzywacz', role: 'Technical Section Member', imageUrl: 'https://picsum.photos/200?random=1' },
-      { name: 'Adam Łaput', role: 'Technical Section Member', imageUrl: 'https://picsum.photos/200?random=1' },
-    ],
-    Sponsor: [
-      { name: 'Patrycja Vogel', role: 'Sponsor Section Member', imageUrl: 'https://picsum.photos/200?random=1' },
-      { name: 'Maja Wiśniewska', role: 'Sponsor Section Member', imageUrl: 'https://picsum.photos/200?random=1' },
-      { name: 'Mateusz Michalski', role: 'Sponsor Section Member', imageUrl: 'https://picsum.photos/200?random=1' },
-      { name: 'Kacper Majtyka', role: 'Sponsor Section Member', imageUrl: 'https://picsum.photos/200?random=1' },
-    ],
-    Organisator: [
-      { name: 'Igor Kowalczyk', role: 'Organisational Section Member', imageUrl: 'https://picsum.photos/200?random=1' },
-      { name: 'Aleksandra Walczyk', role: 'Organisational Section Member', imageUrl: 'https://picsum.photos/200?random=1' },
-      { name: 'Jakub Morawiec', role: 'Organisational Section Member', imageUrl: 'https://picsum.photos/200?random=1' },
-      { name: 'Iwo Chwiszczuk', role: 'Organisational Section Member', imageUrl: 'https://picsum.photos/200?random=1' },
-    ],
-    Coordinator: [
-      { name: 'Marta Bołd', role: 'Coordinator', imageUrl: 'https://picsum.photos/200?random=1' },
-      { name: 'Jakub Morawiec', role: 'Coordinator', imageUrl: 'https://picsum.photos/200?random=1' },
-      { name: 'Szymon Matyja', role: 'Coordinator', imageUrl: 'https://picsum.photos/200?random=1' },
-      { name: 'Izabela Paniczek', role: 'Coordinator', imageUrl: 'https://picsum.photos/200?random=1' },
-      { name: 'Paweł Dzikiewicz', role: 'Coordinator', imageUrl: 'https://picsum.photos/200?random=1' },
-      { name: 'Iuliia Kapustinskaia', role: 'Coordinator', imageUrl: 'https://picsum.photos/200?random=1' },
-      { name: 'Krzysztof Mola', role: 'Coordinator', imageUrl: 'https://picsum.photos/200?random=1' },
-    ],
-    Promotion: [
-      { name: 'Kacper Sroka', role: 'Promotion Section Member', imageUrl: 'https://picsum.photos/200?random=1' },
-      { name: 'Gabrysia Senyszyn', role: 'Promotion Section Member', imageUrl: 'https://picsum.photos/200?random=1' },
-      { name: 'Weronika Walczuk', role: 'Promotion Section Member', imageUrl: 'https://picsum.photos/200?random=1' },
-      { name: 'Konrad Bąchór', role: 'Promotion Section Member', imageUrl: 'https://picsum.photos/200?random=1' },
-    ]
-  };
+
+const teamsEN = {
+  Technical: [
+    { name: 'Kacper Daniel', role: 'Technical Section Member', imageUrl: '/src/lib/images/Sekcja Techniczna/KacperDaniel.jpg' },
+    { name: 'Adam Pawłowski', role: 'Technical Section Member', imageUrl: '/src/lib/images/Sekcja Techniczna/adam_pawłowski.jpg' },
+    { name: 'Grzegorz Szczepanek', role: 'Technical Section Member', imageUrl: '/src/lib/images/Sekcja Techniczna/grzegorz_szczepanek.jpg' },
+    { name: 'Adrian Góral', role: 'Technical Section Member', imageUrl: '/src/lib/images/Sekcja Techniczna/AdrianGoral.jpg' },
+    { name: 'Michał Wiśniewski', role: 'Technical Section Member', imageUrl: '/src/lib/images/Sekcja Techniczna/Michał_Wiśniewski.jpg' },
+    { name: 'Filip Grzywacz', role: 'Technical Section Member', imageUrl: '/src/lib/images/Sekcja Techniczna/filip_grzywacz.jpg' },
+    { name: 'Adam Łaput', role: 'Technical Section Member', imageUrl: '/src/lib/images/Sekcja Techniczna/Adam Łaput.jpg' },
+  ],
+  Sponsor: [
+    { name: 'Patrycja Vogel', role: 'Sponsor Section Member', imageUrl: '/src/lib/images/Sekcja Sponsorska/Patrycja_Vogel.jpg' },
+    { name: 'Maja Wiśniewska', role: 'Sponsor Section Member', imageUrl: '/src/lib/images/Sekcja Sponsorska/Maja Wiśniewska.jpg' },
+    { name: 'Mateusz Michalski', role: 'Sponsor Section Member', imageUrl: '/src/lib/images/Sekcja Sponsorska/Mateusz Michalski.jpeg' },
+    { name: 'Kacper Majtyka', role: 'Sponsor Section Member', imageUrl: '/src/lib/images/Sekcja Sponsorska/Kacper Majtyka.jpg' },
+  ],
+  Organisator: [
+    { name: 'Igor Kowalczyk', role: 'Organisational Section Member', imageUrl: '/src/lib/images/Sekcja Organizacyjna/Igor Kowalczyk.jpg' },
+    { name: 'Aleksandra Walczyk', role: 'Organisational Section Member', imageUrl: '/src/lib/images/Sekcja Organizacyjna/Aleksandra_Walczybok.jpg' },
+    { name: 'Jakub Morawiec', role: 'Organisational Section Member', imageUrl: '/src/lib/images/Sekcja Organizacyjna/Jakub Morawiec.jpg' },
+    { name: 'Iwo Chwiszczuk', role: 'Organisational Section Member', imageUrl: '/src/lib/images/Sekcja Organizacyjna/Iwo Chwiszczuk.jpg' },
+  ],
+  Coordinator: [
+    { name: 'Marta Bołd', role: 'Coordinator', imageUrl: '/src/lib/images/Koordynatorzy/Marta Bołd.jpg' },
+    { name: 'Jakub Morawiec', role: 'Coordinator', imageUrl: '/src/lib/images/Koordynatorzy/Jakub Morawiec.jpg' },
+    { name: 'Szymon Matyja', role: 'Coordinator', imageUrl: '/src/lib/images/Koordynatorzy/Szymon Matyja.jpg' },
+    { name: 'Izabela Paniczek', role: 'Coordinator', imageUrl: '/src/lib/images/Koordynatorzy/Izabela Paniczek.NEF' },
+    { name: 'Paweł Dzikiewicz', role: 'Coordinator', imageUrl: '/src/lib/images/Koordynatorzy/Paweł Dzikiewicz.NEF' },
+    { name: 'Iuliia Kapustinskaia', role: 'Coordinator', imageUrl: '/src/lib/images/Koordynatorzy/Iuliia Kapustinskaia.JPG' },
+    { name: 'Krzysztof Mola', role: 'Coordinator', imageUrl: '/src/lib/images/Koordynatorzy/Krzysztof_Mola.png' },
+  ],
+  Promotion: [
+    { name: 'Kacper Sroka', role: 'Promotion Section Member', imageUrl: '/src/lib/images/Sekcja Promocji/Kacper_Sroka.png' },
+    { name: 'Gabrysia Senyszyn', role: 'Promotion Section Member', imageUrl: '/src/lib/images/Sekcja Promocji/Gabrysia_Senyszyn.jpg' },
+    { name: 'Weronika Walczuk', role: 'Promotion Section Member', imageUrl: '/src/lib/images/Sekcja Promocji/Weronika_Walczuk.JPG' },
+    { name: 'Konrad Bąchór', role: 'Promotion Section Member', imageUrl: '/src/lib/images/Sekcja Promocji/Konrad_Bąchór.jpg' },
+  ]
+};
 
 
   const teams = derived(isPolish, $isPolish => $isPolish ? teamsPL : teamsEN);
