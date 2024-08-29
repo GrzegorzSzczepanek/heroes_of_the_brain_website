@@ -7,21 +7,13 @@
   // Define text content for both languages
   const partnersPL = [
     { category: "PARTNER", logos: ["https://picsum.photos/200?random=17"] },
-    // { category: "REGION GOSPODARZ", logos: ["https://picsum.photos/200?random=17"] },
-    // { category: "PARTNERZY WIEDZY", logos: ["https://picsum.photos/200?random=17"] },
-    // { category: "PARTNERZY UNIWERSYTETU", logos: ["https://picsum.photos/200?random=17"] },
-    // { category: "MEDIA PARTNERZY", logos: ["https://picsum.photos/200?random=17", "https://picsum.photos/200?random=17"] },
-    { category: "Ci fajniejsi sponsorzy", logos: ["https://picsum.photos/200?random=16", "https://picsum.photos/200?random=1657", "https://picsum.photos/200?random=147", "https://picsum.photos/200?random=171"] },
+    { category: "Sponsorzy strategiczni", logos: ["https://picsum.photos/200?random=16", "https://picsum.photos/200?random=1657", "https://picsum.photos/200?random=147", "https://picsum.photos/200?random=171"] },
     { category: "PARTNER SIECIOWY", logos: ["https://picsum.photos/200?random=137"] }
   ];
 
   const partnersEN = [
     { category: "PARTNER", logos: ["https://picsum.photos/200?random=1237"] },
-    // { category: "HOST REGION", logos: ["https://picsum.photos/200?random=17"] },
-    // { category: "KNOWLEDGE PARTNERS", logos: ["https://picsum.photos/200?random=17"] },
-    // { category: "UNIVERSITY PARTNERS", logos: ["https://picsum.photos/200?random=17"] },
-    // { category: "MEDIA PARTNERS", logos: ["https://picsum.photos/200?random=17", "https://picsum.photos/200?random=17"] },
-    { category: "The Cooler Sponsors", logos: ["https://picsum.photos/200?random=1347", "https://picsum.photos/200?random=147", "https://picsum.photos/200?random=147", "https://picsum.photos/200?random=1427"] },
+    { category: "Strategic Sponsors", logos: ["https://picsum.photos/200?random=1347", "https://picsum.photos/200?random=147", "https://picsum.photos/200?random=147", "https://picsum.photos/200?random=1427"] },
     { category: "NETWORK PARTNER", logos: ["https://picsum.photos/200?random=1547"] }
   ];
 
