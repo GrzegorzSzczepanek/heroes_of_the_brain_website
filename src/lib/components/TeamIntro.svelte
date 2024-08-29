@@ -38,7 +38,7 @@
 
 <style>
   .parallax {
-    background-image: url("$lib/images/kolo.webp");
+    background-image: url("/images/kolo.webp");
     height: 600px;
     background-attachment: fixed;
     background-position: center;
