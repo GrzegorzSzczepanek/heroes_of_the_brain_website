@@ -4,7 +4,7 @@
   import { isPolish } from '../../stores/languageStore';
   import { derived } from 'svelte/store';
 
-  // Define text content for both languages
+  
   const agendaPL = [
     {
       date: "28 września",
@@ -67,12 +67,10 @@
     },
   ];
 
-  // Derived store to get the current content based on the language
   const agenda = derived(isPolish, $isPolish => $isPolish ? agendaPL : agendaEN);
 
   let currentAgenda;
 
-  // Subscribe to the derived store to update the local variables
   agenda.subscribe(value => {
     currentAgenda = value;
   });
@@ -80,7 +78,7 @@
 
 <style>
   .parallax {
-    background-image: url('$lib/images/bg-photo-2.webp'); /* Replace with your image URL */
+    background-image: url('/images/bg-photo-2.webp');
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
