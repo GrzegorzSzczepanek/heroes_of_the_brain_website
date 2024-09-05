@@ -44,10 +44,10 @@
     </header>
     
     <Team />
-    <div id="idk" class="flex flex-col align-middle justify-center text-center">
+    <!-- <div id="idk" class="flex flex-col align-middle justify-center text-center">
       <UnderlinedHeader title={currentContent.idk} />
       <IdkSection />
-    </div>
+    </div> -->
   </div>
 </main>
 

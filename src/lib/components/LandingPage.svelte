@@ -78,7 +78,8 @@
     </p>
     <p class="flex items-center text-lg md:text-xl">
       <FontAwesomeIcon icon={faCalendarAlt} class="text-purple-400 mr-2" />
-      21.10.2024 - 23.10.2024
+      16.11.2024 - 17.11
+      .2024
     </p>
   </div>
   <div class="relative z-10 flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4">

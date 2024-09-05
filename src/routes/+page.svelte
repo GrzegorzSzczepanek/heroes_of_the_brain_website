@@ -17,7 +17,7 @@
 	<Agenda />
 	<CategorySection />
 	<Partners />
-	<Carousel />
+	<!-- <Carousel /> -->
 	<ContactSection />
 	<Faq />
   </div>

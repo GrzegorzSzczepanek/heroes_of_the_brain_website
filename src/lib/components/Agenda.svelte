@@ -7,7 +7,7 @@
   
   const agendaPL = [
     {
-      date: "28 września",
+      date: "16 Listopada",
       events: [
         { time: "9:00", description: "Rejestracja" },
         {
@@ -22,7 +22,7 @@
       ],
     },
     {
-      date: "29 września",
+      date: "17 Listopada",
       events: [
         {
           time: "12:00",
@@ -38,7 +38,7 @@
 
   const agendaEN = [
     {
-      date: "28 September",
+      date: "16 November",
       events: [
         { time: "9:00", description: "Registration" },
         {
@@ -53,7 +53,7 @@
       ],
     },
     {
-      date: "29 September",
+      date: "17 November",
       events: [
         {
           time: "12:00",

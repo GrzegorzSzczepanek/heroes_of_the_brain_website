@@ -8,7 +8,7 @@
   import { isPolish } from '../../stores/languageStore'; 
 
  
-  export let logoSrc = "https://knneuron.pwr.edu.pl/_next/image?url=http%3A%2F%2F127.0.0.1%3A1337%2Fuploads%2Fkn_neuron_logo_c3c1075271.png&w=640&q=75";
+  export let logoSrc = "/images/logos/htob.webp";
 
   let navItemsMainPL = [
     { name: "Tematyka Hackatonu", href: "#HackatonInfo" },
@@ -81,7 +81,7 @@
 
 <style>
   .bg-semi-transparent {
-    background-color: rgba(44, 31, 75, 0.7); /* Adjust the transparency */
+    background-color: rgba(44, 31, 75, 0.7);
     --tw-backdrop-blur: blur(24px);
     backdrop-filter: var(--tw-backdrop-blur);
   }
@@ -90,7 +90,7 @@
 <header class="{isScrolled ? 'bg-black bg-semi-transparent' : 'bg-transparent'} text-white  fixed top-0 left-0 right-0 z-50 transition duration-300 py-2 md:py-6">
   <div class="container mx-auto flex justify-between items-center px-4 md:px-8">
     <div class="flex items-center">
-      <a href="/"><img src={logoSrc} alt="Student Cybersym SCS Logo" class="h-12 mr-4" /></a>
+      <a href="/"><img src={logoSrc} alt="hackaton logo" class="h-12 mr-4" /></a>
       <div class="text-left">
         <div class="text-xl font-bold">KN Neuron</div>
         <div class="text-sm">PWR</div>
@@ -103,10 +103,10 @@
         {/each}
       </nav>
       <button on:click={() => isPolish.set(true)} class="p-2">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Flag_of_Poland.svg/16px-Flag_of_Poland.png" alt="Polish Flag" class="h-6" />
+        <img src="/images/icons/pl.svg" alt="Polish Flag" class="h-6" />
       </button>
       <button on:click={() => isPolish.set(false)} class="p-2">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_the_U.S..svg/1920px-Flag_of_the_U.S..svg.png" alt="American Flag" class="h-6" />
+        <img src="/images/icons/gb.svg" alt="American Flag" class="h-6" />
       </button>      
       <div class="md:hidden flex items-center">
         <button class="outline-none mobile-menu-button" on:click={toggleMenu}>

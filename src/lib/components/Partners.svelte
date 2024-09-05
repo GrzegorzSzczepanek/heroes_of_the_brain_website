@@ -6,15 +6,28 @@
 
   // Define text content for both languages
   const partnersPL = [
-    { category: "PARTNER", logos: ["https://picsum.photos/200?random=17"] },
-    { category: "Sponsorzy strategiczni", logos: ["https://picsum.photos/200?random=16", "https://picsum.photos/200?random=1657", "https://picsum.photos/200?random=147", "https://picsum.photos/200?random=171"] },
-    { category: "PARTNER SIECIOWY", logos: ["https://picsum.photos/200?random=137"] }
+    // { category: "PARTNER", logos: ["/images/logos/brainaccess1.jpg"] },
+    { category: "SPONSORZY STRATEGICZNI", logos: ["/images/logos/brainaccess2.png"] },
+    
+    { category: "POZOSTALI SPONSORZY", logos: ["/images/logos/solet3.png"] }
   ];
+  let slides = [
+    "/images/logos/brainaccess1.jpg",
+    "/images/logos/brainaccess3.png",
+    "/images/logos/solet3.png",
 
+    "/images/logos/brainaccess1.jpg",
+    "/images/logos/brainaccess3.png",
+    "/images/logos/solet3.png",
+
+    "/images/logos/brainaccess1.jpg",
+    "/images/logos/brainaccess3.png",
+    "/images/logos/solet3.png",
+  ];
   const partnersEN = [
-    { category: "PARTNER", logos: ["https://picsum.photos/200?random=1237"] },
-    { category: "Strategic Sponsors", logos: ["https://picsum.photos/200?random=1347", "https://picsum.photos/200?random=147", "https://picsum.photos/200?random=147", "https://picsum.photos/200?random=1427"] },
-    { category: "NETWORK PARTNER", logos: ["https://picsum.photos/200?random=1547"] }
+    // { category: "PARTNER", logos: ["/images/logos/brainaccess1.jpg"] },
+    { category: "STRATEGIC SPONSORS", logos: ["/images/logos/brainaccess2.png"] },
+    { category: "OTHER SPONSORS", logos: ["/images/logos/solet3.png"] }
   ];
 
   // Derived store to get the current content based on the language
