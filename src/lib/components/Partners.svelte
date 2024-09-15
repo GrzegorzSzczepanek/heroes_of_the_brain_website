@@ -7,9 +7,9 @@
   // Define text content for both languages
   const partnersPL = [
     // { category: "PARTNER", logos: ["/images/logos/brainaccess1.jpg"] },
-    { category: "SPONSORZY STRATEGICZNI", logos: ["/images/logos/brainaccess2.png"] },
+    { category: "SPONSORZY STRATEGICZNI", logos: ["/images/brainaccess.png"] },
     
-    { category: "POZOSTALI SPONSORZY", logos: ["/images/logos/solet3.png"] }
+    { category: "POZOSTALI SPONSORZY", logos: ["/images/solet.jpg"] }
   ];
   let slides = [
     "/images/logos/brainaccess1.jpg",

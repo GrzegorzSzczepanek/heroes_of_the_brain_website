@@ -8,7 +8,7 @@
   import { isPolish } from '../../stores/languageStore'; 
 
  
-  export let logoSrc = "/images/logos/htob.webp";
+  export let logoSrc = "/images/hackaton_logo.webp";
 
   let navItemsMainPL = [
     { name: "Tematyka Hackatonu", href: "#HackatonInfo" },

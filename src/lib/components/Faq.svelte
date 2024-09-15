@@ -4,80 +4,80 @@
   import { slide } from 'svelte/transition';
 
   const faqsPL = [
-    {
-      question: "Kto może wziąć udział w wydarzeniu?",
-      answer: "W wydarzeniu mogą wziąć udział tylko i wyłącznie osoby mające aktywny status studenta.",
-      open: true
-    },
-    {
-      question: "Czy osoby z innych dziedzin również mogą wziąć udział?",
-      answer: "Oczywiście, że mogą. Wydarzenie jest otwarte dla osób z różnych dziedzin.",
-      open: false
-    },
-    {
-      question: "Czy będę potrzebował własnego sprzętu komputerowego, aby wziąć udział?",
-      answer: "Tak, uczestnicy powinni przynieść własny sprzęt komputerowy.",
-      open: false
-    },
-    {
-      question: "Czy uczestnicy otrzymują pomoc podczas wydarzenia?",
-      answer: "Tak, na miejscu będą dostępni mentorzy i organizatorzy, którzy chętnie pomogą.",
-      open: false
-    },
-    {
-      question: "Czy przewidywane są nagrody dla zwycięzców?",
-      answer: "Tak, dla najlepszych drużyn przewidziane są atrakcyjne nagrody.",
-      open: false
-    },
-    {
-      question: "Czy będzie możliwość noclegu na miejscu?",
-      answer: "Tak, na podłodze.",
-      open: false
-    },
-    {
-      question: "Czy na miejscu będzie dostępny parking?",
-      answer: "Tak, na miejscu dostępny jest parking dla uczestników.",
-      open: false
-    }
-  ];
+  {
+    question: "Kto może wziąć udział w wydarzeniu?",
+    answer: "W Hackathonie mogą wziąć udział wszyscy entuzjaści neuroinformatyki, zarówno z Polski, jak i z innych krajów. Wydarzenie jest otwarte dla wszystkich, którzy interesują się tą dziedziną, niezależnie od poziomu zaawansowania. Do udziału zapraszamy zarówno osoby, które mają już doświadczenie w neuroinformatyce, jak i tych, którzy dopiero pragną ją odkrywać. Ponadto, mile widziani są pasjonaci informatyki oraz sztucznej inteligencji, gotowi do poszerzania swoich horyzontów i wspólnej pracy nad innowacyjnymi projektami.",
+    open: false
+  },
+  {
+    question: "Czy osoby z różnych dziedzin również mogą wziąć udział?",
+    answer: "Tak, osoby z różnych dziedzin również mogą wziąć udział w Hackathonie. Projekty mogą być interdyscyplinarne, dlatego zapraszamy zarówno specjalistów z game devu, programistów, pasjonatów sztucznej inteligencji, jak i grafików.",
+    open: false
+  },
+  {
+    question: "Czy będę potrzebował własnego sprzętu komputerowego, aby wziąć udział?",
+    answer: "Tak.",
+    open: false
+  },
+  {
+    question: "Czy uczestnicy otrzymują pomoc podczas wydarzenia?",
+    answer: "Tak, podczas wydarzenia planowane jest udzielanie wsparcia przez mentorów.",
+    open: false
+  },
+  {
+    question: "Czy przewidywane są nagrody dla zwycięzców?",
+    answer: "Tak, przewidziane nagrody za 3. pierwsze miejsca w dwóch kategoriach.",
+    open: false
+  },
+  {
+    question: "Czy będzie możliwość noclegu na miejscu?",
+    answer: "Tak! Zapewniamy nocleg na miejscu oraz poczęstunek.",
+    open: false
+  },
+  {
+    question: "Czy na miejscu będzie dostępny parking?",
+    answer: "Tak, na miejscu dostępny jest parking dla uczestników.",
+    open: false
+  }
+];
 
-  const faqsEN = [
-    {
-      question: "Who can participate in the event?",
-      answer: "Only individuals with active student status can participate in the event.",
-      open: true
-    },
-    {
-      question: "Can people from other fields also participate?",
-      answer: "Of course, they can. The event is open to people from various fields.",
-      open: false
-    },
-    {
-      question: "Will I need my own computer equipment to participate?",
-      answer: "Yes, participants should bring their own computer equipment.",
-      open: false
-    },
-    {
-      question: "Do participants receive help during the event?",
-      answer: "Yes, mentors and organizers will be available on-site to assist.",
-      open: false
-    },
-    {
-      question: "Are there prizes for the winners?",
-      answer: "Yes, attractive prizes are provided for the best teams.",
-      open: false
-    },
-    {
-      question: "Will there be accommodation on-site?",
-      answer: "Yes, on the floor.",
-      open: false
-    },
-    {
-      question: "Will there be parking available on-site?",
-      answer: "Yes, there is parking available for participants on-site.",
-      open: false
-    }
-  ];
+const faqsEN = [
+  {
+    question: "Who can participate in the event?",
+    answer: "The Hackathon is open to all neuroinformatics enthusiasts from Poland and other countries. The event is open to everyone interested in the field, regardless of their experience level. We invite both individuals who have experience in neuroinformatics and those who are just beginning to explore it. Furthermore, we welcome enthusiasts of computer science and artificial intelligence, ready to expand their horizons and work together on innovative projects.",
+    open: false
+  },
+  {
+    question: "Can people from other fields also participate?",
+    answer: "Yes, people from different fields can also participate in the Hackathon. The projects can be interdisciplinary, so we welcome game developers, programmers, AI enthusiasts, and graphic designers.",
+    open: false
+  },
+  {
+    question: "Will I need my own computer equipment to participate?",
+    answer: "Yes.",
+    open: false
+  },
+  {
+    question: "Do participants receive help during the event?",
+    answer: "Yes, during the event, support from mentors is planned.",
+    open: false
+  },
+  {
+    question: "Are there prizes for the winners?",
+    answer: "Yes, prizes are provided for the top 3 positions in two categories.",
+    open: false
+  },
+  {
+    question: "Will there be accommodation on-site?",
+    answer: "Yes! Accommodation and refreshments will be provided on-site.",
+    open: false
+  },
+  {
+    question: "Will there be parking available on-site?",
+    answer: "Yes, there is parking available for participants on-site.",
+    open: false
+  }
+];
 
   const faqs = derived(isPolish, $isPolish => $isPolish ? faqsPL : faqsEN);
 
