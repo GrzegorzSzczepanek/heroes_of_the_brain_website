@@ -26,8 +26,8 @@
   ];
   const partnersEN = [
     // { category: "PARTNER", logos: ["/images/logos/brainaccess1.jpg"] },
-    { category: "STRATEGIC SPONSORS", logos: ["/images/logos/brainaccess2.png"] },
-    { category: "OTHER SPONSORS", logos: ["/images/logos/solet3.png"] }
+    { category: "STRATEGIC SPONSORS", logos: ["/images/brainaccess.png"] },
+    { category: "OTHER SPONSORS", logos: ["/images/solet.jpg"] }
   ];
 
   // Derived store to get the current content based on the language

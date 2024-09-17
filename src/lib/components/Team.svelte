@@ -26,7 +26,7 @@
   ],
   Organisator: [
     { name: 'Igor Kowalczyk', role: 'Członek Sekcji Organizacyjnej', imageUrl: '/images/sekcja_organizacyjna/igor_kowalczyk.webp' },
-    { name: 'Aleksandra Walczyk', role: 'Członek Sekcji Organizacyjnej', imageUrl: '/images/sekcja_organizacyjna/aleksandra_walczybok.webp' },
+    { name: 'Aleksandra Walczybok', role: 'Członek Sekcji Organizacyjnej', imageUrl: '/images/sekcja_organizacyjna/aleksandra_walczybok.webp' },
     { name: 'Jakub Morawiec', role: 'Członek Sekcji Organizacyjnej', imageUrl: '/images/sekcja_organizacyjna/jakub_morawiec.webp' },
     { name: 'Iwo Chwiszczuk', role: 'Członek Sekcji Organizacyjnej', imageUrl: '/images/sekcja_organizacyjna/iwo_chwiszczuk.webp' },
   ],
@@ -35,7 +35,7 @@
     { name: 'Jakub Morawiec', role: 'Koordynator', imageUrl: '/images/koordynatorzy/jakub_morawiec.webp' },
     { name: 'Szymon Matyja', role: 'Koordynator', imageUrl: '/images/koordynatorzy/szymon_matyja.webp' },
     { name: 'Izabela Paniczek', role: 'Koordynator', imageUrl: '/images/koordynatorzy/izabela_paniczek.webp' },
-    { name: 'Paweł Dzikiewicz', role: 'Koordynator', imageUrl: '/images/koordynatorzy/paweł_dzikiewicz.webp' },
+    { name: 'Paweł Dzikiewicz', role: 'Koordynator', imageUrl: '/images/koordynatorzy/pawel_dzikiewicz.webp' },
     { name: 'Iuliia Kapustinskaia', role: 'Koordynator', imageUrl: '/images/koordynatorzy/iuliia_kapustinskaia.webp' },
     { name: 'Krzysztof Mola', role: 'Koordynator', imageUrl: '/images/koordynatorzy/krzysztof_mola.webp' },
   ],

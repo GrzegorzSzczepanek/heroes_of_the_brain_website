@@ -1,3 +1,3 @@
-import { writable } from 'svelte/store';
+import { writable } from "svelte/store";
 
-export const isPolish = writable(true); // true for Polish, false for English
+export const isPolish = writable(true);

@@ -3,9 +3,9 @@
   import { isPolish } from '../../stores/languageStore';
   import { derived } from 'svelte/store';
 
-  // Define content for both languages
+ 
   const contentPL = {
-    imageUrl: "https://picsum.photos/600/400", // Placeholder image URL
+    imageUrl: "https://picsum.photos/600/400",
     title: "Chcesz do nas dołączyć?",
     description: `
       Realizujemy marzenia o technologicznym podboju! Dołącz do naszego dynamicznego
@@ -19,7 +19,7 @@
   };
 
   const contentEN = {
-    imageUrl: "https://picsum.photos/600/400", // Placeholder image URL
+    imageUrl: "https://picsum.photos/600/400",
     title: "Would you like to join us?",
     description: `
       We are bringing dreams of technological conquest to life! Join our dynamic
@@ -32,12 +32,12 @@
     buttonText: "Join us!"
   };
 
-  // Derived store to get the current content based on the language
+ 
   const content = derived(isPolish, $isPolish => $isPolish ? contentPL : contentEN);
 
   let currentContent;
 
-  // Subscribe to the derived store to update the local variables
+ 
   content.subscribe(value => {
     currentContent = value;
   });
