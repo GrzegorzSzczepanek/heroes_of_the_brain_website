@@ -16,7 +16,8 @@
     { name: 'Michał Wiśniewski', role: 'Członek Sekcji Technicznej', imageUrl: '/images/sekcja_techniczna/michał_wiśniewski.webp' },
     { name: 'Filip Grzywacz', role: 'Członek Sekcji Technicznej', imageUrl: '/images/sekcja_techniczna/filip_grzywacz.webp' },
     { name: 'Adam Łaput', role: 'Członek Sekcji Technicznej', imageUrl: '/images/sekcja_techniczna/adam_łaput.webp' },
-    { name: "Tomasz Koralewski", role:'Członek Sekcji Technicznej',imageUrl: '/images/sekcja_techniczna/tomasz_koralewski.webp'}
+    { name: "Tomasz Koralewski", role:'Członek Sekcji Technicznej',imageUrl: '/images/sekcja_techniczna/tomasz_koralewski.webp'},
+    { name: 'Filip Puszko', role: 'Członek Sekcji Technicznej', imageUrl: '/images/sekcja_techniczna/filip_puszko.webp' },
   ],
   Sponsor: [
     { name: 'Patrycja Vogel', role: 'Członek Sekcji Sponsorskiej', imageUrl: '/images/sekcja_sponsorska/patrycja_vogel.webp' },

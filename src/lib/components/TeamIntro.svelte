@@ -5,20 +5,20 @@
 
   const contentPL = {
     title: "O nas",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Blanditiis ipsum quae odit quidem sunt! Cupiditate, sapiente. Amet nihil, recusandae eaque cumque praesentium debitis illo corrupti sit fugiat quos, vel impedit. Nasz zespół składa się z pasjonatów technologii, którzy dążą do tworzenia innowacyjnych rozwiązań. Dołącz do nas i odkryj nowe możliwości z nami.",
+    text: `Jako Koło Naukowe Neuron oraz Samorząd Wydziału Elektroniki, Fotoniki i Mikrosystemów Politechniki Wrocławskiej, połączyliśmy siły, aby zorganizować wyjątkowe wydarzenie, które łączy trzy fascynujące dziedziny: programowanie, interfejsy mózg-komputer (BCI) oraz sztuczną inteligencję. Naszym celem jest stworzenie przestrzeni, w której uczestnicy mogą odkrywać, jak te nowoczesne technologie wzajemnie się przenikają i jakie niesamowite możliwości oferują.
+Jesteśmy zgranym zespołem studentów z pasją, którzy z pełnym zaangażowaniem dbają o każdy detal organizacyjny. Dzięki naszej wspólnej energii i chęci dzielenia się wiedzą, wydarzenie to stanie się nie tylko inspirującym doświadczeniem edukacyjnym, ale także doskonałą okazją do praktycznego zastosowania nowych umiejętności.`,
   };
 
   const contentEN = {
     title: "About Us",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Blanditiis ipsum quae odit quidem sunt! Cupiditate, sapiente. Amet nihil, recusandae eaque cumque praesentium debitis illo corrupti sit fugiat quos, vel impedit. Our team consists of technology enthusiasts who strive to create innovative solutions. Join us and discover new possibilities with us.",
+    text: `As the Neuron Science Club and the Student Government of the Faculty of Electronics, Photonics, and Microsystems at Wrocław University of Science and Technology, we have joined forces to organize a unique event that combines three fascinating fields: programming, brain-computer interfaces (BCI), and artificial intelligence. Our goal is to create a space where participants can explore how these modern technologies intersect and the incredible possibilities they offer.
+
+We are a dedicated team of passionate students who ensure every organizational detail is meticulously taken care of. Thanks to our shared energy and eagerness to share knowledge, this event will not only become an inspiring educational experience but also an excellent opportunity to apply new skills in practice.`,
   };
 
-  const content = derived(isPolish, ($isPolish) =>
-    $isPolish ? contentPL : contentEN
-  );
+  const content = derived(isPolish, ($isPolish) => ($isPolish ? contentPL : contentEN));
 
   let currentContent;
-
   content.subscribe((value) => {
     currentContent = value;
   });
@@ -28,7 +28,6 @@
   <div class="agenda-content py-20 px-5" id="about-us">
     <div class="py-8"></div>
     <UnderlinedHeader title={currentContent.title} />
-
     <div id="text">
       {currentContent.text}
     </div>
