@@ -4,7 +4,7 @@
   import TeamIntro from '$lib/components/TeamIntro.svelte';
   import TeamSection from '$lib/components/Team.svelte';
   import { fade } from 'svelte/transition';
-  import IdkSection from '$lib/components/IDKSection.svelte';
+  
 
 
 </script>
@@ -13,5 +13,5 @@
   <TeamIntro />
   <OrganizationLandingPage />
   <!-- <IdkSection /> -->
-  <!-- <TeamSection /> -->
+  
 </div>

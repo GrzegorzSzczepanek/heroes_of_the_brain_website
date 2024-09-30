@@ -57,6 +57,8 @@ const teamsEN = {
     { name: 'Michał Wiśniewski', role: 'Technical Section Member', imageUrl: '/images/sekcja_techniczna/michał_wiśniewski.webp' },
     { name: 'Filip Grzywacz', role: 'Technical Section Member', imageUrl: '/images/sekcja_techniczna/filip_grzywacz.webp' },
     { name: 'Adam Łaput', role: 'Technical Section Member', imageUrl: '/images/sekcja_techniczna/adam_łaput.webp' },
+    { name: "Tomasz Koralewski", role:'Członek Sekcji Technicznej',imageUrl: '/images/sekcja_techniczna/tomasz_koralewski.webp'},
+    { name: 'Filip Puszko', role: 'Członek Sekcji Technicznej', imageUrl: '/images/sekcja_techniczna/filip_puszko.webp' },
   ],
   Sponsor: [
     { name: 'Patrycja Vogel', role: 'Sponsor Section Member', imageUrl: '/images/sekcja_sponsorska/patrycja_vogel.webp' },
@@ -108,21 +110,21 @@ const teamsEN = {
   <div class="flex flex-col items-center mb-6 space-y-4 md:flex-row md:space-x-4 md:space-y-0">
     <div class="w-full max-w-xs">
       <Button
-        text={$isPolish ? 'Techniczny' : 'Technical'}
+        text={$isPolish ? 'Techniczna' : 'Technical'}
         isActive={activeTab === 'Technical'}
         onClick={() => setActiveTab('Technical')}
       />
     </div>
     <div class="w-full max-w-xs">
       <Button
-        text={$isPolish ? 'Sponsorzy' : 'Sponsor'}
+        text={$isPolish ? 'Sponsorska' : 'Sponsor'}
         isActive={activeTab === 'Sponsor'}
         onClick={() => setActiveTab('Sponsor')}
       />
     </div>
     <div class="w-full max-w-xs">
       <Button
-        text={$isPolish ? 'Organizatorzy' : 'Organisator'}
+        text={$isPolish ? 'Organizatorska' : 'Organisator'}
         isActive={activeTab === 'Organisator'}
         onClick={() => setActiveTab('Organisator')}
       />

@@ -7,62 +7,42 @@
   
   const agendaPL = [
     {
-      date: "16 Listopada",
+      date: "Dzień Pierwszy",
       events: [
-        { time: "9:00", description: "Rejestracja" },
-        {
-          time: "10:30",
-          description: "Oficjalne otwarcie / Gość specjalny: Paweł Dzikiewicz / Omówienie zasad",
-        },
-        {
-          time: "12:00",
-          description: "PUBLIKACJA SZCZEGÓŁÓW ZADAŃ | ROZPOCZĘCIE PRACY!",
-        },
-        { time: "12:15", description: "Mentoring / Budowanie zespołu" },
+        { time: "10:00", description: "Start rejestracji" },
+        { time: "11:30", description: "Ceremonia Otwarcia" },
+        { time: "12:00", description: "Sesja Sponsora Strategicznego - BrainAccess Hyperscanning Session" },
+        { time: "13:00", description: "Start całodniowego kodowania" },
       ],
     },
     {
-      date: "17 Listopada",
+      date: "Dzień Drugi",
       events: [
-        {
-          time: "12:00",
-          description: "OSTATECZNY TERMIN SKŁADANIA PROJEKTÓW!",
-        },
-        { time: "12:00", description: "Ocena projektu" },
-        { time: "15:00", description: "Ogłoszenie finalistów" },
-        { time: "16:00", description: "Sesje pitchingowe finalistów" },
-        { time: "17:45", description: "Ogłoszenie zwycięzców" },
+        { time: "13:00", description: "Koniec kodowania" },
+        { time: "13:00", description: "Start prezentacji" },
+        { time: "16:00", description: "Ogłoszenie wyników" },
+        { time: "16:15", description: "Ceremonia Końcowa" },
       ],
     },
   ];
 
   const agendaEN = [
     {
-      date: "16 November",
+      date: "Day One",
       events: [
-        { time: "9:00", description: "Registration" },
-        {
-          time: "10:30",
-          description: "Official opening / Special Guest: Paweł Dzikiewicz / Discussion of rules",
-        },
-        {
-          time: "12:00",
-          description: "PUBLICATION OF TASK DETAILS | START WORKING!",
-        },
-        { time: "12:15", description: "Mentoring / Team building" },
+        { time: "10:00", description: "Start of registration" },
+        { time: "11:30", description: "Opening Ceremony" },
+        { time: "12:00", description: "Strategic Sponsor Session - BrainAccess Hyperscanning Session" },
+        { time: "13:00", description: "Start of all-day coding" },
       ],
     },
     {
-      date: "17 November",
+      date: "Day Two",
       events: [
-        {
-          time: "12:00",
-          description: "FINAL PROJECT SUBMISSION DEADLINE!",
-        },
-        { time: "12:00", description: "Project evaluation" },
-        { time: "15:00", description: "Announcement of finalists" },
-        { time: "16:00", description: "Pitching sessions of finalists" },
-        { time: "17:45", description: "Announcement of winners" },
+        { time: "13:00", description: "End of coding" },
+        { time: "13:00", description: "Start of presentations" },
+        { time: "16:00", description: "Announcement of results" },
+        { time: "16:15", description: "Closing Ceremony" },
       ],
     },
   ];

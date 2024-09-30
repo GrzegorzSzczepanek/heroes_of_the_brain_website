@@ -1,21 +1,21 @@
 <script>
-  import IdkSection from "./IDKSection.svelte";
   import Team from "./Team.svelte";
   import TeamMember from "./TeamMember.svelte";
   import UnderlinedHeader from "./UnderlinedHeader.svelte";
   import { isPolish } from '../../stores/languageStore';
   import { derived } from 'svelte/store';
+  import JoinUsSection from "./JoinUsSection.svelte";
 
   const contentPL = {
     jury: "Jury",
-    ourTeam: "Nasz Zespół",
-    idk: "Nie mam pojęcia"
+    ourTeam: "Sekcje naszego zespołu",
+    idk: "Weź udział w wydarzeniu"
   };
 
   const contentEN = {
     jury: "Jury",
     ourTeam: "Our Team",
-    idk: "I have no idea"
+    idk: "Take part in the event"
   };
 
   const content = derived(isPolish, $isPolish => $isPolish ? contentPL : contentEN);
@@ -33,8 +33,7 @@
       <UnderlinedHeader title={currentContent.jury} />
     </header>
     <div class="flex flex-col items-center md:flex-row gap-5 justify-center">
-      <TeamMember name="Katarzyna Białas" role="Opiekun Naukowy" imageUrl="https://picsum.photos/200?random=2137" />
-      <TeamMember name="Michał Kędziora" role="Opiekun Naukowy" imageUrl="https://picsum.photos/200?random=2421" />
+      <TeamMember name="Katarzyna Białas" role="Opiekun Naukowy" imageUrl="/images/mariusz2.webp" />
     </div>
     
   </div>
@@ -44,10 +43,10 @@
     </header>
     
     <Team />
-    <!-- <div id="idk" class="flex flex-col align-middle justify-center text-center">
+    <div id="idk" class="flex flex-col align-middle justify-center text-center">
       <UnderlinedHeader title={currentContent.idk} />
-      <IdkSection />
-    </div> -->
+      <JoinUsSection />
+    </div>
   </div>
 </main>
 

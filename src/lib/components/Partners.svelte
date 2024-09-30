@@ -4,38 +4,21 @@
   import { isPolish } from '../../stores/languageStore';
   import { derived } from 'svelte/store';
 
-  // Define text content for both languages
   const partnersPL = [
-    // { category: "PARTNER", logos: ["/images/logos/brainaccess1.jpg"] },
-    { category: "SPONSORZY STRATEGICZNI", logos: ["/images/brainaccess.png"] },
+    { category: "SPONSORZY STRATEGICZNI", logos: ["/images/brainaccess.png"], link: "https://www.brainaccess.ai/" },
     
-    { category: "POZOSTALI SPONSORZY", logos: ["/images/solet.jpg"] }
+    { category: "POZOSTALI SPONSORZY", logos: ["/images/solet.png"], link: "https://www.solet.pl/en/" }
   ];
-  let slides = [
-    "/images/logos/brainaccess1.jpg",
-    "/images/logos/brainaccess3.png",
-    "/images/logos/solet3.png",
 
-    "/images/logos/brainaccess1.jpg",
-    "/images/logos/brainaccess3.png",
-    "/images/logos/solet3.png",
-
-    "/images/logos/brainaccess1.jpg",
-    "/images/logos/brainaccess3.png",
-    "/images/logos/solet3.png",
-  ];
   const partnersEN = [
-    // { category: "PARTNER", logos: ["/images/logos/brainaccess1.jpg"] },
     { category: "STRATEGIC SPONSORS", logos: ["/images/brainaccess.png"] },
-    { category: "OTHER SPONSORS", logos: ["/images/solet.jpg"] }
+    { category: "OTHER SPONSORS", logos: ["/images/solet.png"] }
   ];
 
-  // Derived store to get the current content based on the language
   const partners = derived(isPolish, $isPolish => $isPolish ? partnersPL : partnersEN);
 
   let currentPartners;
 
-  // Subscribe to the derived store to update the local variables
   partners.subscribe(value => {
     currentPartners = value;
   });
@@ -48,7 +31,9 @@
       <h2 class="text-xl font-semibold mb-4">{partner.category}</h2>
       <div class="flex flex-wrap justify-center gap-4">
         {#each partner.logos as logo}
+        <a href={partner.link} target="_blank">
           <LogoTiles {logo} {partner} />
+        </a>
         {/each}
       </div>
     </div>

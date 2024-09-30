@@ -8,28 +8,24 @@
     imageUrl: "https://picsum.photos/600/400",
     title: "Chcesz do nas dołączyć?",
     description: `
-      Realizujemy marzenia o technologicznym podboju! Dołącz do naszego dynamicznego
-      zespołu tworzącego innowacyjne roboty światowej klasy i stań się częścią sukcesów
-      na zawodach Rover Challenge.
-      
-      Jeśli pasja i technologia to Twój język, kliknij poniżej i wyrusz z nami w
-      nieodkryte przestrzenie!
+      Dołącz do nas na nadchodzący hackathon! To doskonała okazja, aby sprawdzić swoje umiejętności, 
+      poznać nowych ludzi i pracować nad ekscytującymi projektami BCI. Niezależnie od tego, czy jesteś 
+      doświadczonym programistą, czy dopiero zaczynasz swoją przygodę z kodowaniem interfejsów mózg-komputer, znajdziesz tu 
+      coś dla siebie. Kliknij poniżej, aby dowiedzieć się więcej i zarejestrować się!
     `,
-    buttonText: "Dołącz do nas!"
+    buttonText: "Zgłoś się!"
   };
 
   const contentEN = {
     imageUrl: "https://picsum.photos/600/400",
     title: "Would you like to join us?",
     description: `
-      We are bringing dreams of technological conquest to life! Join our dynamic
-      team creating innovative world-class robots and become part of the successes
-      at the Rover Challenge competitions.
-      
-      If passion and technology is your language, click below and head into
-      undiscovered spaces with us!
+      Join us for the upcoming hackathon! It's a great opportunity to test your skills, 
+      meet new people, and work on exciting BCI projects. Whether you're an experienced developer 
+      or just starting your journey with brain-computer interface coding, you'll find something for you. 
+      Click below to learn more and register!
     `,
-    buttonText: "Join us!"
+    buttonText: "Register now!"
   };
 
  
