@@ -4,6 +4,7 @@
 
 <div class="map-container">
   <iframe 
+    title="Map with the location of the event"
     width="100%" 
     height="100%" 
     frameborder="0" 
@@ -18,7 +19,7 @@
   .map-container {
     position: relative;
     width: 100%;
-    padding-bottom: 100%; /* Maintains a square aspect ratio */
+    padding-bottom: 100%;
     height: 0;
     overflow: hidden;
     border-radius: 8px;
@@ -43,7 +44,7 @@
   @media (min-width: 768px) {
     .map-container {
       width: 40%;
-      padding-bottom: 40%; /* Maintain square aspect ratio for larger screens */
+      padding-bottom: 40%;
     }
   }
 </style>

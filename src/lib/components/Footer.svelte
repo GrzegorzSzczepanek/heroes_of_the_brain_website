@@ -6,9 +6,10 @@
   import PopUp from './PopUp.svelte';
 
   let socialLinks = [
-    { icon: faFacebook, url: "https://www.facebook.com/heroesofthebrain" },
-    { icon: faInstagram, url: "https://www.instagram.com/knneuron_/" },
-    { icon: faLinkedin, url: "https://www.linkedin.com/company/kn-neuron/" }
+    { icon: faFacebook, url: "https://www.facebook.com/heroesofthebrain", name: "Facebook link" },
+    { icon: faDiscord, url: "https://discord.gg/brainheroes", name: "Discord link" },
+    { icon: faInstagram, url: "https://www.instagram.com/knneuron_/", name: "Instagram link" },
+    { icon: faLinkedin, url: "https://www.linkedin.com/company/kn-neuron/", name: "LinkedIn link" }
   ];
 
   const contentPL = {
@@ -221,7 +222,7 @@
     <div class="mb-4">
       <div class="social-icons">
         {#each socialLinks as link}
-          <a href={link.url} target="_blank" rel="noopener noreferrer">
+          <a href={link.url} target="_blank" rel="noopener noreferrer" aria-label={link.name}>
             <FontAwesomeIcon icon={link.icon} />
           </a>
         {/each}

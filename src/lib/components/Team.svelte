@@ -91,73 +91,111 @@ const teamsEN = {
 
 
 
-  const teams = derived(isPolish, $isPolish => $isPolish ? teamsPL : teamsEN);
+const teams = derived(isPolish, $isPolish => $isPolish ? teamsPL : teamsEN);
 
+let currentTeams;
 
-  let currentTeams;
+teams.subscribe(value => {
+  currentTeams = value;
+});
 
-  teams.subscribe(value => {
-    currentTeams = value;
-  });
+function setActiveTab(tab) {
+  activeTab = tab;
+}
 
-  function setActiveTab(tab) {
-    activeTab = tab;
+function handleKeydown(event, index) {
+  const tabs = ['Technical', 'Sponsor', 'Organisator', 'Coordinator', 'Promotion'];
+  if (event.key === 'ArrowRight') {
+    event.preventDefault();
+    const nextIndex = (index + 1) % tabs.length;
+    setActiveTab(tabs[nextIndex]);
+    document.getElementById(`tab-${tabs[nextIndex]}`).focus();
+  } else if (event.key === 'ArrowLeft') {
+    event.preventDefault();
+    const prevIndex = (index - 1 + tabs.length) % tabs.length;
+    setActiveTab(tabs[prevIndex]);
+    document.getElementById(`tab-${tabs[prevIndex]}`).focus();
   }
-  
+}
 </script>
 
 <section class="max-w-full lg:max-w-3xl mx-auto p-4" id="team">
-  <div class="flex flex-col items-center mb-6 space-y-4 md:flex-row md:space-x-4 md:space-y-0">
-    <div class="w-full max-w-xs">
-      <Button
-        text={$isPolish ? 'Techniczna' : 'Technical'}
-        isActive={activeTab === 'Technical'}
-        onClick={() => setActiveTab('Technical')}
-      />
-    </div>
-    <div class="w-full max-w-xs">
-      <Button
-        text={$isPolish ? 'Sponsorska' : 'Sponsor'}
-        isActive={activeTab === 'Sponsor'}
-        onClick={() => setActiveTab('Sponsor')}
-      />
-    </div>
-    <div class="w-full max-w-xs">
-      <Button
-        text={$isPolish ? 'Organizatorska' : 'Organisator'}
-        isActive={activeTab === 'Organisator'}
-        onClick={() => setActiveTab('Organisator')}
-      />
-    </div>
+<div
+  role="tablist"
+  aria-label="Team Sections"
+  class="flex flex-wrap justify-center mb-6 space-x-2"
+>
+  {#each ['Technical', 'Sponsor', 'Organisator', 'Coordinator', 'Promotion'] as tab, index}
+    <button
+      role="tab"
+      id={`tab-${tab}`}
+      aria-selected={activeTab === tab}
+      aria-controls={`panel-${tab}`}
+      class="tab-button"
+      on:click={() => setActiveTab(tab)}
+      on:keydown={(event) => handleKeydown(event, index)}
+      tabindex={activeTab === tab ? '0' : '-1'}
+    >
+      {#if tab === 'Technical'}
+        {$isPolish ? 'Techniczna' : 'Technical'}
+      {:else if tab === 'Sponsor'}
+        {$isPolish ? 'Sponsorska' : 'Sponsor'}
+      {:else if tab === 'Organisator'}
+        {$isPolish ? 'Organizatorska' : 'Organisational'}
+      {:else if tab === 'Coordinator'}
+        {$isPolish ? 'Koordynatorzy' : 'Coordinators'}
+      {:else if tab === 'Promotion'}
+        {$isPolish ? 'Promocja' : 'Promotion'}
+      {/if}
+    </button>
+  {/each}
+</div>
 
-    <div class="w-full max-w-xs">
-      <Button
-        text={$isPolish ? 'Koordynatorzy' : 'Coordinators'}
-        isActive={activeTab === 'Coordinator'}
-        onClick={() => setActiveTab('Coordinator')}
-      />
-    </div>
-
-    <div class="w-full max-w-xs">
-      <Button
-        text={$isPolish ? 'Promocja' : 'Promotion'}
-        isActive={activeTab === 'Promotion'}
-        onClick={() => setActiveTab('Promotion')}
-      />
-    </div>
-  </div>
-
-  {#key activeTab}
-    <div class="flex justify-center flex-wrap gap-6" in:fade={{ duration: 500 }}>
-      {#each currentTeams[activeTab] as member}
+{#each Object.keys(currentTeams) as tab}
+  {#if activeTab === tab}
+    <div
+      role="tabpanel"
+      id={`panel-${tab}`}
+      aria-labelledby={`tab-${tab}`}
+      tabindex="0"
+      class="flex justify-center flex-wrap gap-6"
+      in:fade={{ duration: 500 }}
+    >
+      {#each currentTeams[tab] as member}
         <TeamMember name={member.name} role={member.role} imageUrl={member.imageUrl} />
       {/each}
     </div>
-  {/key}
+  {/if}
+{/each}
 </section>
 
 <style>
-  .active {
-    background-color: #303d59;
+.tab-button {
+  color: black;
+  padding: 0.5rem 1rem;
+  margin: 0.25rem;
+  background-color: #f0f0f0;
+  border: none;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+}
+
+.tab-button[aria-selected="true"] {
+  background-color: #303d59;
+  color: white;
+}
+
+.tab-button:focus {
+  outline: 2px solid #303d59;
+  outline-offset: 2px;
+}
+
+/* Responsive styles */
+@media (max-width: 640px) {
+  .tab-button {
+    flex: 1 1 100%;
+    text-align: center;
   }
+}
 </style>

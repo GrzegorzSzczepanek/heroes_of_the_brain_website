@@ -1,4 +1,4 @@
-<script>
+<script defer>
   import { isPolish } from '../../stores/languageStore';
   import { derived } from 'svelte/store';
   import ShowMoreTile from './ShowMoreTile.svelte';

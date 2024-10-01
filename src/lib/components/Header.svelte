@@ -103,13 +103,19 @@
         {/each}
       </nav>
       <button on:click={() => isPolish.set(true)} class="p-2">
-        <img src="/images/icons/pl.svg" alt="Polish Flag" class="h-6" />
+        <img src="/images/icons/pl.svg" alt="Polish Translation" class="h-6" />
       </button>
       <button on:click={() => isPolish.set(false)} class="p-2">
-        <img src="/images/icons/gb.svg" alt="American Flag" class="h-6" />
+        <img src="/images/icons/gb.svg" alt="English Translation" class="h-6" />
       </button>      
       <div class="md:hidden flex items-center">
-        <button class="outline-none mobile-menu-button" on:click={toggleMenu}>
+        <button 
+          class="outline-none mobile-menu-button" 
+          on:click={toggleMenu} 
+          aria-expanded={showMenu} 
+          aria-controls="side-menu" 
+          aria-label="Toggle menu"
+        >
           <Fa icon={faBars} size="1.6x" color="#8f9a9c"/>
         </button>
       </div>
