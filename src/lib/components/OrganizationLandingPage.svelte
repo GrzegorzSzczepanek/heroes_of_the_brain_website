@@ -33,7 +33,7 @@
       <UnderlinedHeader title={currentContent.jury} />
     </header>
     <div class="flex flex-col items-center md:flex-row gap-5 justify-center">
-      <TeamMember name="Katarzyna Białas" role="Opiekun Naukowy" imageUrl="/images/mariusz2.webp" />
+      <TeamMember name="dr Mariusz Dzieciątko" role="COIG S.A." imageUrl="/images/mariusz2.webp" />
     </div>
     
   </div>
