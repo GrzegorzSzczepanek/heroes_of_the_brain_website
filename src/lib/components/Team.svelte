@@ -1,4 +1,4 @@
-<script>
+<script defer>
   import { isPolish } from '../../stores/languageStore';
   import { derived } from 'svelte/store';
   import { fade } from 'svelte/transition';
@@ -13,7 +13,7 @@
     { name: 'Adam Pawłowski', role: 'Członek Sekcji Technicznej', imageUrl: '/images/sekcja_techniczna/adam_pawłowski.webp' },
     { name: 'Grzegorz Szczepanek', role: 'Członek Sekcji Technicznej', imageUrl: '/images/sekcja_techniczna/grzegorz_szczepanek.webp' },
     { name: 'Adrian Goral', role: 'Członek Sekcji Technicznej', imageUrl: '/images/sekcja_techniczna/adrian_goral.webp' },
-    { name: 'Michał Wiśniewski', role: 'Członek Sekcji Technicznej', imageUrl: '/images/sekcja_techniczna/michał_wiśniewski.webp' },
+    { name: 'Michał Wiśniewski', role: 'Członek Sekcji Technicznej', imageUrl: '/images/sekcja_techniczna/michał_wiśniewski.webp' },
     { name: 'Filip Grzywacz', role: 'Członek Sekcji Technicznej', imageUrl: '/images/sekcja_techniczna/filip_grzywacz.webp' },
     { name: 'Adam Łaput', role: 'Członek Sekcji Technicznej', imageUrl: '/images/sekcja_techniczna/adam_łaput.webp' },
     { name: "Tomasz Koralewski", role:'Członek Sekcji Technicznej',imageUrl: '/images/sekcja_techniczna/tomasz_koralewski.webp'},
@@ -45,6 +45,7 @@
     { name: 'Gabrysia Senyszyn', role: 'Członek Sekcji Promocji', imageUrl: '/images/sekcja_promocji/gabrysia_senyszyn.webp' },
     { name: 'Weronika Walczuk', role: 'Członek Sekcji Promocji', imageUrl: '/images/sekcja_promocji/weronika_walczuk.webp' },
     { name: 'Konrad Bąchór', role: 'Członek Sekcji Promocji', imageUrl: '/images/sekcja_promocji/konrad_bąchór.webp' },
+    { name: "Oliwia Borkowska", role: 'Członek Sekcji Promocji', imageUrl: '/images/sekcja_promocji/oliwia_borkowska.webp' },
   ]
 };
 
@@ -86,6 +87,7 @@ const teamsEN = {
     { name: 'Gabrysia Senyszyn', role: 'Promotion Section Member', imageUrl: '/images/sekcja_promocji/gabrysia_senyszyn.webp' },
     { name: 'Weronika Walczuk', role: 'Promotion Section Member', imageUrl: '/images/sekcja_promocji/weronika_walczuk.webp' },
     { name: 'Konrad Bąchór', role: 'Promotion Section Member', imageUrl: '/images/sekcja_promocji/konrad_bąchór.webp' },
+    { name: "Oliwia Borkowska", role: 'Promotion Section Member', imageUrl: '/images/sekcja_promocji/oliwia_borkowska.webp' },
   ]
 };
 

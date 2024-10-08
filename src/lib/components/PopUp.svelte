@@ -13,7 +13,7 @@
     <button class="absolute top-2 right-2 text-gray-600 hover:text-gray-900" on:click={handleClose}>×</button>
     <h2 class="text-xl font-bold mb-4">{title}</h2>
     <div id="terms">
-      {@html content} <!-- Insert the raw HTML content here -->
+      {@html content}
     </div>
   </div>
 </div>
