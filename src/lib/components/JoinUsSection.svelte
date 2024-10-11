@@ -6,7 +6,7 @@
  
   const contentPL = {
     imageUrl: "https://picsum.photos/600/400",
-    title: "Chcesz do nas dołączyć?",
+    title: "Chcesz wziąć udział?",
     description: `
       Dołącz do nas na nadchodzący hackathon! To doskonała okazja, aby sprawdzić swoje umiejętności, 
       poznać nowych ludzi i pracować nad ekscytującymi projektami BCI. Niezależnie od tego, czy jesteś 
@@ -18,7 +18,7 @@
 
   const contentEN = {
     imageUrl: "https://picsum.photos/600/400",
-    title: "Would you like to join us?",
+    title: "Would you like to enter?",
     description: `
       Join us for the upcoming hackathon! It's a great opportunity to test your skills, 
       meet new people, and work on exciting BCI projects. Whether you're an experienced developer 
