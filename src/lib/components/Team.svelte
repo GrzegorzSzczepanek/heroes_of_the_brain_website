@@ -49,7 +49,7 @@
     { name: 'Kacper Sroka', role: 'Członek Sekcji Promocji', imageUrl: '/images/sekcja_promocji/kacper_sroka.webp' },
     { name: 'Gabrysia Senyszyn', role: 'Członek Sekcji Promocji', imageUrl: '/images/sekcja_promocji/gabrysia_senyszyn.webp' },
     { name: 'Weronika Walczuk', role: 'Członek Sekcji Promocji', imageUrl: '/images/sekcja_promocji/weronika_walczuk.webp' },
-    { name: 'Konrad Bąchór', role: 'Członek Sekcji Promocji', imageUrl: '/images/sekcja_promocji/konrad_bąchór.webp' },
+    { name: 'Konrad Bąchór', role: 'Członek Sekcji Promocji', imageUrl: '/images/sekcja_promocji/konrad_bachor.webp' },
     { name: "Oliwia Borkowska", role: 'Członek Sekcji Promocji', imageUrl: '/images/sekcja_promocji/oliwia_borkowska.webp' },
   ]
 };
@@ -96,7 +96,7 @@ const teamsEN = {
     { name: 'Kacper Sroka', role: 'Promotion Section Member', imageUrl: '/images/sekcja_promocji/kacper_sroka.webp' },
     { name: 'Gabrysia Senyszyn', role: 'Promotion Section Member', imageUrl: '/images/sekcja_promocji/gabrysia_senyszyn.webp' },
     { name: 'Weronika Walczuk', role: 'Promotion Section Member', imageUrl: '/images/sekcja_promocji/weronika_walczuk.webp' },
-    { name: 'Konrad Bąchór', role: 'Promotion Section Member', imageUrl: '/images/sekcja_promocji/konrad_bąchór.webp' },
+    { name: 'Konrad Bąchór', role: 'Promotion Section Member', imageUrl: '/images/sekcja_promocji/konrad_bachor.webp' },
     { name: "Oliwia Borkowska", role: 'Promotion Section Member', imageUrl: '/images/sekcja_promocji/oliwia_borkowska.webp' },
   ]
 };
