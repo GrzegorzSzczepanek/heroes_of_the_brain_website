@@ -43,10 +43,6 @@
     </header>
     
     <Team />
-    <div id="idk" class="flex flex-col align-middle justify-center text-center">
-      <UnderlinedHeader title={currentContent.idk} />
-      <JoinUsSection />
-    </div>
   </div>
 </main>
 

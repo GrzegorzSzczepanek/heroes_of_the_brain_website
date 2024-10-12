@@ -9,6 +9,31 @@
 	import Agenda from '$lib/components/Agenda.svelte';
 	import Partners from '$lib/components/Partners.svelte';
 	import Faq from '$lib/components/Faq.svelte';
+    import OrganizationLandingPage from '$lib/components/OrganizationLandingPage.svelte';
+    import UnderlinedHeader from '$lib/components/UnderlinedHeader.svelte';
+    import JoinUsSection from '$lib/components/JoinUsSection.svelte';
+    import { derived } from 'svelte/store';
+    import { isPolish } from '../stores/languageStore';
+
+	const contentPL = {
+    jury: "Jury",
+    ourTeam: "Sekcje naszego zespołu",
+    idk: "Weź udział w wydarzeniu"
+  };
+
+  const contentEN = {
+    jury: "Jury",
+    ourTeam: "Our Team",
+    idk: "Take part in the event"
+  };
+
+  const content = derived(isPolish, $isPolish => $isPolish ? contentPL : contentEN);
+
+  let currentContent;
+
+  content.subscribe(value => {
+    currentContent = value;
+  });
   </script>
 
   <svelte:head>
@@ -21,6 +46,7 @@
 	
   </svelte:head>
   
+  
   <div transition:fade={{ duration: 400 }}>
 	<LandingPage />
 	<HackatonInfoSection />
@@ -30,5 +56,10 @@
 	<!-- <Carousel /> -->
 	<ContactSection />
 	<Faq />
+
+    <div id="idk" class="flex flex-col align-middle justify-center text-center pb-16">
+		<UnderlinedHeader title={currentContent.idk} />
+		<JoinUsSection />
+	  </div>
   </div>
   
