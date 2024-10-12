@@ -46,7 +46,7 @@
   <div class="md:w-1/2 p-4 flex flex-col justify-center">
     <h2 class="text-2xl md:text-3xl font-bold mb-4">{currentContent.title}</h2>
     <p class="text-lg text-gray-700 mb-6">{currentContent.description}</p>
-    <a href="#join" class="inline-block bg-purple-600 text-white text-lg font-semibold py-3 px-6 rounded-full shadow-md hover:bg-orange-700 transition duration-300">
+    <a href="https://forms.gle/KKdoUBMmaA1y22dU6" class="inline-block bg-purple-600 text-white text-lg font-semibold py-3 px-6 rounded-full shadow-md hover:bg-orange-700 transition duration-300">
       {currentContent.buttonText}
     </a>
   </div>

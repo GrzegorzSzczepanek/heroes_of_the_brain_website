@@ -230,7 +230,7 @@
     </div>
     <div class="mb-4">
       <button on:click={toggleTerms} class="hover:underline mx-2">{currentContent.terms}</button>
-      <button on:click={togglePrivacy} class="hover:underline mx-2">{currentContent.privacy}</button>
+      <!-- <button on:click={togglePrivacy} class="hover:underline mx-2">{currentContent.privacy}</button> -->
     </div>
     <div>
       <p>{@html currentContent.copy}</p>
