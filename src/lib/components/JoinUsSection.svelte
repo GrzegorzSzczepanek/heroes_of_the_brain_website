@@ -5,7 +5,7 @@
 
  
   const contentPL = {
-    imageUrl: "https://picsum.photos/600/400",
+    imageUrl: "/images/hackaton_title_page.webp",
     title: "Chcesz wziąć udział?",
     description: `
       Dołącz do nas na nadchodzący hackathon! To doskonała okazja, aby sprawdzić swoje umiejętności, 
@@ -16,7 +16,7 @@
   };
 
   const contentEN = {
-    imageUrl: "https://picsum.photos/600/400",
+    imageUrl: "/images/hackaton_title_page.webp",
     title: "Would you like to enter?",
     description: `
       Join us for the upcoming hackathon! It's a great opportunity to test your skills, 
