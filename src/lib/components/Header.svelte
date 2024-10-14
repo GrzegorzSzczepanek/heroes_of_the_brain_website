@@ -15,7 +15,8 @@
     { name: "Agenda", href: "#agenda" },
     { name: "FAQ", href: "#faq" },
     { name: "Kontakt", href: "#contact" },
-    { name: "Organizatorzy", href: "/organizatorzy" }
+    { name: "Zapisy", href: "#zapisy" },
+    { name: "Organizatorzy", href: "/organizatorzy" },
   ];
 
   let navItemsMainEN = [
@@ -23,6 +24,7 @@
     { name: "Agenda", href: "#agenda" },
     { name: "FAQ", href: "#faq" },
     { name: "Contact", href: "#contact" },
+    { name: "Enter Hackaton", href: "#zapisy" },
     { name: "Organizers", href: "/organizatorzy" }
   ];
 
@@ -99,9 +101,14 @@
     <div class="flex items-center space-x-4">
       <nav class="hidden md:flex items-center space-x-6">
         {#each navItems as item}
-          <a href={item.href} class=" hover:underline transition-all">{item.name}</a>
+          {#if item.name === "Zapisy" || item.name === "Enter Hackaton"}
+            <a href={item.href} class="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-700 transition-all">{item.name}</a>
+          {:else}
+            <a href={item.href} class="hover:underline transition-all">{item.name}</a>
+          {/if}
         {/each}
       </nav>
+      
       <button on:click={() => isPolish.set(true)} class="p-2">
         <img src="/images/icons/pl.svg" alt="Polish Translation" class="h-6" />
       </button>
