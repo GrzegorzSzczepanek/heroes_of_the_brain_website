@@ -101,8 +101,8 @@
     <div class="flex items-center space-x-4">
       <nav class="hidden md:flex items-center space-x-6">
         {#each navItems as item}
-          {#if item.name === "Zapisy" || item.name === "Enter Hackaton"}
-            <a href={item.href} class="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-700 transition-all">{item.name}</a>
+            {#if item.name === "Zapisy" || item.name === "Enter Hackaton"}
+            <a href={item.href} class="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-700 transition-all shadow-md">{item.name}</a>
           {:else}
             <a href={item.href} class="hover:underline transition-all">{item.name}</a>
           {/if}
