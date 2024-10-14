@@ -9,11 +9,10 @@
     title: "Chcesz wziąć udział?",
     description: `
       Dołącz do nas na nadchodzący hackathon! To doskonała okazja, aby sprawdzić swoje umiejętności, 
-      poznać nowych ludzi i pracować nad ekscytującymi projektami BCI. Niezależnie od tego, czy jesteś 
-      doświadczonym programistą, czy dopiero zaczynasz swoją przygodę z kodowaniem interfejsów mózg-komputer, znajdziesz tu 
-      coś dla siebie. Kliknij poniżej, aby dowiedzieć się więcej i zarejestrować się!
+      poznać nowych ludzi i pracować nad ekscytującymi projektami BCI.
     `,
-    buttonText: "Zgłoś się!"
+    buttonText: "Zgłoś się!",
+    url: "https://forms.gle/KKdoUBMmaA1y22dU6"
   };
 
   const contentEN = {
@@ -21,11 +20,10 @@
     title: "Would you like to enter?",
     description: `
       Join us for the upcoming hackathon! It's a great opportunity to test your skills, 
-      meet new people, and work on exciting BCI projects. Whether you're an experienced developer 
-      or just starting your journey with brain-computer interface coding, you'll find something for you. 
-      Click below to learn more and register!
+      meet new people, and work on exciting BCI projects. 
     `,
-    buttonText: "Register now!"
+    buttonText: "Register now!",
+    url: "https://forms.gle/P9evdZbDyXUDETuC7"
   };
 
  
@@ -46,7 +44,7 @@
   <div class="md:w-1/2 p-4 flex flex-col justify-center">
     <h2 class="text-2xl md:text-3xl font-bold mb-4">{currentContent.title}</h2>
     <p class="text-lg text-gray-700 mb-6">{currentContent.description}</p>
-    <a href="https://forms.gle/KKdoUBMmaA1y22dU6" class="inline-block bg-purple-600 text-white text-lg font-semibold py-3 px-6 rounded-full shadow-md hover:bg-orange-700 transition duration-300">
+    <a href={currentContent.url} class="inline-block bg-purple-600 text-white text-lg font-semibold py-3 px-6 rounded-full shadow-md hover:bg-orange-700 transition duration-300">
       {currentContent.buttonText}
     </a>
   </div>
