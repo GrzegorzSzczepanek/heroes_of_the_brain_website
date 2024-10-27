@@ -25,7 +25,7 @@
     { name: 'Mateusz Michalski', role: 'Członek Sekcji Sponsorskiej', imageUrl: '/images/sekcja_sponsorska/mateusz_michalski.webp' },
     { name: 'Kacper Majtyka', role: 'Członek Sekcji Sponsorskiej', imageUrl: '/images/sekcja_sponsorska/kacper_majtyka.webp' },
     { name: "Dominika Serafin", role: 'Członek Sekcji Sponsorskiej', imageUrl: '/images/sekcja_sponsorska/dominika_serafin.jpg' },
-    { name: "Hania Holak", role: 'Członek Sekcji Sponsorskiej', imageUrl: '/images/sekcja_sponsorska/hania_holak.JPEG' },
+    { name: "Hania Holak", role: 'Członek Sekcji Sponsorskiej', imageUrl: '/images/sekcja_sponsorska/hania_holak.jpg' },
     { name: "Paulina Łobodzka", role: 'Członek Sekcji Sponsorskiej', imageUrl: '/images/sekcja_sponsorska/paulina_lobodzka.jpg' },
   ],
   Organisator: [
@@ -72,7 +72,7 @@ const teamsEN = {
     { name: 'Mateusz Michalski', role: 'Sponsor Section Member', imageUrl: '/images/sekcja_sponsorska/mateusz_michalski.webp' },
     { name: 'Kacper Majtyka', role: 'Sponsor Section Member', imageUrl: '/images/sekcja_sponsorska/kacper_majtyka.webp' },
     { name: "Dominika Serafin", role: 'Członek Sekcji Sponsorskiej', imageUrl: '/images/sekcja_sponsorska/dominika_serafin.jpg' },
-    { name: "Hania Holak", role: 'Członek Sekcji Sponsorskiej', imageUrl: '/images/sekcja_sponsorska/hania_holak.JPEG' },
+    { name: "Hania Holak", role: 'Członek Sekcji Sponsorskiej', imageUrl: '/images/sekcja_sponsorska/hania_holak.jpg' },
     { name: "Paulina Łobodzka", role: 'Członek Sekcji Sponsorskiej', imageUrl: '/images/sekcja_sponsorska/paulina_lobodzka.jpg' },
   ],
   Organisator: [
