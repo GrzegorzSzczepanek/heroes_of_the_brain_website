@@ -40,7 +40,7 @@
 >
   <div class="card" bind:this={card}>
     <div class="card-front flex flex-col items-center p-4 bg-white shadow-lg rounded-lg">
-      <img src={imageUrl} alt={name} class="object-cover mb-4 w-full h-2/3" />
+      <img src={imageUrl} alt={name} class="object-cover mb-4 w-full h-3/5" />
       <h3 class="text-lg font-semibold text-center text-gray-800">{name}</h3>
       <p class="text-gray-600 text-center">{role}</p>
     </div>

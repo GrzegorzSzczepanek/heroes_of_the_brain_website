@@ -14,6 +14,11 @@
     import JoinUsSection from '$lib/components/JoinUsSection.svelte';
     import { derived } from 'svelte/store';
     import { isPolish } from '../stores/languageStore';
+	import { onMount } from 'svelte';
+   
+   onMount(() => {
+      document.title = "Heroes of The Brain";
+   });
 
 	const contentPL = {
     jury: "Jury",
@@ -39,7 +44,7 @@
   <svelte:head>
 	<title>Home</title>
 	<meta name="description" content="Heroes of The Brain BCI Hackaton" />
-	<meta name="keywords" content="brain, bci, hackaton, heroes, brainaccess, solet, pwr, politechnika wroclawska" />
+	<meta name="keywords" content="brain, bci, hackaton, heroes, brainaccess, solet, pwr, politechnika wroclawska heroes of the brain heroesofthebrain politechnika hackaton neurohackaton" />
 	<meta name="author" content="Grzegorz Szczepanek" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta name="robots" content="index, follow" />
@@ -53,7 +58,6 @@
 	<Agenda />
 	<CategorySection />
 	<Partners />
-	<!-- <Carousel /> -->
 	<ContactSection />
 	<Faq />
 

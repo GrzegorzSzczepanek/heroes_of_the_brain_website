@@ -8,7 +8,7 @@
   import { isPolish } from '../../stores/languageStore'; 
 
  
-  export let logoSrc = "/images/hackaton_logo.webp";
+  export let logoSrc = "/images/logo_no_background.png";
 
   let navItemsMainPL = [
     { name: "Tematyka Hackatonu", href: "#HackatonInfo" },
@@ -31,7 +31,6 @@
   let navItemsOrganizatorzyPL = [
     { name: "O nas", href: "#about-us" },
     { name: "Zespół", href: "#team" },
-    { name: "Współpraca", href: "#collaboration" }
   ];
 
   let navItemsOrganizatorzyEN = [

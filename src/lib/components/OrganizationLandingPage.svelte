@@ -33,7 +33,15 @@
       <UnderlinedHeader title={currentContent.jury} />
     </header>
     <div class="flex flex-col items-center md:flex-row gap-5 justify-center">
-      <TeamMember name="dr Mariusz Dzieciątko" role="COIG S.A." imageUrl="/images/mariusz2.webp" />
+      {#if $isPolish}
+        <TeamMember name="Katarzyna Białas" role=" Asystent Opiekuna KN “Neuron”." imageUrl="/images/katarzyna_białas.jpg" />
+        <TeamMember name="Adrianna Kozierkiewicz" role="Zastępca Kierownika Katedry Informatyki Stosowanej" imageUrl="/images/adrianna_kozierkiewicz.png" />
+        <TeamMember name="dr Mariusz Dzieciątko" role="COIG S.A." imageUrl="/images/mariusz2.webp" />
+      {:else}
+        <TeamMember name="Katarzyna Białas" role="Assistant supervisor of KN Neuron." imageUrl="/images/mariusz2.webp" />
+        <TeamMember name="Adrianna Kozierkiewicz" role="Deputy of Department of Applied Informatics" imageUrl="/images/adrianna_kozierkiewicz.png" />
+        <TeamMember name="Dr. Mariusz Dzieciątko" role="COIG S.A." imageUrl="/images/mariusz2.webp" />
+      {/if}
     </div>
     
   </div>

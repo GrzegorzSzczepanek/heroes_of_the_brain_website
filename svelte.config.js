@@ -15,7 +15,7 @@ const config = {
 			fallback: null
 		}),
 		paths: {
-			base: process.env.NODE_ENV === 'production' ? '/heroes_of_the_brain_website' : ''
+			base: process.env.NODE_ENV === 'production' ? '' : ''
 		}
 	}
 };
