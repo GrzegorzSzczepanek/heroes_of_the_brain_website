@@ -62,7 +62,7 @@
     justify-content: center;
     gap: 1rem;
     margin: 1.5rem 0;
-  } */
+  } 
 
   .button-group a:hover {
     background-color: #553c9a;
