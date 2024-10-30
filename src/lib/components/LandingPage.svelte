@@ -1,89 +1,182 @@
 <script>
-  import { onMount } from 'svelte';
-  import { faCalendarAlt, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+  import { faCalendarAlt, faMapMarkerAlt, faTrophy } from '@fortawesome/free-solid-svg-icons';
   import { FontAwesomeIcon } from '@fortawesome/svelte-fontawesome';
   import "../../app.css";
   import { isPolish } from '../../stores/languageStore';
-  
-  let scrollY = 0;
 
-  onMount(() => {
-    const handleScroll = () => {
-      scrollY = window.scrollY;
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  });
-
-  let textVar;
-  let introText;
-
-  textVar = 'Heroes of The Brain';
-  introText = textVar.split('').map(char => `<span class="intro-text">${char}</span>`).join('');
-
-  $: title = $isPolish ? 'Największy Hackaton BCI w Polsce' : 'The Biggest BCI Hackathon in Poland';
   $: location = $isPolish ? 'Politechnika Wrocławska' : 'Wroclaw University of Technology';
-  $: moreInfo = $isPolish ? 'Dowiedz się więcej' : 'Learn more';
-  $: seeAgenda = $isPolish ? 'Zobacz harmonogram' : 'See agenda';
+  $: applyText = $isPolish ? 'Aplikuj' : 'Apply Now';
+  $: applyLink = $isPolish ? 'https://forms.gle/KKdoUBMmaA1y22dU6' : 'https://forms.gle/P9evdZbDyXUDETuC7';
+  $: learnMoreText = $isPolish ? 'Dowiedz się więcej' : 'Learn More';
+
+  $: prizePool = $isPolish ? 'Łączna pula nagród: 16 000 PLN' : 'Total Prize Pool: 16,000 PLN';
+  $: inBothCategories = $isPolish ? 'W obu kategoriach:' : 'Prizes in Both Categories:';
+
+  $: firstPlace = $isPolish ? '1. Miejsce' : '1st Place';
+  $: firstPrize = '5,000 PLN';
+
+  $: secondPlace = $isPolish ? '2. Miejsce' : '2nd Place';
+  $: secondPrize = '2,000 PLN';
+
+  $: thirdPlace = $isPolish ? '3. Miejsce' : '3rd Place';
+  $: thirdPrize = '1,000 PLN';
 </script>
 
 <style>
-  .bg-dots {
-    position: absolute;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.1);
-    transition: transform 0.1s ease-out;
+
+  #landing {
+    min-height: 110vh;
+    padding: 2rem 1rem;  
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
+    text-align: center;
   }
 
-  .dot-1 {
-    width: 100px;
-    height: 100px;
-    top: 10%;
-    left: 20%;
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
   }
-  .dot-2 {
-    width: 150px;
-    height: 150px;
-    top: 50%;
-    left: 40%;
-    opacity: 0.3;
+
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem 0;
   }
-  .dot-3 {
+
+  .info p {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+  }
+
+
+  .button-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  } */
+
+  .button-group a:hover {
+    background-color: #553c9a;
+  }
+
+
+  .prize-info {
+    margin-top: 2rem;
+    text-align: center;
+  }
+
+  .prize-info h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .prizes {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .prize {
+    background-color: rgba(255, 255, 255, 0.15);
+    padding: 1rem;
+    border-radius: 0.5rem;
     width: 120px;
-    height: 120px;
-    top: 70%;
-    left: 70%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
-  
+
+  .prize .place {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  .prize .amount {
+    font-size: 1rem;
+  }
+
+
+  @media (min-width: 640px) {
+    h1 {
+      font-size: 3rem;
+    }
+    .info p {
+      font-size: 1.125rem;
+    }
+
+    .button-group a {
+      padding: 0.75rem 2rem;
+    }
+
+    .prize {
+      width: 140px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    h1 {
+      font-size: 3.5rem;
+    }
+
+    .info {
+      flex-direction: row;
+      gap: 2rem;
+    }
+    .info p {
+      margin: 0;
+    }
+  }
 </style>
 
-<section class="relative flex flex-col items-center justify-center min-h-screen bg-gradient text-white text-center p-4">
-  <div class="absolute inset-0 z-0">
-    <div class="bg-dots dot-1" style="transform: translateY({scrollY * 0.1}px);"></div>
-    <div class="bg-dots dot-2" style="transform: translateY({scrollY * 0.2}px);"></div>
-    <div class="bg-dots dot-3" style="transform: translateY({scrollY * 0.15}px);"></div>
-  </div>
-  <div class="relative z-10">
-    <h2 class="text-xl md:text-2xl lg:text-3xl mb-4">{title}</h2>
-    <h1 class="text-3xl md:text-4xl lg:text-6xl font-bold mb-4 intro-text-container" id="intro-text">
-      {@html introText}
-    </h1>
-  </div>
-  <div class="relative flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-8 my-6 z-10">
-    <p class="flex items-center text-lg md:text-xl">
-      <FontAwesomeIcon icon={faMapMarkerAlt} class="text-purple-400 mr-2" />
+<section id="landing">
+  <h1>Heroes of The Brain</h1>
+  <div class="info">
+    <p class="flex items-center">
+      <FontAwesomeIcon icon={faMapMarkerAlt} class="text-purple-200 mr-2" />
       {location}
     </p>
-    <p class="flex items-center text-lg md:text-xl">
-      <FontAwesomeIcon icon={faCalendarAlt} class="text-purple-400 mr-2" />
-      16.11.2024 - 17.11
-      .2024
+    <p class="flex items-center">
+      <FontAwesomeIcon icon={faCalendarAlt} class="text-purple-200 mr-2" />
+      16.11.2024 - 17.11.2024
     </p>
   </div>
-  <div class="relative z-10 flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4">
-    <a href="#HackatonInfo" class="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded-md transition">{moreInfo}</a>
-    <a href="#agenda" class="bg-gray-700 hover:bg-gray-800 text-white font-semibold py-2 px-4 rounded-md transition">{seeAgenda}</a>
+  <div class="button-group">
+    <a href={applyLink} target="_blank" class="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-700 transition-all shadow-md">{applyText}</a>
+    <a href="#HackatonInfo" class="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-700 transition-all shadow-md">{learnMoreText}</a>
+  </div>
+  
+  <div class="prize-info">
+    <h3>{prizePool}</h3>
+    <p>{inBothCategories}</p>
+    <div class="prizes">
+      <div class="prize">
+        <FontAwesomeIcon icon={faTrophy} class="text-gray-300 text-2xl mb-2" />
+        <div class="place">{secondPlace}</div>
+        <div class="amount">{secondPrize}</div>
+      </div>
+      <div class="prize">
+        <FontAwesomeIcon icon={faTrophy} class="text-yellow-400 text-2xl mb-2" />
+        <div class="place">{firstPlace}</div>
+        <div class="amount">{firstPrize}</div>
+      </div>
+      <div class="prize">
+        <FontAwesomeIcon icon={faTrophy} class="text-orange-400 text-2xl mb-2" />
+        <div class="place">{thirdPlace}</div>
+        <div class="amount">{thirdPrize}</div>
+      </div>
+    </div>
   </div>
 </section>

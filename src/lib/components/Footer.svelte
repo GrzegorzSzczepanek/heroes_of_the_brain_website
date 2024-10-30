@@ -7,7 +7,6 @@
 
   let socialLinks = [
     { icon: faFacebook, url: "https://www.facebook.com/heroesofthebrain", name: "Facebook link" },
-    { icon: faDiscord, url: "https://discord.gg/brainheroes", name: "Discord link" },
     { icon: faInstagram, url: "https://www.instagram.com/knneuron_/", name: "Instagram link" },
     { icon: faLinkedin, url: "https://www.linkedin.com/company/kn-neuron/", name: "LinkedIn link" }
   ];

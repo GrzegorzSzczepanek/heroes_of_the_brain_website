@@ -1,7 +1,6 @@
 <script>
 	import '../app.css';
 	import { fade } from 'svelte/transition';
-	import Carousel from '$lib/components/Carousel.svelte';
 	import ContactSection from '$lib/components/ContactSection.svelte';
 	import CategorySection from '$lib/components/CategorySection.svelte';
 	import LandingPage from '$lib/components/LandingPage.svelte';
@@ -9,11 +8,10 @@
 	import Agenda from '$lib/components/Agenda.svelte';
 	import Partners from '$lib/components/Partners.svelte';
 	import Faq from '$lib/components/Faq.svelte';
-    import OrganizationLandingPage from '$lib/components/OrganizationLandingPage.svelte';
-    import UnderlinedHeader from '$lib/components/UnderlinedHeader.svelte';
-    import JoinUsSection from '$lib/components/JoinUsSection.svelte';
-    import { derived } from 'svelte/store';
-    import { isPolish } from '../stores/languageStore';
+  import UnderlinedHeader from '$lib/components/UnderlinedHeader.svelte';
+  import JoinUsSection from '$lib/components/JoinUsSection.svelte';
+  import { derived } from 'svelte/store';
+  import { isPolish } from '../stores/languageStore';
 	import { onMount } from 'svelte';
    
    onMount(() => {

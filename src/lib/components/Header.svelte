@@ -24,7 +24,7 @@
     { name: "Agenda", href: "#agenda" },
     { name: "FAQ", href: "#faq" },
     { name: "Contact", href: "#contact" },
-    { name: "Enter Hackaton", href: "#zapisy" },
+    { name: "Apply", href: "#zapisy" },
     { name: "Organizers", href: "/organizatorzy" }
   ];
 
@@ -100,7 +100,7 @@
     <div class="flex items-center space-x-4">
       <nav class="hidden md:flex items-center space-x-6">
         {#each navItems as item}
-            {#if item.name === "Zapisy" || item.name === "Enter Hackaton"}
+            {#if item.name === "Zapisy" || item.name === "Apply"}
             <a href={item.href} class="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-700 transition-all shadow-md">{item.name}</a>
           {:else}
             <a href={item.href} class="hover:underline transition-all">{item.name}</a>

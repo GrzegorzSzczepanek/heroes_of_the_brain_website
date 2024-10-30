@@ -31,7 +31,7 @@
   },
   {
     question: "Czy będzie możliwość noclegu na miejscu?",
-    answer: "Tak! Zapewniamy nocleg na miejscu oraz poczęstunek.",
+    answer: "Posiadamy pokój wypoczynku, jednak nie zapewniamy materacy, śpiworów, ani innych przyborów do spania.",
     open: false
   },
   {
@@ -69,7 +69,7 @@ const faqsEN = [
   },
   {
     question: "Will there be accommodation on-site?",
-    answer: "Yes! Accommodation and refreshments will be provided on-site.",
+    answer: "We have a relaxation room available; however, we do not provide mattresses, sleeping bags or any other sleeping equipment.",
     open: false
   },
   {
