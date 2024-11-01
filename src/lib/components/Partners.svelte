@@ -34,11 +34,12 @@
       <h2 class="text-xl font-semibold mb-4">{partner.category}</h2>
       <div class="flex flex-wrap justify-center gap-4">
         {#each partner.logos as logo}
-        <a href={partner.link} target="_blank">
-          <LogoTiles {logo} {partner} />
-        </a>
+          <a href={partner.link} target="_blank">
+            <LogoTiles {logo} {partner} />
+          </a>
         {/each}
       </div>
     </div>
   {/each}
 </section>
+
