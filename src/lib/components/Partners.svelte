@@ -3,17 +3,20 @@
   import UnderlinedHeader from "./UnderlinedHeader.svelte";
   import { isPolish } from '../../stores/languageStore';
   import { derived } from 'svelte/store';
-
   const partnersPL = [
-    { category: "SPONSORZY STRATEGICZNI", logos: ["/images/brainaccess.png"], link: "https://www.brainaccess.ai/" },
-    
-    { category: "POZOSTALI SPONSORZY", logos: ["/images/solet.png"], link: "https://www.solet.pl/en/" }
+    { category: "SPONSORZY STRATEGICZNI", logos: ["/images/coig.svg", "/images/brainaccess.png"]},
+    { category: "POZOSTALI SPONSORZY", logos: ["/images/stosowana.png", "/images/adescom.png", "/images/solet.png"]},
+    { category: "PARTNERZY MEDIALNI", logos: ["/images/radioluz.png", "/images/wit.svg"] },
+    { category: "PATRONAT HONOROWY REKTORA", logos: ["/images/pwr_logo.png"] }
   ];
 
   const partnersEN = [
-    { category: "STRATEGIC SPONSORS", logos: ["/images/brainaccess.png"] },
-    { category: "OTHER SPONSORS", logos: ["/images/solet.png"] }
+    { category: "STRATEGIC SPONSORS",  logos: ["/images/coig.svg", "/images/brainaccess.png"]},
+    { category: "OTHER SPONSORS", logos: ["/images/stosowana.png", "/images/adescom.png", "/images/solet.png"] },
+    { category: "MEDIA PARTNERS", logos: ["/images/radioluz.png", "/images/wit.svg"] },
+    { category: "HONORARY PATRONAGE OF THE RECTOR", logos: ["/images/pwr_logo.png"] }
   ];
+
 
   const partners = derived(isPolish, $isPolish => $isPolish ? partnersPL : partnersEN);
 
