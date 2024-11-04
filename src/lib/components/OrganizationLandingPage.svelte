@@ -34,16 +34,16 @@
     </header>
     <div class="flex flex-col items-center md:flex-row gap-5 justify-center">
       {#if $isPolish}
-        <TeamMember name="Katarzyna Białas" role=" Asystent Opiekuna KN “Neuron”." imageUrl="/images/katarzyna_białas.jpg" />
-        <TeamMember name="Adrianna Kozierkiewicz" role="Zastępca Kierownika Katedry Informatyki Stosowanej" imageUrl="/images/adrianna_kozierkiewicz.png" />
+        <TeamMember name="Mgr inż. Katarzyna Białas" role=" Asystent Opiekuna KN “Neuron”." imageUrl="/images/katarzyna_białas.jpg" />
+        <TeamMember name="Prof. Adrianna Kozierkiewicz" role="Zastępca Kierownika Katedry Informatyki Stosowanej" imageUrl="/images/adrianna_kozierkiewicz.png" />
         <TeamMember name="Dr Mariusz Dzieciątko" role="COIG S.A." imageUrl="/images/mariusz2.webp" />
-        <TeamMember name="Osvaldas Putkis" role="Kierownik Działu Inżynierii w Neurotechnologii" imageUrl="/images/osvaldas_putkis.png" />
+        <TeamMember name="Dr inż. Osvaldas Putkis" role="Kierownik Działu Inżynierii w Neurotechnologii" imageUrl="/images/osvaldas_putkis.png" />
 
       {:else}
-        <TeamMember name="Katarzyna Białas" role="Assistant supervisor of KN Neuron." imageUrl="/images/katarzyna_białas.jpg" />
-        <TeamMember name="Adrianna Kozierkiewicz" role="Deputy of Department of Applied Informatics" imageUrl="/images/adrianna_kozierkiewicz.png" />
+        <TeamMember name="MSc Eng. Katarzyna Białas" role="Assistant supervisor of KN Neuron." imageUrl="/images/katarzyna_białas.jpg" />
+        <TeamMember name="Prof Adrianna Kozierkiewicz" role="Deputy of Department of Applied Informatics" imageUrl="/images/adrianna_kozierkiewicz.png" />
         <TeamMember name="Dr Mariusz Dzieciątko" role="COIG S.A." imageUrl="/images/mariusz2.webp" />
-        <TeamMember name="Osvaldas Putkis" role="Head of Engineering at Neurotechnology" imageUrl="/images/osvaldas_putkis.png" />
+        <TeamMember name="Dr. Eng. Osvaldas Putkis" role="Head of Engineering at Neurotechnology" imageUrl="/images/osvaldas_putkis.png" />
       {/if}
     </div>
     
@@ -66,9 +66,5 @@
   }
   header {
     margin-top: 20px;
-  }
-  #idk {
-    color: black;
-    margin-top: 60px;
   }
 </style>
