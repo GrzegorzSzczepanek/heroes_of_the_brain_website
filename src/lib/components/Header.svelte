@@ -36,7 +36,6 @@
   let navItemsOrganizatorzyEN = [
     { name: "About Us", href: "#about-us" },
     { name: "Team", href: "#team" },
-    { name: "Collaboration", href: "#collaboration" }
   ];
 
   let navItems = navItemsMainPL;
