@@ -7,7 +7,7 @@
     { category: "SPONSORZY STRATEGICZNI", logos: ["/images/coig.svg", "/images/brainaccess.png"]},
     { category: "POZOSTALI SPONSORZY", logos: ["/images/stosowana.png", "/images/adescom.png", "/images/solet.png"]},
     { category: "PARTNERZY MEDIALNI", logos: ["/images/radioluz.png", "/images/wit.svg"] },
-    { category: "PATRONAT HONOROWY REKTORA", logos: ["/images/pwr_logo.svg"] }
+    { category: "PATRONAT HONOROWY REKTORA", logos: ["/images/logo_pwr.png"] }
   ];
 
   const partnersEN = [
