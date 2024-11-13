@@ -7,14 +7,14 @@
     { category: "SPONSORZY STRATEGICZNI", logos: ["/images/coig.svg", "/images/brainaccess.png"]},
     { category: "POZOSTALI SPONSORZY", logos: ["/images/stosowana.png", "/images/adescom.png", "/images/solet.png"]},
     { category: "PARTNERZY MEDIALNI", logos: ["/images/radioluz.png", "/images/wit.svg"] },
-    // { category: "PATRONAT HONOROWY REKTORA", logos: ["/images/logo_pwr.png"] }
+    { category: "PATRONAT HONOROWY REKTORA", logos: ["/images/pwr_bez_tla_pl.png"] }
   ];
 
   const partnersEN = [
     { category: "STRATEGIC SPONSORS",  logos: ["/images/coig.svg", "/images/brainaccess.png"]},
     { category: "OTHER SPONSORS", logos: ["/images/stosowana.png", "/images/adescom.png", "/images/solet.png"] },
     { category: "MEDIA PARTNERS", logos: ["/images/radioluz.png", "/images/wit.svg"] },
-    // { category: "HONORARY PATRONAGE OF THE RECTOR", logos: ["/images/pwr_logo.svg"] }
+    { category: "HONORARY PATRONAGE OF THE RECTOR", logos: ["/images/pwr_bez_tla_eng.png"] }
   ];
 
 
