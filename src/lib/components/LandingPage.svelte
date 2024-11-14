@@ -4,7 +4,7 @@
   import "../../app.css";
   import { isPolish } from '../../stores/languageStore';
 
-  $: location = $isPolish ? 'Politechnika Wrocławska' : 'Wroclaw University of Technology';
+  $: location = $isPolish ? 'Politechnika Wrocławska, D-21' : 'Wroclaw University of Technology, D-21';
   $: applyText = $isPolish ? 'Aplikuj' : 'Apply Now';
   $: applyLink = $isPolish ? 'https://forms.gle/KKdoUBMmaA1y22dU6' : 'https://forms.gle/P9evdZbDyXUDETuC7';
   $: learnMoreText = $isPolish ? 'Dowiedz się więcej' : 'Learn More';
