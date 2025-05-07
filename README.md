@@ -53,6 +53,26 @@ Welcome to the Heroes of the Brain website! This project is a static site built 
 To build the project, run:
 
 ```sh
+# Step 1: Stash any local changes (you've already done this)
+git stash
+
+# Step 2: Make sure we're on the correct branch
+git checkout main
+
+# Step 3: Completely remove node_modules and lock files
+rm -rf node_modules
+rm -f package-lock.json
+
+# Step 4: Clear NPM cache
+npm cache clean --force
+
+# Step 5: Install dependencies fresh
+npm install
+
+# Step 6: Try the build again
 npm run build
+
+# Step 7: If successful, restart the service
+sudo systemctl restart heroesofthebrain
 ```
 
