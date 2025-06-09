@@ -91,7 +91,7 @@
     /* Horizontal wave decoration */
     .wave-decoration {
       position: absolute;
-      width: 100%;
+      width: 100vw;
       height: 120px;
       top: 0;
       left: 0;

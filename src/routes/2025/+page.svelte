@@ -861,7 +861,7 @@
   </section>
 
   <!-- Registration CTA -->
-  <div id="register" class="flex flex-col items-center text-center pb-16 section" class:visible={visible[10]} bind:this={sections[10]}>
+  <div id="register" class="flex flex-col items-center text-center  section" class:visible={visible[10]} bind:this={sections[10]}>
     <!-- <UnderlinedHeader title={c.registrationTitle} />
     <JoinUsSection year={2025} /> -->
     <RegisterSection 
