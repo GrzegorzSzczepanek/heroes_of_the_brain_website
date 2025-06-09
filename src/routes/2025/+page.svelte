@@ -7,6 +7,7 @@
   // Existing components
   import LandingPage from '$lib/components/LandingPage.svelte';
   import HackatonInfoSection from '$lib/components/HackatonInfoSection.svelte';
+  import RegisterSection from '$lib/components/RegisterSection.svelte';
   import Agenda from '$lib/components/Agenda.svelte';
   import CategorySection from '$lib/components/CategorySection.svelte';
   import Partners from '$lib/components/Partners.svelte';
@@ -350,6 +351,7 @@
   .key-info-section {
     background-color: #f9fafb;
     position: relative;
+    overflow: hidden;
   }
   
   .key-info-grid {
@@ -424,6 +426,8 @@
   .jury-section {
     background-color: #f3f4f6;
     position: relative;
+    overflow: hidden;
+
   }
   
   .jury-grid {
@@ -858,7 +862,15 @@
 
   <!-- Registration CTA -->
   <div id="register" class="flex flex-col items-center text-center pb-16 section" class:visible={visible[10]} bind:this={sections[10]}>
-    <UnderlinedHeader title={c.registrationTitle} />
-    <JoinUsSection year={2025} />
+    <!-- <UnderlinedHeader title={c.registrationTitle} />
+    <JoinUsSection year={2025} /> -->
+    <RegisterSection 
+  visible={visible}
+  sections={sections}
+  sectionIndex={10}
+  c={c}
+/>
+
+    
   </div>
 </div>

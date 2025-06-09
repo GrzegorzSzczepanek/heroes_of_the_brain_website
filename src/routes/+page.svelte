@@ -120,7 +120,12 @@
     .gradient-button {
       background: linear-gradient(to right, #8b5cf6, #6366f1);
       transition: all 0.3s ease;
+      
     }
+    .gradient-button, .hero-bg a {
+  position: relative;
+  z-index: 10; /* Higher value than any overlay */
+}
     
     .gradient-button:hover {
       transform: translateY(-2px);
