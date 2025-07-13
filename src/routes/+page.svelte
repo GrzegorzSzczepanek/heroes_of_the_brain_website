@@ -1,6 +1,76 @@
 <script>
   import { onMount } from 'svelte';
   import { browser } from '$app/environment';
+  import { writable } from 'svelte/store';
+  
+  // Language store
+  const isPolish = writable(true);
+  
+  // Translations
+  const translations = {
+    pl: {
+      title: "Heroes of the Brain",
+      subtitle: "2025",
+      description: "Odkrywaj przyszłość interakcji mózg-komputer",
+      comingSoon: "Nadchodzi wkrótce!",
+      eventDate: "Data Wydarzenia",
+      eventDateText: "18-20 listopada 2025\nPolitechnika Wrocławska, D-21",
+      goal: "Cel Hackathonu",
+      goalText: "Rozwijanie zaawansowanych interfejsów mózg-komputer (BCI) poprzez tworzenie innowacyjnych systemów opartych na sztucznej inteligencji",
+      topic: "Tematyka",
+      topicText: "Brain-Computer Interfaces, Neuroinformatyka, AI, Sterowanie myślami, Wirtualne klawiatury, Protezy",
+      audience: "Dla Kogo",
+      audienceText: "Entuzjaści neuroinformatyki, programiści, pasjonaci AI, studenci, profesjonaliści - wszyscy zainteresowani przyszłością BCI",
+      registration: "Zapisy",
+      registrationText: "Zapisy jeszcze nie ruszyły!",
+      registrationSubtext: "Będziemy informować o otwarciu rejestracji na naszych kanałach społecznościowych",
+      countdown: "Odliczanie do hackathonu",
+      days: "Dni",
+      hours: "Godzin",
+      minutes: "Minut",
+      seconds: "Sekund",
+      organizers: "Organizatorzy",
+      contact: "Kontakt:",
+      location: "Lokalizacja:",
+      address: "Adres:",
+      footerText: "Obserwuj nas na social mediach, aby być na bieżąco!"
+    },
+    en: {
+      title: "Heroes of the Brain",
+      subtitle: "2025",
+      description: "Discover the future of brain-computer interaction",
+      comingSoon: "Coming Soon!",
+      eventDate: "Event Date",
+      eventDateText: "November 18-20, 2025\nWrocław University of Technology, D-21",
+      goal: "Hackathon Goal",
+      goalText: "Developing advanced brain-computer interfaces (BCI) by creating innovative systems based on artificial intelligence models",
+      topic: "Topics",
+      topicText: "Brain-Computer Interfaces, Neuroinformatics, AI, Mind control, Virtual keyboards, Prosthetics",
+      audience: "For Whom",
+      audienceText: "Neuroinformatics enthusiasts, programmers, AI enthusiasts, students, professionals - everyone interested in the future of BCI",
+      registration: "Registration",
+      registrationText: "Registration hasn't started yet!",
+      registrationSubtext: "We will inform about registration opening on our social media channels",
+      countdown: "Countdown to hackathon",
+      days: "Days",
+      hours: "Hours",
+      minutes: "Minutes",
+      seconds: "Seconds",
+      organizers: "Organizers",
+      contact: "Contact:",
+      location: "Location:",
+      address: "Address:",
+      footerText: "Follow us on social media to stay updated!"
+    }
+  };
+
+  let currentLang = 'pl';
+  $: t = translations[currentLang];
+
+  function toggleLanguage() {
+    currentLang = currentLang === 'pl' ? 'en' : 'pl';
+    isPolish.set(currentLang === 'pl');
+  }
   
   // Block navigation and routing
   onMount(() => {
@@ -37,7 +107,15 @@
     // Prevent default navigation
     const handleClick = (e) => {
       const target = e.target.closest('a');
-      if (target && target.href && !target.href.includes('mailto:')) {
+      if (target && target.href) {
+        // Allow social media links, email links, and external links
+        if (target.href.includes('mailto:') || 
+            target.href.includes('facebook.com') || 
+            target.href.includes('instagram.com') || 
+            target.href.includes('linkedin.com') ||
+            target.target === '_blank') {
+          return; // Allow these links to work normally
+        }
         e.preventDefault();
         e.stopPropagation();
       }
@@ -79,7 +157,6 @@
     overflow-x: hidden;
   }
 
-  /* Override any existing styles */
   :global(*) {
     color: white !important;
   }
@@ -131,7 +208,7 @@
 
   .info-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
     margin: 3rem 0;
   }
@@ -166,6 +243,7 @@
     font-size: 1.1rem;
     line-height: 1.6;
     color: rgba(255, 255, 255, 0.9) !important;
+    white-space: pre-line;
   }
 
   .registration-section {
@@ -313,6 +391,61 @@
 
   .footer p {
     color: rgba(255, 255, 255, 0.7) !important;
+    margin-bottom: 1rem;
+  }
+
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1rem;
+  }
+
+  .social-link {
+    color: rgba(255, 255, 255, 0.7) !important;
+    font-size: 2rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+
+  .social-link:hover {
+    color: #E61D9F !important;
+    transform: scale(1.2);
+  }
+
+  .language-switcher {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    z-index: 100;
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .lang-btn {
+    width: 50px;
+    height: 35px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: white;
+  }
+
+  .lang-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+  }
+
+  .lang-btn.active {
+    background: #E61D9F;
+    border-color: #E61D9F;
   }
 
   .neural-bg {
@@ -368,8 +501,43 @@
     .countdown-number {
       font-size: 2rem;
     }
+
+    .language-switcher {
+      top: 1rem;
+      right: 1rem;
+    }
+
+    .lang-btn {
+      width: 45px;
+      height: 32px;
+      font-size: 0.9rem;
+    }
+
+    .social-links {
+      gap: 1.5rem;
+    }
+
+    .social-link {
+      font-size: 1.8rem;
+    }
   }
 </style>
+
+<!-- Language Switcher -->
+<div class="language-switcher">
+  <button 
+    class="lang-btn {currentLang === 'pl' ? 'active' : ''}" 
+    on:click={() => currentLang = 'pl'}
+  >
+    PL
+  </button>
+  <button 
+    class="lang-btn {currentLang === 'en' ? 'active' : ''}" 
+    on:click={() => currentLang = 'en'}
+  >
+    EN
+  </button>
+</div>
 
 <!-- Neural network background animation -->
 <div class="neural-bg">
@@ -384,72 +552,72 @@
 <div class="container">
   <div class="hero-section">
     <div class="logo">🧠</div>
-    <h1>Heroes of the Brain</h1>
-    <h2 class="subtitle">2025</h2>
-    <p class="subtitle">Odkrywaj przyszłość interakcji mózg-komputer</p>
+    <h1>{t.title}</h1>
+    <h2 class="subtitle">{t.subtitle}</h2>
+    <p class="subtitle">{t.description}</p>
     
-    <div class="coming-soon">Nadchodzi wkrótce!</div>
+    <div class="coming-soon">{t.comingSoon}</div>
   </div>
 
   <div class="info-grid">
     <div class="info-card">
       <div class="info-icon">📅</div>
-      <div class="info-title">Data Wydarzenia</div>
-      <div class="info-text">18-20 listopada 2025<br/>Politechnika Wrocławska, D-21</div>
+      <div class="info-title">{t.eventDate}</div>
+      <div class="info-text">{t.eventDateText}</div>
     </div>
 
     <div class="info-card">
       <div class="info-icon">🎯</div>
-      <div class="info-title">Cel Hackathonu</div>
-      <div class="info-text">Rozwijanie zaawansowanych interfejsów mózg-komputer (BCI) poprzez tworzenie innowacyjnych systemów opartych na sztucznej inteligencji</div>
+      <div class="info-title">{t.goal}</div>
+      <div class="info-text">{t.goalText}</div>
     </div>
 
     <div class="info-card">
       <div class="info-icon">🧠</div>
-      <div class="info-title">Tematyka</div>
-      <div class="info-text">Brain-Computer Interfaces, Neuroinformatyka, AI, Sterowanie myślami, Wirtualne klawiatury, Protezy</div>
+      <div class="info-title">{t.topic}</div>
+      <div class="info-text">{t.topicText}</div>
     </div>
 
     <div class="info-card">
       <div class="info-icon">👥</div>
-      <div class="info-title">Dla Kogo</div>
-      <div class="info-text">Entuzjaści neuroinformatyki, programiści, pasjonaci AI, studenci, profesjonaliści - wszyscy zainteresowani przyszłością BCI</div>
+      <div class="info-title">{t.audience}</div>
+      <div class="info-text">{t.audienceText}</div>
     </div>
   </div>
 
   <div class="registration-section">
-    <h2 class="section-title">Zapisy</h2>
+    <h2 class="section-title">{t.registration}</h2>
     <div class="registration-info">
       <div class="info-icon">📝</div>
-      <p class="registration-text">Zapisy jeszcze nie ruszyły!</p>
-      <p class="registration-subtext">Będziemy informować o otwarciu rejestracji na naszych kanałach społecznościowych</p>
+      <p class="registration-text">{t.registrationText}</p>
+      <p class="registration-subtext">{t.registrationSubtext}</p>
     </div>
   </div>
 
   <div class="countdown-section">
-    <h2 class="section-title">Odliczanie do hackathonu</h2>
+    <h2 class="section-title">{t.countdown}</h2>
     <div class="countdown-container">
       <div class="countdown-item">
         <div class="countdown-number" id="days">000</div>
-        <div class="countdown-label">Dni</div>
+        <div class="countdown-label">{t.days}</div>
       </div>
       <div class="countdown-item">
         <div class="countdown-number" id="hours">00</div>
-        <div class="countdown-label">Godzin</div>
+        <div class="countdown-label">{t.hours}</div>
       </div>
       <div class="countdown-item">
         <div class="countdown-number" id="minutes">00</div>
-        <div class="countdown-label">Minut</div>
+        <div class="countdown-label">{t.minutes}</div>
       </div>
       <div class="countdown-item">
         <div class="countdown-number" id="seconds">00</div>
-        <div class="countdown-label">Sekund</div>
+        <div class="countdown-label">{t.seconds}</div>
       </div>
     </div>
   </div>
 
   <div class="contact-info">
-    <h2 class="contact-title">Organizatorzy</h2>
+    <h2 class="contact-title">{t.organizers}</h2>
     
     <div class="organizers">
       <div class="organizer">Koło Naukowe "Neuron"</div>
@@ -457,13 +625,27 @@
     </div>
     
     <div class="contact-details">
-      <p><strong>Kontakt:</strong> <a href="mailto:heroesofthebrain.help@gmail.com" style="color: #E61D9F !important;">heroesofthebrain.help@gmail.com</a></p>
-      <p><strong>Lokalizacja:</strong> Politechnika Wrocławska, Budynek D-21</p>
-      <p><strong>Adres:</strong> plac Grunwaldzki 11, 50-378 Wrocław, Polska</p>
+      <p><strong>{t.contact}</strong> <a href="mailto:heroesofthebrain.help@gmail.com" style="color: #E61D9F !important;">heroesofthebrain.help@gmail.com</a></p>
+      <p><strong>{t.location}</strong> {currentLang === 'pl' ? 'Politechnika Wrocławska, Budynek D-21' : 'Wrocław University of Technology, Building D-21'}</p>
+      <p><strong>{t.address}</strong> {currentLang === 'pl' ? 'plac Grunwaldzki 11, 50-378 Wrocław, Polska' : 'Grunwaldzki Square 11, 50-378 Wrocław, Poland'}</p>
     </div>
   </div>
 
   <div class="footer">
-    <p>Obserwuj nas na social mediach, aby być na bieżąco!</p>
+    <p>{t.footerText}</p>
+    <div class="social-links">
+      <a href="https://www.facebook.com/heroesofthebrain" target="_blank" rel="noopener noreferrer" class="social-link">
+        📘
+      </a>
+      <a href="https://www.instagram.com/knneuron_/" target="_blank" rel="noopener noreferrer" class="social-link">
+        📷
+      </a>
+      <a href="https://www.linkedin.com/company/kn-neuron/" target="_blank" rel="noopener noreferrer" class="social-link">
+        💼
+      </a>
+      <a href="mailto:heroesofthebrain.help@gmail.com" class="social-link">
+        📧
+      </a>
+    </div>
   </div>
 </div>
