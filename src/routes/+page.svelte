@@ -1,443 +1,469 @@
-<script lang="ts">
-    import { onMount } from 'svelte';
-    import { isPolish } from '../stores/languageStore';
-    import UnderlinedHeader from '$lib/components/UnderlinedHeader.svelte';
-    import JoinUsSection from '$lib/components/JoinUsSection.svelte';
-    import { fade, fly } from 'svelte/transition';
-    import { derived } from 'svelte/store';
-    
-    let visible = false;
-    
-    // Translations
-    const tPL = {
-      siteTitle: "Heroes of the Brain 2025",
-      subtitle: "Odkrywaj przyszłość interakcji mózg-komputer",
-      btnPrimary: "Edycja 2025",
-      btnSecondary: "Poprzednie Edycje",
-      editions: "Edycje Hackathonu",
-      ctaSection: "Dołącz do nas!",
-      aboutTitle: "O Hackathonie",
-      aboutDesc: "Heroes of the Brain to prestiżowy hackathon koncentrujący się na innowacjach w dziedzinie interfejsów mózg-komputer. Dołącz do nas i twórz przełomowe rozwiązania na styku neurobiologii i technologii.",
-      highlights: "Najważniejsze informacje",
-      date: "18-20 listopada 2025",
-      location: "Politechnika Wrocławska",
-      prizes: "Nagrody TBA",
-      applyNow: "Zgłoś się teraz",
-      learnMore: "Dowiedz się więcej",
-      partners: "Partnerzy",
-      edition2025: "Interfejsy mózg-komputer w najnowszym wydaniu",
-      edition2024: "Gdzie wszystko się zaczęło – spojrzenie na naszą pierwszą edycję",
-      joinDesc: "Zostań częścią społeczności innowatorów pracujących nad przyszłością interakcji człowiek-komputer",
-      newsletter: "Zapisz się do newslettera",
-      yourEmail: "Twój email",
-      subscribe: "Zapisz się"
-    };
-    
-    const tEN = {
-      siteTitle: "Heroes of the Brain 2025",
-      subtitle: "Explore the Future of Brain-Computer Interfaces",
-      btnPrimary: "2025 Edition",
-      btnSecondary: "Previous Editions", 
-      editions: "Hackathon Editions",
-      ctaSection: "Join Us!",
-      aboutTitle: "About the Hackathon",
-      aboutDesc: "Heroes of the Brain is a prestigious hackathon focused on innovations in brain-computer interfaces. Join us and create breakthrough solutions at the intersection of neuroscience and technology.",
-      highlights: "Key Highlights",
-      date: "November 18-20, 2025",
-      location: "Wrocław University of Science and Technology",
-      prizes: "Prizes TBA",
-      applyNow: "Apply Now",
-      learnMore: "Learn More",
-      partners: "Partners",
-      edition2025: "Brain-computer interfaces in their newest edition",
-      edition2024: "Where it all began – a look back at our inaugural edition",
-      joinDesc: "Become part of the community of innovators working on the future of human-computer interaction",
-      newsletter: "Subscribe to our newsletter",
-      yourEmail: "Your email",
-      subscribe: "Subscribe"
-    };
-    
-    export const t = derived(isPolish, $p => $p ? tPL : tEN);
-    let tr;
-    t.subscribe(v => tr = v);
-    
-    onMount(() => {
-      visible = true;
-    });
-    
-    const partners = [
-      { name: "University Partner", logo: "/images/university-logo.png" },
-      { name: "Tech Company", logo: "/images/tech-logo.png" },
-      { name: "Research Institute", logo: "/images/research-logo.png" },
-      { name: "Innovation Lab", logo: "/images/lab-logo.png" },
-    ];
-  </script>
+<script>
+  import { onMount } from 'svelte';
+  import { browser } from '$app/environment';
   
-  <style>
-    .hero-bg {
-      background: linear-gradient(135deg, #4c1d95 0%, #5b21b6 50%, #4338ca 100%);
-      position: relative;
-      overflow: hidden;
-    }
+  // Block navigation and routing
+  onMount(() => {
+    if (!browser) return;
     
-    .hero-bg::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-image: url('/images/hero-2025.webp');
-      background-size: cover;
-      background-position: center;
-      opacity: 0.2;
-      z-index: 0;
-      mix-blend-mode: luminosity;
-    }
+    // Countdown functionality
+    const targetDate = new Date('2025-11-18T09:00:00').getTime();
     
-    .neural-paths {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      opacity: 0.4;
-      background-image: 
-        radial-gradient(circle at 20% 30%, rgba(139, 92, 246, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 80% 60%, rgba(79, 70, 229, 0.3) 0%, transparent 50%);
-    }
-    
-    .brain-illustration {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      background-image: url('/images/brain-illustration.svg');
-      background-size: contain;
-      background-position: center;
-      background-repeat: no-repeat;
-      opacity: 0.7;
-    }
-    
-    .gradient-button {
-      background: linear-gradient(to right, #8b5cf6, #6366f1);
-      transition: all 0.3s ease;
+    const updateCountdown = () => {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
       
-    }
-    .gradient-button, .hero-bg a {
-  position: relative;
-  z-index: 10; /* Higher value than any overlay */
-}
-    
-    .gradient-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px -5px rgba(107, 70, 193, 0.5);
-    }
-    
-    .card {
-      transition: all 0.3s ease;
-    }
-    
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-    }
-    
-    .highlight-item {
-      background-color: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(4px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-    
-    .brain-dots {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-image: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.5) 1px, transparent 1px);
-      background-size: 20px 20px;
-      opacity: 0.1;
-    }
-    
-    .pulsing-circle {
-      position: absolute;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background-color: rgba(255, 255, 255, 0.1);
-      animation: pulse 3s infinite;
-    }
-    
-    @keyframes pulse {
-      0% { transform: scale(0.8); opacity: 0.5; }
-      50% { transform: scale(1.2); opacity: 0.2; }
-      100% { transform: scale(0.8); opacity: 0.5; }
-    }
-    
-    .section-divider {
-      height: 6px;
-      background: linear-gradient(to right, #c4b5fd, #818cf8, #c4b5fd);
-      margin: 0 auto;
-      border-radius: 3px;
-    }
-  </style>
-  
-  <main class="min-h-screen w-full bg-white">
-    <!-- Hero Section -->
-    <section class="hero-bg min-h-screen flex items-center w-full">
-      <div class="neural-paths"></div>
-      
-      <!-- Main content container -->
-      <div class="container mx-auto px-6 py-16">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-          <!-- Left side - Text content -->
-          <div class="text-white space-y-8">
-            {#if visible}
-              <div in:fade={{ duration: 800 }}>
-                <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-4">
-                  {tr.siteTitle}
-                </h1>
-                <p class="text-xl md:text-2xl text-purple-100 font-light mb-8 max-w-xl">
-                  {tr.subtitle}
-                </p>
-                
-                <!-- Highlight cards -->
-                <div class="grid grid-cols-1 gap-4 my-8 max-w-xl">
-                  <div class="highlight-item rounded-xl p-4 flex items-center space-x-3">
-                    <span class="text-2xl">🗓️</span>
-                    <span class="font-medium">{tr.date}</span>
-                  </div>
-                  <div class="highlight-item rounded-xl p-4 flex items-center space-x-3">
-                    <span class="text-2xl">📍</span>
-                    <span class="font-medium">{tr.location}</span>
-                  </div>
-                  <div class="highlight-item rounded-xl p-4 flex items-center space-x-3">
-                    <span class="text-2xl">🏆</span>
-                    <span class="font-medium">{tr.prizes}</span>
-                  </div>
-                </div>
-                
-                <!-- Call to action buttons -->
-                <div class="flex flex-col sm:flex-row gap-4 mt-8">
-                  <a
-                    href="/2025"
-                    class="gradient-button px-8 py-4 text-white font-semibold rounded-full shadow-lg text-center"
-                  >
-                    {tr.btnPrimary}
-                  </a>
-                  <a
-                    href="/2024"
-                    class="px-8 py-4 border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-purple-900 transition-all text-center"
-                  >
-                    {tr.btnSecondary}
-                  </a>
-                </div>
-              </div>
-            {/if}
-          </div>
-          
-          <!-- Right side - Visual element -->
-          <div class="hidden lg:block relative h-full">
-            <!-- Brain visualization -->
-            <div class="relative h-[500px] w-full">
-              <!-- Decorative elements -->
-              <div class="brain-dots"></div>
-              
-              <!-- Brain illustration placeholder - replace with actual image -->
-              <div class="brain-illustration"></div>
-              
-              <!-- Animated pulsing circles -->
-              {#each Array(5) as _, i}
-                <div 
-                  class="pulsing-circle"
-                  style="
-                    top: {20 + i * 15}%; 
-                    left: {20 + i * 15}%; 
-                    animation-delay: {i * 0.5}s;
-                    width: {30 + i * 10}px;
-                    height: {30 + i * 10}px;
-                  "
-                ></div>
-              {/each}
-              
-              <!-- Neural connections -->
-              <svg class="absolute inset-0 w-full h-full opacity-60" viewBox="0 0 500 500">
-                <line x1="100" y1="100" x2="400" y2="150" stroke="white" stroke-width="1" opacity="0.3" />
-                <line x1="150" y1="250" x2="350" y2="200" stroke="white" stroke-width="1" opacity="0.3" />
-                <line x1="200" y1="150" x2="300" y2="350" stroke="white" stroke-width="1" opacity="0.3" />
-                <line x1="250" y1="100" x2="200" y2="400" stroke="white" stroke-width="1" opacity="0.3" />
-                <line x1="300" y1="200" x2="100" y2="300" stroke="white" stroke-width="1" opacity="0.3" />
-                <circle cx="100" cy="100" r="5" fill="white" opacity="0.5" />
-                <circle cx="150" cy="250" r="5" fill="white" opacity="0.5" />
-                <circle cx="200" cy="150" r="5" fill="white" opacity="0.5" />
-                <circle cx="250" cy="100" r="5" fill="white" opacity="0.5" />
-                <circle cx="300" cy="200" r="5" fill="white" opacity="0.5" />
-                <circle cx="400" cy="150" r="5" fill="white" opacity="0.5" />
-                <circle cx="350" cy="200" r="5" fill="white" opacity="0.5" />
-                <circle cx="300" cy="350" r="5" fill="white" opacity="0.5" />
-                <circle cx="200" cy="400" r="5" fill="white" opacity="0.5" />
-                <circle cx="100" cy="300" r="5" fill="white" opacity="0.5" />
-              </svg>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Scroll indicator -->
-      <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-        <div class="animate-bounce flex flex-col items-center">
-          <span class="text-white text-sm mb-1">Scroll</span>
-          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-          </svg>
-        </div>
-      </div>
-    </section>
-  
-    <!-- About & Editions Section -->
-    <section class="py-16 bg-gray-50">
-      <div class="container mx-auto px-6">
-        <div in:fade={{ duration: 800, delay: 300 }}>
-          <UnderlinedHeader title={tr.aboutTitle} />
-          <p class="text-lg text-gray-700 max-w-3xl mx-auto text-center mt-6 mb-12">
-            {tr.aboutDesc}
-          </p>
-        </div>
+      if (distance > 0) {
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
         
-        <div class="mt-16">
-          <UnderlinedHeader title={tr.editions} />
-          <div class="mt-10 grid gap-8 grid-cols-1 lg:grid-cols-2 max-w-6xl mx-auto">
-            {#each [
-              { year: 2025, desc: tr.edition2025, image: "/images/editions/2025.jpg", accent: "bg-purple-600", status: "New" },
-              { year: 2024, desc: tr.edition2024, image: "/images/editions/2024.jpg", accent: "bg-blue-600", status: "Past" }
-            ] as edition, i}
-              <div in:fly={{ y: 50, duration: 800, delay: 400 + i * 200 }}>
-                <a
-                  href={`/${edition.year}`}
-                  class="card bg-white rounded-xl shadow-md overflow-hidden block h-full"
-                >
-                  <div class="relative">
-                    <!-- Status badge -->
-                    <div class="absolute top-4 right-4 z-10">
-                      <span class={`${edition.accent} text-white text-xs px-3 py-1 rounded-full font-medium`}>
-                        {edition.status}
-                      </span>
-                    </div>
-                    
-                    <div
-                      class="h-56 bg-cover bg-center relative"
-                      style={`background-image:url('${edition.image}')`}
-                    >
-                      <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                      <div class="absolute bottom-4 left-6 text-white">
-                        <h2 class="text-3xl font-bold">{edition.year}</h2>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div class="p-6">
-                    <p class="text-gray-700 mb-4">
-                      {edition.desc}
-                    </p>
-                    <div class="flex justify-end">
-                      <span class="text-purple-600 font-medium flex items-center hover:translate-x-1 transition-transform">
-                        {tr.learnMore}
-                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                      </span>
-                    </div>
-                  </div>
-                </a>
-              </div>
-            {/each}
-          </div>
-        </div>
+        const daysEl = document.getElementById('days');
+        const hoursEl = document.getElementById('hours');
+        const minutesEl = document.getElementById('minutes');
+        const secondsEl = document.getElementById('seconds');
+        
+        if (daysEl) daysEl.textContent = String(days).padStart(3, '0');
+        if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
+        if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, '0');
+        if (secondsEl) secondsEl.textContent = String(seconds).padStart(2, '0');
+      }
+    };
+    
+    updateCountdown();
+    const countdownInterval = setInterval(updateCountdown, 1000);
+    
+    // Prevent default navigation
+    const handleClick = (e) => {
+      const target = e.target.closest('a');
+      if (target && target.href && !target.href.includes('mailto:')) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    };
+    
+    // Block browser navigation
+    const handlePopState = (e) => {
+      e.preventDefault();
+      window.history.pushState(null, '', window.location.pathname);
+    };
+    
+    document.addEventListener('click', handleClick, true);
+    window.addEventListener('popstate', handlePopState);
+    
+    // Push initial state to prevent back navigation
+    window.history.pushState(null, '', window.location.pathname);
+    
+    return () => {
+      document.removeEventListener('click', handleClick, true);
+      window.removeEventListener('popstate', handlePopState);
+      clearInterval(countdownInterval);
+    };
+  });
+</script>
+
+<svelte:head>
+  <title>Heroes of the Brain 2025 - Wkrótce</title>
+  <meta name="description" content="Hackathon Heroes of the Brain 2025 - 18-20 listopada, Politechnika Wrocławska. Odkrywaj przyszłość interfejsów mózg-komputer!" />
+</svelte:head>
+
+<style>
+  :global(body) {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #36454F 0%, #52378B 100%) !important;
+    color: white;
+    font-family: 'Arial', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Override any existing styles */
+  :global(*) {
+    color: white !important;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    min-height: 100vh;
+    position: relative;
+    z-index: 10;
+  }
+
+  .hero-section {
+    text-align: center;
+    padding: 4rem 0;
+  }
+
+  .logo {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 2rem;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #52378B !important;
+    font-weight: bold;
+  }
+
+  h1 {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, #E61D9F, #9333ea);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 3rem;
+    opacity: 0.9;
+    color: white !important;
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+  }
+
+  .info-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+
+  .info-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .info-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .info-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #E61D9F !important;
+  }
+
+  .info-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9) !important;
+  }
+
+  .registration-section {
+    background: rgba(255, 193, 7, 0.2);
+    border: 2px solid #ffc107;
+    border-radius: 20px;
+    padding: 3rem;
+    margin: 3rem 0;
+    text-align: center;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: white !important;
+  }
+
+  .registration-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .registration-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffc107 !important;
+    margin: 1rem 0;
+  }
+
+  .registration-subtext {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9) !important;
+    margin-bottom: 0;
+  }
+
+  .countdown-section {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    padding: 3rem;
+    margin: 3rem 0;
+    text-align: center;
+  }
+
+  .countdown-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+
+  .countdown-item {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid #E61D9F;
+    border-radius: 15px;
+    padding: 1.5rem;
+    min-width: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .countdown-number {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #E61D9F !important;
+    font-family: 'Courier New', monospace;
+  }
+
+  .countdown-label {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    color: white !important;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  .coming-soon {
+    background: linear-gradient(45deg, #ff6b6b, #feca57);
+    color: white !important;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: inline-block;
+    margin: 2rem 0;
+    animation: pulse 2s infinite;
+    cursor: default;
+    border: none;
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+
+  .contact-info {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 2rem;
+    margin: 3rem 0;
+    text-align: center;
+  }
+
+  .contact-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: white !important;
+  }
+
+  .organizers {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin: 2rem 0;
+  }
+
+  .organizer {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 1rem 2rem;
+    font-weight: bold;
+    color: white !important;
+  }
+
+  .contact-details {
+    margin-top: 2rem;
+  }
+
+  .contact-details p {
+    margin: 0.5rem 0;
+    color: rgba(255, 255, 255, 0.9) !important;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 2rem 0;
+    opacity: 0.7;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin-top: 3rem;
+  }
+
+  .footer p {
+    color: rgba(255, 255, 255, 0.7) !important;
+  }
+
+  .neural-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.1;
+  }
+
+  .neural-node {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: white;
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2.5rem;
+    }
+    
+    .subtitle {
+      font-size: 1.2rem;
+    }
+    
+    .info-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .container {
+      padding: 1rem;
+    }
+
+    .countdown-container {
+      gap: 1rem;
+    }
+
+    .countdown-item {
+      min-width: 100px;
+      padding: 1rem;
+    }
+
+    .countdown-number {
+      font-size: 2rem;
+    }
+  }
+</style>
+
+<!-- Neural network background animation -->
+<div class="neural-bg">
+  {#each Array(20) as _, i}
+    <div 
+      class="neural-node" 
+      style="left: {Math.random() * 100}%; top: {Math.random() * 100}%; animation-delay: {Math.random() * 6}s;"
+    ></div>
+  {/each}
+</div>
+
+<div class="container">
+  <div class="hero-section">
+    <div class="logo">🧠</div>
+    <h1>Heroes of the Brain</h1>
+    <h2 class="subtitle">2025</h2>
+    <p class="subtitle">Odkrywaj przyszłość interakcji mózg-komputer</p>
+    
+    <div class="coming-soon">Nadchodzi wkrótce!</div>
+  </div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="info-icon">📅</div>
+      <div class="info-title">Data Wydarzenia</div>
+      <div class="info-text">18-20 listopada 2025<br/>Politechnika Wrocławska, D-21</div>
+    </div>
+
+    <div class="info-card">
+      <div class="info-icon">🎯</div>
+      <div class="info-title">Cel Hackathonu</div>
+      <div class="info-text">Rozwijanie zaawansowanych interfejsów mózg-komputer (BCI) poprzez tworzenie innowacyjnych systemów opartych na sztucznej inteligencji</div>
+    </div>
+
+    <div class="info-card">
+      <div class="info-icon">🧠</div>
+      <div class="info-title">Tematyka</div>
+      <div class="info-text">Brain-Computer Interfaces, Neuroinformatyka, AI, Sterowanie myślami, Wirtualne klawiatury, Protezy</div>
+    </div>
+
+    <div class="info-card">
+      <div class="info-icon">👥</div>
+      <div class="info-title">Dla Kogo</div>
+      <div class="info-text">Entuzjaści neuroinformatyki, programiści, pasjonaci AI, studenci, profesjonaliści - wszyscy zainteresowani przyszłością BCI</div>
+    </div>
+  </div>
+
+  <div class="registration-section">
+    <h2 class="section-title">Zapisy</h2>
+    <div class="registration-info">
+      <div class="info-icon">📝</div>
+      <p class="registration-text">Zapisy jeszcze nie ruszyły!</p>
+      <p class="registration-subtext">Będziemy informować o otwarciu rejestracji na naszych kanałach społecznościowych</p>
+    </div>
+  </div>
+
+  <div class="countdown-section">
+    <h2 class="section-title">Odliczanie do hackathonu</h2>
+    <div class="countdown-container">
+      <div class="countdown-item">
+        <div class="countdown-number" id="days">000</div>
+        <div class="countdown-label">Dni</div>
       </div>
-    </section>
-  
-    <!-- Partners Section -->
-    <section class="py-12 bg-white">
-      <div class="container mx-auto px-6">
-        <h3 class="text-center text-xl font-medium text-gray-800 mb-8">{tr.partners}</h3>
-        <div class="flex justify-center items-center gap-12 flex-wrap">
-          {#each partners as partner}
-            <div class="flex items-center justify-center h-20 grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100">
-              <!-- Replace these with actual partner logos -->
-              <div class="w-40 h-16 bg-gray-200 rounded flex items-center justify-center">
-                <span class="text-gray-500 text-sm">{partner.name}</span>
-              </div>
-            </div>
-          {/each}
-        </div>
+      <div class="countdown-item">
+        <div class="countdown-number" id="hours">00</div>
+        <div class="countdown-label">Godzin</div>
       </div>
-    </section>
-  
-    <!-- Section divider -->
-    <div class="section-divider w-1/3 max-w-md"></div>
-  
-    <!-- Join Us Section -->
-    <section class="py-16 bg-gradient-to-br from-indigo-900 via-purple-900 to-gray-900 text-white">
-      <div class="container mx-auto px-6">
-        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-          <!-- Left Content -->
-          <div class="space-y-6">
-            <div in:fade={{ duration: 800 }}>
-              <h2 class="text-3xl md:text-4xl font-bold">{tr.ctaSection}</h2>
-              <p class="text-lg text-purple-100 mt-4">
-                {tr.joinDesc}
-              </p>
-              <div class="pt-6">
-                <a 
-                  href="/apply"
-                  class="inline-block px-8 py-4 gradient-button text-white font-semibold rounded-full shadow-lg"
-                >
-                  {tr.applyNow}
-                </a>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Newsletter -->
-          <div class="bg-white/10 backdrop-blur-md rounded-xl p-8 border border-white/20">
-            <div in:fly={{ x: 50, duration: 800 }}>
-              <h3 class="text-2xl font-bold text-white mb-4">{tr.newsletter}</h3>
-              <p class="text-purple-100 mb-6">
-                Stay updated with all the news about Heroes of the Brain 2025!
-              </p>
-              <form class="space-y-4">
-                <div>
-                  <label for="email" class="sr-only">{tr.yourEmail}</label>
-                  <input 
-                    type="email" 
-                    id="email" 
-                    placeholder={tr.yourEmail}
-                    class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/20 text-white placeholder-purple-200 focus:outline-none focus:ring-2 focus:ring-purple-500"
-                  />
-                </div>
-                <button 
-                  type="submit"
-                  class="w-full px-4 py-3 bg-white text-purple-900 font-medium rounded-lg hover:bg-purple-50 transition"
-                >
-                  {tr.subscribe}
-                </button>
-              </form>
-              
-              <!-- Social media links -->
-              <div class="mt-6 flex justify-center space-x-4">
-                {#each ['facebook', 'twitter', 'instagram', 'linkedin'] as social}
-                  <a href={`https://${social}.com/heroesofthebrain`} class="text-white hover:text-purple-300">
-                    <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
-                      <!-- Replace with actual social icons -->
-                      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10c0-5.523-4.477-10-10-10z"/>
-                      </svg>
-                    </div>
-                  </a>
-                {/each}
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="countdown-item">
+        <div class="countdown-number" id="minutes">00</div>
+        <div class="countdown-label">Minut</div>
       </div>
-    </section>
-  
-  </main>
+      <div class="countdown-item">
+        <div class="countdown-number" id="seconds">00</div>
+        <div class="countdown-label">Sekund</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-info">
+    <h2 class="contact-title">Organizatorzy</h2>
+    
+    <div class="organizers">
+      <div class="organizer">Koło Naukowe "Neuron"</div>
+      <div class="organizer">Samorząd WIT PWR</div>
+    </div>
+    
+    <div class="contact-details">
+      <p><strong>Kontakt:</strong> <a href="mailto:heroesofthebrain.help@gmail.com" style="color: #E61D9F !important;">heroesofthebrain.help@gmail.com</a></p>
+      <p><strong>Lokalizacja:</strong> Politechnika Wrocławska, Budynek D-21</p>
+      <p><strong>Adres:</strong> plac Grunwaldzki 11, 50-378 Wrocław, Polska</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>Obserwuj nas na social mediach, aby być na bieżąco!</p>
+  </div>
+</div>
