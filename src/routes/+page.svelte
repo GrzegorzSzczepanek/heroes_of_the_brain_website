@@ -32,8 +32,7 @@
       organizers: "Organizatorzy",
       contact: "Kontakt:",
       location: "Lokalizacja:",
-      address: "Adres:",
-      footerText: "Obserwuj nas na social mediach, aby być na bieżąco!"
+      address: "Adres:"
     },
     en: {
       title: "Heroes of the Brain",
@@ -59,8 +58,7 @@
       organizers: "Organizers",
       contact: "Contact:",
       location: "Location:",
-      address: "Address:",
-      footerText: "Follow us on social media to stay updated!"
+      address: "Address:"
     }
   };
 
@@ -381,38 +379,6 @@
     color: rgba(255, 255, 255, 0.9) !important;
   }
 
-  .footer {
-    text-align: center;
-    padding: 2rem 0;
-    opacity: 0.7;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    margin-top: 3rem;
-  }
-
-  .footer p {
-    color: rgba(255, 255, 255, 0.7) !important;
-    margin-bottom: 1rem;
-  }
-
-  .social-links {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin-top: 1rem;
-  }
-
-  .social-link {
-    color: rgba(255, 255, 255, 0.7) !important;
-    font-size: 2rem;
-    transition: all 0.3s ease;
-    text-decoration: none;
-  }
-
-  .social-link:hover {
-    color: #E61D9F !important;
-    transform: scale(1.2);
-  }
-
   .language-switcher {
     position: fixed;
     top: 2rem;
@@ -511,14 +477,6 @@
       width: 45px;
       height: 32px;
       font-size: 0.9rem;
-    }
-
-    .social-links {
-      gap: 1.5rem;
-    }
-
-    .social-link {
-      font-size: 1.8rem;
     }
   }
 </style>
@@ -631,21 +589,5 @@
     </div>
   </div>
 
-  <div class="footer">
-    <p>{t.footerText}</p>
-    <div class="social-links">
-      <a href="https://www.facebook.com/heroesofthebrain" target="_blank" rel="noopener noreferrer" class="social-link">
-        📘
-      </a>
-      <a href="https://www.instagram.com/knneuron_/" target="_blank" rel="noopener noreferrer" class="social-link">
-        📷
-      </a>
-      <a href="https://www.linkedin.com/company/kn-neuron/" target="_blank" rel="noopener noreferrer" class="social-link">
-        💼
-      </a>
-      <a href="mailto:heroesofthebrain.help@gmail.com" class="social-link">
-        📧
-      </a>
-    </div>
-  </div>
+
 </div>
