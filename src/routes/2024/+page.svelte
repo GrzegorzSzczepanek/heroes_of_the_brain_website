@@ -59,9 +59,9 @@
 	<ContactSection />
 	<Faq />
 
-    <div id="zapisy" class="flex flex-col align-middle justify-center text-center pb-16">
+    <!-- <div id="zapisy" class="flex flex-col align-middle justify-center text-center pb-16">
 		<UnderlinedHeader title={currentContent.idk} />
 		<JoinUsSection />
-	  </div>
+	  </div> -->
   </div>
   

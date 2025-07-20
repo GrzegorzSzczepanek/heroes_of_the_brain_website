@@ -6,14 +6,16 @@
   import { onMount } from 'svelte';
 
   const contentPL = {
-    imageUrl: "/images/hackaton_title_page.webp",
+    imageUrl: "/images/hackaton_title_page.jpg",
     title: "Chcesz wziąć udział?",
     description: `
       Dołącz do nas na nadchodzący hackathon! To doskonała okazja, aby sprawdzić swoje umiejętności, 
-      poznać nowych ludzi i pracować nad ekscytującymi projektami BCI.
+      poznać nowych ludzi i pracować nad ekscytującymi projektami BCI. 
+      
+      Zapisy rozpoczną się wkrótce - śledź nasze media społecznościowe, aby nie przegapić startu rejestracji!
     `,
-    buttonText: "Zgłoś się!",
-    url: "https://forms.gle/KKdoUBMmaA1y22dU6",
+    buttonText: "Zapisy wkrótce",
+    buttonSubtext: "Rejestracja zostanie uruchomiona na przełomie sierpnia i września 2025",
     countdown: {
       days: "Dni",
       hours: "Godz",
@@ -24,14 +26,16 @@
   };
 
   const contentEN = {
-    imageUrl: "/images/hackaton_title_page.webp",
+    imageUrl: "/images/hackaton_title_page.jpg",
     title: "Would you like to enter?",
     description: `
       Join us for the upcoming hackathon! It's a great opportunity to test your skills, 
-      meet new people, and work on exciting BCI projects. 
+      meet new people, and work on exciting BCI projects.
+      
+      Registration will open soon - follow our social media to be notified when applications start!
     `,
-    buttonText: "Register now!",
-    url: "https://forms.gle/P9evdZbDyXUDETuC7",
+    buttonText: "Registration Coming Soon",
+    buttonSubtext: "Registration will open in late August/early September 2025",
     countdown: {
       days: "Days",
       hours: "Hours",
@@ -47,7 +51,7 @@
   let visible = false;
 
   // Countdown timer setup
-  const hackathonDate = new Date('2025-09-15T09:00:00'); // Update with your actual date
+  const hackathonDate = new Date('2025-11-29T09:00:00'); // Update with your actual date
   let timeLeft = { days: 0, hours: 0, minutes: 0, seconds: 0 };
 
   function updateCountdown() {
@@ -195,6 +199,7 @@
     color: #e2e8f0;
     line-height: 1.7;
     font-size: 1.1rem;
+    white-space: pre-line; /* To preserve line breaks in the description */
   }
   
   .cta-button {
@@ -205,42 +210,42 @@
     padding: 0.9rem 2rem;
     border-radius: 9999px;
     text-align: center;
-    transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
-    border: none;
-    outline: none;
-    cursor: pointer;
+    cursor: default; /* Changed from pointer since it's not clickable yet */
     box-shadow: 0 8px 20px rgba(109, 40, 217, 0.3);
     z-index: 1;
-  }
-  
-  .cta-button::after {
-    content: "";
-    position: absolute;
-    top: -50%;
-    left: -25%;
-    width: 150%;
-    height: 200%;
-    background: linear-gradient(
-      to bottom right, 
-      rgba(255, 255, 255, 0.2), 
-      rgba(255, 255, 255, 0)
-    );
-    transform: rotate(45deg);
     transition: all 0.3s ease;
-    opacity: 0;
-    z-index: -1;
   }
   
-  .cta-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 25px rgba(109, 40, 217, 0.4);
+  /* No hover effects since it's not clickable */
+  
+  .button-subtext {
+    font-size: 0.8rem;
+    color: #a5b4fc;
+    margin-top: 0.75rem;
+    text-align: center;
+    opacity: 0.8;
   }
   
-  .cta-button:hover::after {
-    left: 100%;
-    opacity: 0.4;
+  /* Notification badge */
+  .notification-badge {
+    display: inline-block;
+    background-color: #ef4444; /* Red */
+    color: white;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+    margin-left: 0.5rem;
+    animation: pulse-badge 2s infinite;
+    vertical-align: middle;
+  }
+  
+  @keyframes pulse-badge {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
   }
   
   .countdown-container {
@@ -408,9 +413,11 @@
               </div>
               
               <div class="mt-8 text-center">
-                <a href={currentContent.url} class="cta-button" target="_blank" rel="noopener noreferrer">
+                <div class="cta-button">
                   {currentContent.buttonText}
-                </a>
+                  <span class="notification-badge">Soon</span>
+                </div>
+                <p class="button-subtext">{currentContent.buttonSubtext}</p>
               </div>
             </div>
           </div>

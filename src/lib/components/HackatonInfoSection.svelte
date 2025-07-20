@@ -1,4 +1,4 @@
-<script defer>
+<script>
   import { isPolish } from '../../stores/languageStore';
   import { derived } from 'svelte/store';
   import ShowMoreTile from './ShowMoreTile.svelte';
@@ -48,7 +48,10 @@
   });
   
   onMount(() => {
-    visible = true;
+    // Set a small timeout to ensure transitions work properly
+    setTimeout(() => {
+      visible = true;
+    }, 100);
   });
 </script>
 
@@ -72,13 +75,20 @@
   
   .neuron {
     position: absolute;
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     background: radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, transparent 70%);
     opacity: 0.6;
     animation: pulse 15s infinite ease-in-out;
     filter: blur(10px);
+  }
+  
+  @media (min-width: 768px) {
+    .neuron {
+      width: 200px;
+      height: 200px;
+    }
   }
   
   @keyframes pulse {
@@ -107,8 +117,8 @@
   .icon-container {
     background: linear-gradient(135deg, #4c1d95 0%, #6d28d9 100%);
     border-radius: 50%;
-    width: 64px;
-    height: 64px;
+    width: 60px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -116,6 +126,13 @@
     box-shadow: 0 10px 25px -5px rgba(109, 40, 217, 0.5);
     position: relative;
     overflow: hidden;
+  }
+  
+  @media (min-width: 768px) {
+    .icon-container {
+      width: 64px;
+      height: 64px;
+    }
   }
   
   .icon-container::after {
@@ -127,11 +144,30 @@
     top: -25%;
     left: -25%;
   }
+
+  .info-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px -5px rgba(124, 58, 237, 0.3);
+  }
+
+  @media (max-width: 640px) {
+    .section-content {
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
+    }
+  }
 </style>
 
-<section class="info-section py-24 px-6" id="HackatonInfo">
+<section class="info-section py-16 sm:py-20 md:py-24 px-4 sm:px-6" id="HackatonInfo">
   <!-- Neural background with animated neurons -->
-  <div class="neural-bg">
+  <div class="neural-bg hidden sm:block">
     <svg width="100%" height="100%" viewBox="0 0 800 600" opacity="0.3">
       <!-- Neural network paths -->
       <path d="M100,100 Q200,50 300,150 T500,200" stroke="white" stroke-width="1" fill="none" opacity="0.5" />
@@ -151,25 +187,25 @@
     </svg>
   </div>
   
-  <!-- Animated neurons -->
-  <div class="neuron" style="top: 10%; left: 5%; animation-delay: 0s;"></div>
-  <div class="neuron" style="top: 60%; left: 15%; animation-delay: 4s;"></div>
-  <div class="neuron" style="top: 30%; right: 10%; animation-delay: 2s;"></div>
-  <div class="neuron" style="bottom: 15%; right: 20%; animation-delay: 8s;"></div>
+  <!-- Animated neurons - hidden on small mobile devices -->
+  <div class="neuron hidden sm:block" style="top: 10%; left: 5%; animation-delay: 0s;"></div>
+  <div class="neuron hidden sm:block" style="top: 60%; left: 15%; animation-delay: 4s;"></div>
+  <div class="neuron hidden sm:block" style="top: 30%; right: 10%; animation-delay: 2s;"></div>
+  <div class="neuron hidden sm:block" style="bottom: 15%; right: 20%; animation-delay: 8s;"></div>
   
   <!-- Content wrapper -->
-  <div class="max-w-5xl mx-auto relative z-10 py-8">
+  <div class="max-w-6xl mx-auto relative z-10 py-4 sm:py-8">
     {#if visible}
-      <div class="text-center mb-16" in:fade={{ duration: 800 }}>
-        <h1 class="section-title text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+      <div class="text-center mb-10 md:mb-16" in:fade={{ duration: 800 }}>
+        <h1 class="section-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 px-2">
           {currentContent.title}
         </h1>
-        <p class="text-lg md:text-xl text-gray-300 leading-relaxed max-w-4xl mx-auto">
+        <p class="text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed max-w-4xl mx-auto px-3 sm:px-6">
           {currentContent.intro}
         </p>
         
         <!-- Wave divider -->
-        <div class="mt-12 mb-8">
+        <div class="mt-8 sm:mt-12 mb-6 sm:mb-8">
           <svg class="wave-divider" viewBox="0 0 1200 120" preserveAspectRatio="none">
             <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
           </svg>
@@ -177,15 +213,15 @@
       </div>
       
       <!-- Sections -->
-      <div class="grid md:grid-cols-2 gap-12 mt-12">
+      <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 mt-8 sm:mt-12 section-content">
         {#each currentContent.sections as section, i}
           <div 
-            class="bg-slate-800/40 backdrop-blur-sm p-8 rounded-2xl border border-purple-800/30"
+            class="info-card bg-slate-800/40 backdrop-blur-sm p-5 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl border border-purple-800/30"
             in:fly={{ y: 30, duration: 800, delay: 300 + i * 200 }}
           >
             <div class="icon-container">
               {#if section.icon === "brain-wave"}
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7 text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 sm:w-7 sm:h-7 text-white">
                   <path d="M2 12h2a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2h4a2 2 0 0 1 2 2h0"></path>
                   <path d="M18 12h2a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-3"></path>
                   <path d="M11 3a2 2 0 0 0-2 2v4a2 2 0 0 1-2 2H5"></path>
@@ -193,14 +229,18 @@
                   <line x1="9" y1="12" x2="15" y2="12"></line>
                 </svg>
               {:else}
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7 text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 sm:w-7 sm:h-7 text-white">
                   <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
                 </svg>
               {/if}
             </div>
             
-            <h2 class="text-2xl font-bold mb-4 text-center text-purple-200">{section.heading}</h2>
-            <ShowMoreTile heading="" text={section.text} />
+            <h2 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-center text-purple-200">{section.heading}</h2>
+            <div class="prose prose-sm sm:prose prose-invert max-w-none">
+              <p class="text-gray-300 text-sm sm:text-base">
+                {section.text}
+              </p>
+            </div>
           </div>
         {/each}
       </div>

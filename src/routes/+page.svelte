@@ -11,7 +11,7 @@
     // Translations
     const tPL = {
       siteTitle: "Heroes of the Brain 2025",
-      subtitle: "Odkrywaj przyszłość interakcji mózg-komputer",
+      subtitle: "Twórz przyszłość z głową",
       btnPrimary: "Edycja 2025",
       btnSecondary: "Poprzednie Edycje",
       editions: "Edycje Hackathonu",
@@ -19,9 +19,9 @@
       aboutTitle: "O Hackathonie",
       aboutDesc: "Heroes of the Brain to prestiżowy hackathon koncentrujący się na innowacjach w dziedzinie interfejsów mózg-komputer. Dołącz do nas i twórz przełomowe rozwiązania na styku neurobiologii i technologii.",
       highlights: "Najważniejsze informacje",
-      date: "18-20 listopada 2025",
+      date: "29-30 listopada 2025",
       location: "Politechnika Wrocławska",
-      prizes: "Nagrody TBA",
+      prizes: "Nagrody zostaną ogłoszone wkrótce",
       applyNow: "Zgłoś się teraz",
       learnMore: "Dowiedz się więcej",
       partners: "Partnerzy",
@@ -43,7 +43,7 @@
       aboutTitle: "About the Hackathon",
       aboutDesc: "Heroes of the Brain is a prestigious hackathon focused on innovations in brain-computer interfaces. Join us and create breakthrough solutions at the intersection of neuroscience and technology.",
       highlights: "Key Highlights",
-      date: "November 18-20, 2025",
+      date: "November 29-30, 2025",
       location: "Wrocław University of Science and Technology",
       prizes: "Prizes TBA",
       applyNow: "Apply Now",
@@ -355,13 +355,14 @@
     </section>
   
     <!-- Partners Section -->
-    <section class="py-12 bg-white">
+    <!-- <section class="py-12 bg-white">
       <div class="container mx-auto px-6">
         <h3 class="text-center text-xl font-medium text-gray-800 mb-8">{tr.partners}</h3>
         <div class="flex justify-center items-center gap-12 flex-wrap">
           {#each partners as partner}
             <div class="flex items-center justify-center h-20 grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100">
-              <!-- Replace these with actual partner logos -->
+              
+              
               <div class="w-40 h-16 bg-gray-200 rounded flex items-center justify-center">
                 <span class="text-gray-500 text-sm">{partner.name}</span>
               </div>
@@ -369,16 +370,16 @@
           {/each}
         </div>
       </div>
-    </section>
+    </section> -->
   
     <!-- Section divider -->
     <div class="section-divider w-1/3 max-w-md"></div>
   
     <!-- Join Us Section -->
-    <section class="py-16 bg-gradient-to-br from-indigo-900 via-purple-900 to-gray-900 text-white">
+    <!-- <section class="py-16 bg-gradient-to-br from-indigo-900 via-purple-900 to-gray-900 text-white">
       <div class="container mx-auto px-6">
         <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-          <!-- Left Content -->
+
           <div class="space-y-6">
             <div in:fade={{ duration: 800 }}>
               <h2 class="text-3xl md:text-4xl font-bold">{tr.ctaSection}</h2>
@@ -396,7 +397,7 @@
             </div>
           </div>
           
-          <!-- Newsletter -->
+     
           <div class="bg-white/10 backdrop-blur-md rounded-xl p-8 border border-white/20">
             <div in:fly={{ x: 50, duration: 800 }}>
               <h3 class="text-2xl font-bold text-white mb-4">{tr.newsletter}</h3>
@@ -421,12 +422,12 @@
                 </button>
               </form>
               
-              <!-- Social media links -->
+              
               <div class="mt-6 flex justify-center space-x-4">
                 {#each ['facebook', 'twitter', 'instagram', 'linkedin'] as social}
                   <a href={`https://${social}.com/heroesofthebrain`} class="text-white hover:text-purple-300">
                     <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
-                      <!-- Replace with actual social icons -->
+
                       <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10c0-5.523-4.477-10-10-10z"/>
                       </svg>
@@ -438,6 +439,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
   
+    
   </main>
