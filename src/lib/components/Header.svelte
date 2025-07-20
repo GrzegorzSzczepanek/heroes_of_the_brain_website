@@ -17,7 +17,7 @@
     { name: "FAQ", href: "#faq" },
     { name: "Kontakt", href: "#contact" },
     { name: "Zapisy", href: "#zapisy" },
-    { name: "Organizatorzy", href: "" }, // Will be dynamically set based on current route
+    // Organizers link removed for 2025 as it's not available yet
   ];
 
   let navItemsMainEN = [
@@ -26,7 +26,26 @@
     { name: "FAQ", href: "#faq" },
     { name: "Contact", href: "#contact" },
     { name: "Apply", href: "#zapisy" },
-    { name: "Organizers", href: "" }, // Will be dynamically set based on current route
+    // Organizers link removed for 2025 as it's not available yet
+  ];
+
+  // For 2024 edition, we keep the organizers link
+  let navItemsMain2024PL = [
+    { name: "Tematyka Hackatonu", href: "#HackatonInfo" },
+    { name: "Agenda", href: "#agenda" },
+    { name: "FAQ", href: "#faq" },
+    { name: "Kontakt", href: "#contact" },
+    { name: "Zapisy", href: "#zapisy" },
+    { name: "Organizatorzy", href: "/2024/organizatorzy" },
+  ];
+
+  let navItemsMain2024EN = [
+    { name: "Hackathon Topics", href: "#HackatonInfo" },
+    { name: "Agenda", href: "#agenda" },
+    { name: "FAQ", href: "#faq" },
+    { name: "Contact", href: "#contact" },
+    { name: "Apply", href: "#zapisy" },
+    { name: "Organizers", href: "/2024/organizatorzy" },
   ];
 
   let navItemsOrganizatorzyPL = [
@@ -58,21 +77,14 @@
 
     // Only show navItems if not on root route
     if (!isRootRoute) {
-      // Set the organizer link to include the current year
-      if (currentYear) {
-        const organizerIdx = navItemsMainPL.findIndex(item => 
-          item.name === "Organizatorzy" || item.name === "Organizers");
-        
-        if (organizerIdx !== -1) {
-          navItemsMainPL[organizerIdx].href = `/${currentYear}/organizatorzy`;
-          navItemsMainEN[organizerIdx].href = `/${currentYear}/organizatorzy`;
-        }
-      }
-
       // Set the appropriate navigation items based on route and language
       if ($page.url.pathname.includes('/organizatorzy')) {
         navItems = $isPolish ? navItemsOrganizatorzyPL : navItemsOrganizatorzyEN;
+      } else if (currentYear === '2024') {
+        // For 2024, use the navigation with organizers
+        navItems = $isPolish ? navItemsMain2024PL : navItemsMain2024EN;
       } else {
+        // For 2025, use the navigation without organizers
         navItems = $isPolish ? navItemsMainPL : navItemsMainEN;
       }
     } else {
@@ -420,8 +432,9 @@
               {#if item.name === "Zapisy" || item.name === "Apply"}
                 <a 
                   href={item.href} 
-                  class="cta-button"
+                  class="cta-button text-white"
                   on:click={() => setActiveLink(item.href)}
+
                 >
                   {item.name}
                 </a>

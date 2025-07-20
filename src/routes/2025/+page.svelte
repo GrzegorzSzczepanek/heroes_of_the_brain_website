@@ -20,7 +20,7 @@
   // For animations and scroll effects
   let scrollY;
   let sections = [];
-  let visible = Array(10).fill(false);
+  let visible = Array(11).fill(false);
   let currentTypewriterIndex = 0;
   let typewriterText = '';
   let typewriterInterval;
@@ -40,7 +40,7 @@
     keyHighlights: 'Najważniejsze informacje',
     keyInfo: [
       { title: 'Gdzie', content: 'Politechnika Wrocławska', icon: 'location' },
-      { title: 'Kiedy', content: '18-20 listopada 2025', icon: 'calendar' },
+      { title: 'Kiedy', content: '29-30 listopada 2025', icon: 'calendar' },
       { title: 'Nagrody', content: 'Pula nagród TBA', icon: 'trophy' }
     ],
     quoteTitle: 'Odkryj potencjał mózgu',
@@ -69,7 +69,7 @@
     keyHighlights: 'Key highlights',
     keyInfo: [
       { title: 'Where', content: 'Wrocław University of Science and Technology', icon: 'location' },
-      { title: 'When', content: 'November 18-20, 2025', icon: 'calendar' },
+      { title: 'When', content: 'November 29-30, 2025', icon: 'calendar' },
       { title: 'Prizes', content: 'Prizes TBA', icon: 'trophy' }
     ],
     quoteTitle: 'Discover the brain potential',
@@ -118,36 +118,36 @@
   
   // Typewriter effect
   function updateTypewriterText() {
-    const texts = c.typewriterTexts;
-    currentTypewriterIndex = (currentTypewriterIndex + 1) % texts.length;
-    typewriterText = texts[currentTypewriterIndex];
+    const texts = c?.typewriterTexts || [];
+    if (texts.length) {
+      currentTypewriterIndex = (currentTypewriterIndex + 1) % texts.length;
+      typewriterText = texts[currentTypewriterIndex];
+    }
   }
   
-  // Scroll parallax effect
-  function parallax(node, speed) {
-    return {
-      update(newSpeed) {
-        speed = newSpeed;
-        const y = -scrollY * speed;
-        node.style.transform = `translateY(${y}px)`;
-      }
-    };
-  }
+  // Check if browser supports IntersectionObserver
+  const hasIntersectionObserver = typeof IntersectionObserver !== 'undefined';
   
   // Intersection observer for scroll animations
   onMount(() => {
-    document.title = c.pageTitle;
+    if (c) document.title = c.pageTitle;
+    
+    // Fix for double scrollbar issue - make sure there's only one scrollable area
+    document.documentElement.style.overflow = 'auto';
+    document.body.style.overflow = 'visible';
     
     // Start typewriter
     updateTypewriterText();
     typewriterInterval = setInterval(updateTypewriterText, 4000);
     
-    if (typeof IntersectionObserver !== 'undefined') {
+    if (hasIntersectionObserver) {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             const index = sections.indexOf(entry.target);
-            visible[index] = true;
+            if (index >= 0) {
+              visible[index] = true;
+            }
             observer.unobserve(entry.target);
           }
         });
@@ -156,40 +156,79 @@
         threshold: 0.15
       });
       
-      sections.forEach(section => {
-        if (section) observer.observe(section);
-      });
-      
-      return () => {
-        clearInterval(typewriterInterval);
-        sections.forEach(section => {
-          if (section) observer.unobserve(section);
+      // Wait a moment for DOM to render
+      setTimeout(() => {
+        sections.forEach((section, index) => {
+          if (section) {
+            observer.observe(section);
+          }
         });
-      };
+      }, 100);
+    } else {
+      // Fallback for browsers without IntersectionObserver
+      visible = visible.map(() => true);
     }
+    
+    return () => {
+      if (typewriterInterval) clearInterval(typewriterInterval);
+    };
   });
 </script>
 
 <svelte:head>
-  <title>{c.pageTitle}</title>
+  <title>{c?.pageTitle || 'Heroes of the Brain 2025'}</title>
   <meta name="description" content="Heroes of The Brain 2025 – Brain‑Computer Interface hackathon edition." />
   <meta name="keywords" content="brain, BCI, hackathon, 2025, heroes of the brain" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </svelte:head>
 
 <svelte:window bind:scrollY />
 
 <style>
-  /* Global styles */
+  /* Reset to fix double scrollbar issue */
+  :global(html), :global(body) {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+  }
+
+  :global(html) {
+    overflow-y: auto; /* Only allow scrolling on the html element */
+  }
+  
   :global(body) {
+    overflow-y: visible; /* Body should not scroll independently */
+    position: relative;
     font-family: 'Inter', sans-serif;
     --purple-primary: #8b5cf6;
     --purple-dark: #6d28d9;
     --indigo-primary: #6366f1;
     --dark-bg: #111827;
+    --dark-secondary: #1f2937;
+    --dark-card: #1e293b;
+    --dark-accent: #374151;
     scroll-behavior: smooth;
+  }
+  
+  :global(*), :global(*::before), :global(*::after) {
+    box-sizing: border-box;
+    max-width: 100%;
+  }
+
+  /* Remove all potential nested scrollbars */
+  :global(.page-wrapper), :global(section), :global(div) {
+    overflow-y: visible;
+  }
+  
+  /* Main wrapper */
+  .page-wrapper {
+    width: 100%;
+    position: relative;
   }
   
   /* Section animations */
@@ -197,6 +236,8 @@
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.8s ease, transform 0.8s ease;
+    width: 100%;
+    max-width: 100vw;
   }
   
   .section.visible {
@@ -208,12 +249,13 @@
   .hero-wrapper {
     position: relative;
     background-color: var(--dark-bg);
-    overflow: hidden;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    overflow: hidden; /* Only hidden for elements inside, not for scroll */
   }
   
   .hero-overlay {
@@ -234,13 +276,20 @@
     z-index: 2;
     text-align: center;
     color: white;
-    padding: 2rem;
+    padding: 1rem;
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
   }
   
+  @media (min-width: 640px) {
+    .hero-content {
+      padding: 2rem;
+    }
+  }
+  
   .hero-title {
-    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-size: clamp(2rem, 5vw, 5rem);
     font-weight: 800;
     margin-bottom: 0.5rem;
     background: linear-gradient(to right, white, #c4b5fd);
@@ -248,10 +297,11 @@
     background-clip: text;
     -webkit-text-fill-color: transparent;
     text-fill-color: transparent;
+    line-height: 1.1;
   }
   
   .hero-year {
-    font-size: clamp(3rem, 10vw, 8rem);
+    font-size: clamp(3rem, 8vw, 8rem);
     font-weight: 900;
     margin: 0;
     line-height: 1;
@@ -264,26 +314,36 @@
   }
   
   .hero-subtitle {
-    font-size: clamp(1rem, 2vw, 1.5rem);
-    margin: 1.5rem 0;
+    font-size: clamp(1rem, 1.5vw, 1.5rem);
+    margin: 1.5rem auto;
     max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
     color: rgba(255, 255, 255, 0.8);
-    min-height: 3rem;
+    min-height: 4.5rem; /* To prevent layout shift during typewriter effect */
+    padding: 0 1rem;
   }
   
   .hero-buttons {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
     gap: 1rem;
     margin-top: 2rem;
+    width: 100%;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  @media (min-width: 640px) {
+    .hero-buttons {
+      flex-direction: row;
+      justify-content: center;
+      max-width: 100%;
+    }
   }
   
   .btn {
     display: inline-block;
-    padding: 0.8rem 2rem;
+    padding: 0.8rem 1.5rem;
     font-size: 1rem;
     font-weight: 500;
     border-radius: 999px;
@@ -291,6 +351,14 @@
     transition: all 0.3s ease;
     text-align: center;
     text-decoration: none;
+    width: 100%;
+  }
+  
+  @media (min-width: 640px) {
+    .btn {
+      width: auto;
+      padding: 0.8rem 2rem;
+    }
   }
   
   .btn-primary {
@@ -317,91 +385,192 @@
     transform: translateY(-2px);
   }
   
-  /* Scroll icon */
+  /* Scroll icon - FIXED positioning */
   .scroll-indicator {
     position: absolute;
     bottom: 2rem;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, 0);
     text-align: center;
     color: rgba(255, 255, 255, 0.7);
-    animation: bounce 2s infinite;
+    font-size: 0.875rem;
+    width: 100px; /* Add fixed width to ensure centering */
   }
   
   .scroll-icon {
     display: block;
-    width: 2rem;
-    height: 2rem;
+    width: 1.5rem;
+    height: 1.5rem;
     margin: 0.5rem auto 0;
   }
   
-  @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-      transform: translateY(0);
+  @media (min-width: 640px) {
+    .scroll-icon {
+      width: 2rem;
+      height: 2rem;
     }
-    40% {
-      transform: translateY(-10px);
-    }
-    60% {
-      transform: translateY(-5px);
+    
+    .scroll-indicator {
+      font-size: 1rem;
+      width: 120px; /* Slightly wider for larger screens */
     }
   }
   
-  /* Key info section */
+  /* Fixed bounce animation to maintain horizontal centering */
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translate(-50%, 0);
+    }
+    40% {
+      transform: translate(-50%, -10px);
+    }
+    60% {
+      transform: translate(-50%, -5px);
+    }
+  }
+  
+  .scroll-indicator {
+    animation: bounce 2s infinite;
+  }
+  
+  /* Key info section - UPDATED to dark theme */
   .key-info-section {
-    background-color: #f9fafb;
+    background-color: var(--dark-bg);
     position: relative;
-    overflow: hidden;
+    padding: 3rem 1rem;
+    width: 100%;
+    overflow: hidden; /* Only for decorative elements */
+    color: white;
+  }
+  
+  @media (min-width: 640px) {
+    .key-info-section {
+      padding: 4rem 2rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .key-info-section {
+      padding: 5rem 2rem;
+    }
   }
   
   .key-info-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: 1fr;
     gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  @media (min-width: 640px) {
+    .key-info-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .key-info-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
   
   .key-info-card {
-    background: white;
+    background: var(--dark-card);
     border-radius: 0.75rem;
-    padding: 2rem;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
     text-align: center;
     transition: all 0.3s ease;
     border-bottom: 4px solid transparent;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  @media (min-width: 640px) {
+    .key-info-card {
+      padding: 2rem;
+    }
   }
   
   .key-info-card:hover {
     transform: translateY(-5px);
     border-color: var(--purple-primary);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
+    background: var(--dark-accent);
   }
   
   .info-icon {
-    font-size: 2.5rem;
+    font-size: 2rem;
     margin-bottom: 1rem;
     color: var(--purple-primary);
+    display: flex;
+    justify-content: center;
+  }
+  
+  @media (min-width: 640px) {
+    .info-icon {
+      font-size: 2.5rem;
+    }
   }
   
   .info-title {
     font-size: 1.25rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
-    color: #1f2937;
+    color: white;
   }
   
   .info-content {
-    color: #4b5563;
+    color: rgba(255, 255, 255, 0.7);
     font-size: 1rem;
   }
   
-  /* Section styling */
+  /* Section styling - UPDATED for dark sections */
+  .dark-section-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: white;
+  }
+  
+  @media (min-width: 640px) {
+    .dark-section-title {
+      margin-bottom: 2.5rem;
+    }
+  }
+  
+  .dark-section-title h2 {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.5rem;
+  }
+  
+  .dark-section-title p {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 0 1rem;
+  }
+  
+  /* General section styling */
   .section-title {
     text-align: center;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  @media (min-width: 640px) {
+    .section-title {
+      margin-bottom: 2.5rem;
+    }
   }
   
   .section-title h2 {
-    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
     font-weight: 700;
     color: #1f2937;
     margin-bottom: 0.5rem;
@@ -412,28 +581,62 @@
     margin-left: auto;
     margin-right: auto;
     color: #6b7280;
+    padding: 0 1rem;
   }
   
   .section-divider {
-    width: 80px;
+    width: 60px;
     height: 4px;
     background: linear-gradient(to right, var(--purple-primary), var(--indigo-primary));
-    margin: 1rem auto 2rem;
+    margin: 0.75rem auto 1.5rem;
     border-radius: 2px;
+  }
+  
+  @media (min-width: 640px) {
+    .section-divider {
+      width: 80px;
+      margin: 1rem auto 2rem;
+    }
   }
   
   /* Jury section */
   .jury-section {
     background-color: #f3f4f6;
     position: relative;
-    overflow: hidden;
-
+    padding: 3rem 1rem;
+    width: 100%;
+    overflow: hidden; /* Only for decorative elements */
+  }
+  
+  @media (min-width: 640px) {
+    .jury-section {
+      padding: 4rem 2rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .jury-section {
+      padding: 5rem 2rem;
+    }
   }
   
   .jury-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 2rem;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  @media (min-width: 640px) {
+    .jury-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .jury-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
   }
   
   .jury-card {
@@ -442,6 +645,9 @@
     overflow: hidden;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
   }
   
   .jury-card:hover {
@@ -451,32 +657,66 @@
   
   .jury-image {
     width: 100%;
-    height: 240px;
+    height: 200px;
     object-fit: cover;
     border-bottom: 4px solid var(--purple-primary);
   }
   
+  @media (min-width: 640px) {
+    .jury-image {
+      height: 220px;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .jury-image {
+      height: 240px;
+    }
+  }
+  
   .jury-content {
-    padding: 1.5rem;
+    padding: 1.25rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  @media (min-width: 640px) {
+    .jury-content {
+      padding: 1.5rem;
+    }
   }
   
   .jury-name {
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     font-weight: 600;
     color: #1f2937;
     margin-bottom: 0.25rem;
   }
   
+  @media (min-width: 640px) {
+    .jury-name {
+      font-size: 1.25rem;
+    }
+  }
+  
   .jury-role {
-    font-size: 1rem;
+    font-size: 0.875rem;
     color: var(--purple-primary);
     font-weight: 500;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  @media (min-width: 640px) {
+    .jury-role {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
   }
   
   .jury-bio {
     color: #6b7280;
-    font-size: 0.9rem;
+    font-size: 0.875rem;
     line-height: 1.5;
   }
   
@@ -485,7 +725,21 @@
     background-color: var(--dark-bg);
     color: white;
     position: relative;
-    overflow: hidden;
+    padding: 3rem 1rem;
+    width: 100%;
+    overflow: hidden; /* Only for decorative elements */
+  }
+  
+  @media (min-width: 640px) {
+    .quote-section {
+      padding: 4rem 1rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .quote-section {
+      padding: 5rem 1rem;
+    }
   }
   
   .quote-bg {
@@ -509,12 +763,18 @@
   }
   
   .quote-text {
-    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+    font-size: clamp(1.1rem, 2vw, 1.8rem);
     line-height: 1.6;
     font-weight: 300;
     font-style: italic;
     position: relative;
-    padding: 0 2rem;
+    padding: 0 1rem;
+  }
+  
+  @media (min-width: 640px) {
+    .quote-text {
+      padding: 0 2rem;
+    }
   }
   
   .quote-text::before,
@@ -522,10 +782,17 @@
     content: '"';
     position: absolute;
     font-family: Georgia, serif;
-    font-size: 4rem;
+    font-size: 3rem;
     line-height: 0;
     color: var(--purple-primary);
     opacity: 0.5;
+  }
+  
+  @media (min-width: 640px) {
+    .quote-text::before,
+    .quote-text::after {
+      font-size: 4rem;
+    }
   }
   
   .quote-text::before {
@@ -544,29 +811,14 @@
     width: 100%;
     height: 100%;
     opacity: 0.05;
-    background-size: 400px;
+    background-size: 300px;
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><path d="M100,21c-43.8,0-79,35.2-79,79s35.2,79,79,79s79-35.2,79-79S143.8,21,100,21z M100,167.8c-37.4,0-67.8-30.4-67.8-67.8S62.6,32.2,100,32.2s67.8,30.4,67.8,67.8S137.4,167.8,100,167.8z"/><path d="M100,42c-32,0-58,26-58,58s26,58,58,58s58-26,58-58S132,42,100,42z M100,146c-25.4,0-46-20.6-46-46s20.6-46,46-46s46,20.6,46,46S125.4,146,100,146z"/><path d="M100,62c-21,0-38,17-38,38s17,38,38,38s38-17,38-38S121,62,100,62z M100,126c-14.4,0-26-11.6-26-26s11.6-26,26-26s26,11.6,26,26S114.4,126,100,126z"/><path d="M100,82c-9.9,0-18,8.1-18,18s8.1,18,18,18s18-8.1,18-18S109.9,82,100,82z M100,106c-3.3,0-6-2.7-6-6s2.7-6,6-6s6,2.7,6,6S103.3,106,100,106z"/></svg>');
     pointer-events: none;
   }
   
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .hero-buttons {
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-    
-    .btn {
-      width: 100%;
-    }
-    
-    .quote-text {
-      padding: 0 1rem;
-    }
-    
-    .quote-text::before,
-    .quote-text::after {
-      font-size: 3rem;
+  @media (min-width: 640px) {
+    .brain-pattern {
+      background-size: 400px;
     }
   }
   
@@ -596,15 +848,23 @@
     height: 100%;
     pointer-events: none;
     z-index: 1;
+    overflow: hidden;
   }
   
   .neural-dot {
     position: absolute;
-    width: 4px;
-    height: 4px;
+    width: 3px;
+    height: 3px;
     border-radius: 50%;
     background-color: rgba(139, 92, 246, 0.7);
     box-shadow: 0 0 5px rgba(139, 92, 246, 0.5);
+  }
+  
+  @media (min-width: 640px) {
+    .neural-dot {
+      width: 4px;
+      height: 4px;
+    }
   }
   
   .neural-line {
@@ -617,10 +877,18 @@
   /* Countdown styles */
   .countdown-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
-    max-width: 800px;
+    max-width: 600px;
     margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  @media (min-width: 640px) {
+    .countdown-container {
+      grid-template-columns: repeat(4, 1fr);
+      max-width: 800px;
+    }
   }
   
   .countdown-item {
@@ -633,16 +901,30 @@
   }
   
   .countdown-value {
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: 700;
     color: var(--purple-primary);
-    margin: 1rem 0 0.5rem;
+    margin: 0.75rem 0 0.25rem;
+  }
+  
+  @media (min-width: 640px) {
+    .countdown-value {
+      font-size: 3rem;
+      margin: 1rem 0 0.5rem;
+    }
   }
   
   .countdown-label {
     color: #6b7280;
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
+    font-size: 0.8rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  @media (min-width: 640px) {
+    .countdown-label {
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
   }
   
   .countdown-item::after {
@@ -654,15 +936,49 @@
     height: 4px;
     background: linear-gradient(to right, var(--purple-primary), var(--indigo-primary));
   }
+  
+  /* Container utility */
+  .container {
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+  }
+  
+  @media (min-width: 640px) {
+    .container {
+      max-width: 640px;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .container {
+      max-width: 768px;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .container {
+      max-width: 1024px;
+    }
+  }
+  
+  @media (min-width: 1280px) {
+    .container {
+      max-width: 1280px;
+    }
+  }
 </style>
 
-<div transition:fade={{ duration: 400 }}>
+<div class="page-wrapper" transition:fade={{ duration: 400 }}>
   <!-- Hero Section -->
   <div class="hero-wrapper">
     <div class="hero-overlay"></div>
     
     <div class="neural-connections">
-      {#each Array(10) as _, i}
+      {#each Array(6) as _, i}
         <div 
           class="neural-dot"
           style="
@@ -673,13 +989,13 @@
         ></div>
       {/each}
       
-      {#each Array(8) as _, i}
+      {#each Array(5) as _, i}
         <div 
           class="neural-line"
           style="
             top: {20 + Math.random() * 60}%; 
             left: {Math.random() * 40}%;
-            width: {100 + Math.random() * 200}px;
+            width: {60 + Math.random() * 150}px;
             transform: rotate({-30 + Math.random() * 60}deg);
             opacity: {0.1 + Math.random() * 0.2};
           "
@@ -696,65 +1012,34 @@
       
       <div class="hero-buttons">
         <a href="#register" class="btn btn-primary">
-          {c.registrationButton}
+          {c?.registrationButton || 'Apply Now'}
         </a>
         <a href="#about" class="btn btn-secondary">
-          {c.aboutEvent}
+          {c?.aboutEvent || 'About Event'}
         </a>
       </div>
     </div>
     
     <div class="scroll-indicator">
-      <span>{c.scrollText}</span>
+      <span>{c?.scrollText || 'Scroll down'}</span>
       <svg class="scroll-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M12 5v14M19 12l-7 7-7-7" />
       </svg>
     </div>
   </div>
   
-  <!-- Countdown Section -->
-  <section class="py-16 bg-white" id="countdown">
-    <div class="container mx-auto px-4">
-      <div class="section" class:visible={visible[0]} bind:this={sections[0]}>
-        <div class="section-title">
-          <h2>{c.countdownTitle}</h2>
-          <div class="section-divider"></div>
-        </div>
-        
-        <div class="countdown-container">
-          <div class="countdown-item">
-            <div class="countdown-value">195</div>
-            <div class="countdown-label">{c.countdownDays}</div>
-          </div>
-          <div class="countdown-item">
-            <div class="countdown-value">12</div>
-            <div class="countdown-label">{c.countdownHours}</div>
-          </div>
-          <div class="countdown-item">
-            <div class="countdown-value">45</div>
-            <div class="countdown-label">{c.countdownMinutes}</div>
-          </div>
-          <div class="countdown-item">
-            <div class="countdown-value">22</div>
-            <div class="countdown-label">{c.countdownSeconds}</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <!-- Key Info Section -->
-  <section class="key-info-section py-16" id="key-info">
+  <!-- Key Info Section - UPDATED with dark theme -->
+  <section class="key-info-section" id="key-info">
     <div class="brain-pattern"></div>
-    <div class="container mx-auto px-4">
+    <div class="container">
       <div class="section" class:visible={visible[1]} bind:this={sections[1]}>
-        <div class="section-title">
-          <h2>{c.keyHighlights}</h2>
+        <div class="dark-section-title">
+          <h2>{c?.keyHighlights || 'Key highlights'}</h2>
           <div class="section-divider"></div>
         </div>
         
-        <div class="key-info-grid">
-          {#each c.keyInfo as info, i}
+        <div class="key-info-grid max-w-6xl mx-auto">
+          {#each c?.keyInfo || [] as info, i}
             <div 
               class="key-info-card"
               in:fly={{ y: 30, duration: 800, delay: 200 * i }}
@@ -789,16 +1074,16 @@
   </section>
   
   <!-- Quote Section -->
-  <section class="quote-section py-20">
+  <section class="quote-section">
     <div class="quote-bg"></div>
     
-    <div class="container mx-auto px-4">
+    <div class="container">
       <div class="section" class:visible={visible[3]} bind:this={sections[3]}>
         <div class="quote-content">
-          <h2 class="text-3xl font-bold mb-6 text-white">{c.quoteTitle}</h2>
+          <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-white">{c?.quoteTitle || 'Discover the brain potential'}</h2>
           <div class="section-divider"></div>
           <p class="quote-text">
-            {c.quote}
+            {c?.quote || 'Brain-computer interfaces are the future of human-technology interaction. Join us to create innovations that will change the world.'}
           </p>
         </div>
       </div>
@@ -808,36 +1093,6 @@
   <!-- Agenda section -->
   <section id="agenda" class="section" class:visible={visible[4]} bind:this={sections[4]}>
     <Agenda year={2025} />
-  </section>
-  
-  <!-- Jury & Mentors Section -->
-  <section class="jury-section py-16" id="jury">
-    <div class="brain-pattern"></div>
-    <div class="container mx-auto px-4">
-      <div class="section" class:visible={visible[5]} bind:this={sections[5]}>
-        <div class="section-title">
-          <h2>{c.juryTitle}</h2>
-          <p>{c.jurySubtitle}</p>
-          <div class="section-divider"></div>
-        </div>
-        
-        <div class="jury-grid max-w-6xl mx-auto">
-          {#each juryMembers as member, i}
-            <div 
-              class="jury-card"
-              in:fly={{ y: 30, duration: 800, delay: 200 * i }}
-            >
-              <img src={member.image} alt={member.name} class="jury-image" />
-              <div class="jury-content">
-                <h3 class="jury-name">{member.name}</h3>
-                <p class="jury-role">{member.role}</p>
-                <p class="jury-bio">{member.bio}</p>
-              </div>
-            </div>
-          {/each}
-        </div>
-      </div>
-    </div>
   </section>
   
   <!-- Categories section -->
@@ -861,16 +1116,12 @@
   </section>
 
   <!-- Registration CTA -->
-  <div id="register" class="flex flex-col items-center text-center  section" class:visible={visible[10]} bind:this={sections[10]}>
-    <!-- <UnderlinedHeader title={c.registrationTitle} />
-    <JoinUsSection year={2025} /> -->
+  <div id="register" class="flex flex-col items-center text-center section" class:visible={visible[10]} bind:this={sections[10]}>
     <RegisterSection 
-  visible={visible}
-  sections={sections}
-  sectionIndex={10}
-  c={c}
-/>
-
-    
+      visible={visible}
+      sections={sections}
+      sectionIndex={10}
+      c={c}
+    />
   </div>
 </div>

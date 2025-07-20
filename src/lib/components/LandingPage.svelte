@@ -142,7 +142,7 @@
 </style>
 
 <section id="landing">
-  <h1>Heroes of The Brain</h1>
+  <h1>Heroes of The Brain 2024</h1>
   <div class="info">
     <p class="flex items-center">
       <FontAwesomeIcon icon={faMapMarkerAlt} class="text-purple-200 mr-2" />

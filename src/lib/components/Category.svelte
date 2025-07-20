@@ -4,16 +4,7 @@
   export let category;
   import { isPolish } from "../../stores/languageStore";
 
-  let isExpanded = false;
   let isHovered = false;
-
-  const showMoreText = derived(isPolish, $isPolish => $isPolish ? "Rozwiń" : "Show more");
-  const showLessText = derived(isPolish, $isPolish => $isPolish ? "Zwiń" : "Show less");
-
-  function toggle(e) {
-    e.stopPropagation();
-    isExpanded = !isExpanded;
-  }
   
   function setHover(value) {
     isHovered = value;
@@ -85,31 +76,6 @@
     pointer-events: none;
   }
   
-  .toggle-button {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.5rem 0.75rem;
-    margin-left: -0.75rem;
-    border-radius: 0.375rem;
-    transition: all 0.2s ease;
-    color: #a78bfa;
-    font-weight: 500;
-  }
-  
-  .toggle-button:hover {
-    background-color: rgba(167, 139, 250, 0.1);
-    color: #c4b5fd;
-  }
-  
-  .toggle-icon {
-    margin-left: 0.375rem;
-    transition: transform 0.3s ease;
-  }
-  
-  .rotate {
-    transform: rotate(180deg);
-  }
-  
   .glowing-border {
     position: absolute;
     inset: 0;
@@ -176,35 +142,11 @@
   
   <!-- Content area -->
   <div class="content-area">
-    <!-- Description with expand/collapse -->
+    <!-- Full description always shown -->
     <div class="category-description">
-      {#if isExpanded}
-        <p in:fade={{ duration: 300 }}>
-          {category.description}
-        </p>
-      {:else}
-        <p>
-          {category.description.slice(0, 100)}...
-        </p>
-      {/if}
+      <p>
+        {category.description}
+      </p>
     </div>
-    
-    <!-- Toggle button with icon -->
-    <button 
-      class="toggle-button mt-3"
-      on:click={toggle}
-      aria-expanded={isExpanded}
-    >
-      <span>{isExpanded ? $showLessText : $showMoreText}</span>
-      <svg 
-        xmlns="http://www.w3.org/2000/svg" 
-        class="h-4 w-4 toggle-icon" 
-        class:rotate={isExpanded}
-        viewBox="0 0 20 20" 
-        fill="currentColor"
-      >
-        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-      </svg>
-    </button>
   </div>
 </div>
