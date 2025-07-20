@@ -4,7 +4,7 @@
   import Footer from '$lib/components/Footer.svelte';
 </script>
 
-{#if $page.url.pathname !== '/'}
+{#if $page.url.pathname !== '/test'}
   <Header />
 {/if}
 

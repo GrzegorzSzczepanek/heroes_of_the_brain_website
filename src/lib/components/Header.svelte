@@ -10,13 +10,14 @@
  
   export let logoSrc = "/images/logo_no_background.png";
 
+  // Navigation items for specific year editions
   let navItemsMainPL = [
     { name: "Tematyka Hackatonu", href: "#HackatonInfo" },
     { name: "Agenda", href: "#agenda" },
     { name: "FAQ", href: "#faq" },
     { name: "Kontakt", href: "#contact" },
     { name: "Zapisy", href: "#zapisy" },
-    { name: "Organizatorzy", href: "/organizatorzy" },
+    { name: "Organizatorzy", href: "" }, // Will be dynamically set based on current route
   ];
 
   let navItemsMainEN = [
@@ -25,7 +26,7 @@
     { name: "FAQ", href: "#faq" },
     { name: "Contact", href: "#contact" },
     { name: "Apply", href: "#zapisy" },
-    { name: "Organizers", href: "/organizatorzy" }
+    { name: "Organizers", href: "" }, // Will be dynamically set based on current route
   ];
 
   let navItemsOrganizatorzyPL = [
@@ -38,9 +39,47 @@
     { name: "Team", href: "#team" },
   ];
 
-  let navItems = navItemsMainPL;
-  $: $isPolish ? navItems = $page.url.pathname === '/organizatorzy' ? navItemsOrganizatorzyPL : navItemsMainPL
-              : navItems = $page.url.pathname === '/organizatorzy' ? navItemsOrganizatorzyEN : navItemsMainEN;
+  let navItems = [];
+  let isRootRoute = false;
+  let currentYear = "";
+
+  // Update navigation items and set the correct organizers link based on the current route
+  $: {
+    isRootRoute = $page.url.pathname === "/";
+    
+    // Check if we're in a year-specific route
+    if ($page.url.pathname.startsWith('/2025')) {
+      currentYear = '2025';
+    } else if ($page.url.pathname.startsWith('/2024')) {
+      currentYear = '2024';
+    } else {
+      currentYear = "";
+    }
+
+    // Only show navItems if not on root route
+    if (!isRootRoute) {
+      // Set the organizer link to include the current year
+      if (currentYear) {
+        const organizerIdx = navItemsMainPL.findIndex(item => 
+          item.name === "Organizatorzy" || item.name === "Organizers");
+        
+        if (organizerIdx !== -1) {
+          navItemsMainPL[organizerIdx].href = `/${currentYear}/organizatorzy`;
+          navItemsMainEN[organizerIdx].href = `/${currentYear}/organizatorzy`;
+        }
+      }
+
+      // Set the appropriate navigation items based on route and language
+      if ($page.url.pathname.includes('/organizatorzy')) {
+        navItems = $isPolish ? navItemsOrganizatorzyPL : navItemsOrganizatorzyEN;
+      } else {
+        navItems = $isPolish ? navItemsMainPL : navItemsMainEN;
+      }
+    } else {
+      // Empty navItems when on root route
+      navItems = [];
+    }
+  }
 
   let isScrolled = false;
   let showMenu = false;
@@ -287,6 +326,36 @@
     pointer-events: none;
     overflow: hidden;
   }
+
+  .edition-button {
+    padding: 0.5rem 1.25rem;
+    border-radius: 0.375rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin: 0 0.5rem;
+  }
+
+  .edition-primary {
+    background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+    box-shadow: 0 4px 10px rgba(109, 40, 217, 0.3);
+    color: white;
+  }
+
+  .edition-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(139, 92, 246, 0.4);
+  }
+
+  .edition-secondary {
+    background: rgba(139, 92, 246, 0.1);
+    color: #c4b5fd;
+    border: 1px solid rgba(139, 92, 246, 0.3);
+  }
+
+  .edition-secondary:hover {
+    background: rgba(139, 92, 246, 0.2);
+    transform: translateY(-2px);
+  }
 </style>
 
 <header 
@@ -337,26 +406,37 @@
       <div class="flex items-center space-x-6">
         <!-- Desktop navigation -->
         <nav class="hidden md:flex items-center space-x-3">
-          {#each navItems as item}
-            {#if item.name === "Zapisy" || item.name === "Apply"}
-              <a 
-                href={item.href} 
-                class="cta-button"
-                on:click={() => setActiveLink(item.href)}
-              >
-                {item.name}
-              </a>
-            {:else}
-              <a 
-                href={item.href} 
-                class="nav-link" 
-                class:active={activeLink === item.href}
-                on:click={() => setActiveLink(item.href)}
-              >
-                {item.name}
-              </a>
-            {/if}
-          {/each}
+          {#if isRootRoute}
+            <!-- Show only edition buttons when on root route -->
+            <a href="/2025" class="edition-button edition-primary">
+              {$isPolish ? 'Edycja 2025' : '2025 Edition'}
+            </a>
+            <a href="/2024" class="edition-button edition-secondary">
+              {$isPolish ? 'Edycja 2024' : '2024 Edition'}
+            </a>
+          {:else}
+            <!-- Show regular navigation for specific year routes -->
+            {#each navItems as item}
+              {#if item.name === "Zapisy" || item.name === "Apply"}
+                <a 
+                  href={item.href} 
+                  class="cta-button"
+                  on:click={() => setActiveLink(item.href)}
+                >
+                  {item.name}
+                </a>
+              {:else}
+                <a 
+                  href={item.href} 
+                  class="nav-link" 
+                  class:active={activeLink === item.href}
+                  on:click={() => setActiveLink(item.href)}
+                >
+                  {item.name}
+                </a>
+              {/if}
+            {/each}
+          {/if}
         </nav>
         
         <!-- Language toggle -->
@@ -379,18 +459,20 @@
           </button>
         </div>
         
-        <!-- Mobile menu toggle -->
-        <div class="flex md:hidden">
-          <button 
-            class="mobile-menu-button" 
-            on:click={toggleMenu} 
-            aria-expanded={showMenu} 
-            aria-controls="side-menu" 
-            aria-label="Toggle menu"
-          >
-            <Fa icon={faBars} size="1.2x" />
-          </button>
-        </div>
+        <!-- Mobile menu toggle (only show on non-root routes) -->
+        {#if !isRootRoute}
+          <div class="flex md:hidden">
+            <button 
+              class="mobile-menu-button" 
+              on:click={toggleMenu} 
+              aria-expanded={showMenu} 
+              aria-controls="side-menu" 
+              aria-label="Toggle menu"
+            >
+              <Fa icon={faBars} size="1.2x" />
+            </button>
+          </div>
+        {/if}
       </div>
     </div>
   </div>
@@ -400,8 +482,36 @@
 <div style="height: {headerHeight}px"></div>
 
 <!-- Mobile side menu -->
-{#if showMenu}
+{#if showMenu && !isRootRoute}
   <div in:fade={{ duration: 200 }}>
     <SideMenu {navItems} />
+  </div>
+{/if}
+
+<!-- Mobile edition selection (for root route) -->
+{#if isRootRoute && showMenu}
+  <div in:fade={{ duration: 200 }} class="side-menu fixed top-0 right-0 h-full w-64 bg-indigo-900/95 backdrop-blur-xl z-50 overflow-y-auto flex flex-col p-6 shadow-xl">
+    <div class="flex justify-between items-center mb-8">
+      <h2 class="text-xl font-bold text-white">{$isPolish ? 'Wybierz edycję' : 'Select Edition'}</h2>
+      <button on:click={closeMenu} class="text-gray-300 hover:text-white">
+        &times;
+      </button>
+    </div>
+
+    <div class="flex flex-col space-y-4">
+      <a 
+        href="/2025" 
+        class="py-3 px-4 rounded-md bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold text-center"
+      >
+        {$isPolish ? 'Edycja 2025' : '2025 Edition'}
+      </a>
+      
+      <a 
+        href="/2024" 
+        class="py-3 px-4 rounded-md bg-indigo-800/50 border border-indigo-500/30 text-gray-200 font-medium text-center"
+      >
+        {$isPolish ? 'Edycja 2024' : '2024 Edition'}
+      </a>
+    </div>
   </div>
 {/if}
