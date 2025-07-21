@@ -6,7 +6,7 @@
     const contentPL = {
         header: 'Skontaktuj się z nami',
         address: 'plac Grunwaldzki 11, 50-378 Wrocław, Polska',
-        email: 'heroesofthebrain.help@gmail.com',
+        email: 'heroesofthebrain@gmail.com',
         hours: 'Poniedziałek - Piątek: 9:00 - 17:00',
         addressLabel: 'Adres',
         emailLabel: 'Email',
@@ -16,7 +16,7 @@
     const contentEN = {
         header: 'Get in Touch',
         address: '11 Grunwaldzki Square, 50-378 Wrocław, Poland',
-        email: 'heroesofthebrain.help@gmail.com',
+        email: 'heroesofthebrain@gmail.com',
         hours: 'Monday - Friday: 9:00 AM - 5:00 PM',
         addressLabel: 'Address',
         emailLabel: 'Email',
