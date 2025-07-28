@@ -50,7 +50,7 @@
   </svelte:head>
   
   
-  <div transition:fade={{ duration: 400 }}>
+  <div transition:fade={{ duration: 400 }} style="width: 100%;">
 	<LandingPage />
 	<HackatonInfoSection />
 	<Agenda />
