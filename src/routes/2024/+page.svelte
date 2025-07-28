@@ -56,7 +56,7 @@
 	<Agenda />
 	<CategorySection />
 	<Partners />
-	<ContactSection />
+	<ContactSection isPolish={$isPolish} />
 	<Faq />
 
     <!-- <div id="zapisy" class="flex flex-col align-middle justify-center text-center pb-16">
