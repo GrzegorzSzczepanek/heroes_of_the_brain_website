@@ -1112,7 +1112,7 @@
   
   <!-- Contact section -->
   <section class="section" class:visible={visible[9]} bind:this={sections[9]}>
-    <ContactSection />
+    <ContactSection isPolish={$isPolish} />
   </section>
 
   <!-- Registration CTA -->
