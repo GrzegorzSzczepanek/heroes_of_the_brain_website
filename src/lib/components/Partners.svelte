@@ -1,34 +1,83 @@
 <script>
   import LogoTiles from "./LogoTiles.svelte";
   import UnderlinedHeader from "./UnderlinedHeader.svelte";
-  import { isPolish } from '../../stores/languageStore';
-  import { derived } from 'svelte/store';
+  import { isPolish } from "../../stores/languageStore";
+  import { derived } from "svelte/store";
   const partnersPL = [
-    { category: "SPONSORZY STRATEGICZNI", logos: ["/images/coig.svg", "/images/brainaccess.png"]},
-    { category: "POZOSTALI SPONSORZY", logos: ["/images/stosowana.png", "/images/adescom.png", "/images/solet.png"]},
-    { category: "PARTNERZY MEDIALNI", logos: ["/images/radioluz.png", "/images/wit.svg"] },
-    { category: "PATRONAT HONOROWY REKTORA", logos: ["/images/pwr_bez_tla_pl.png"] }
+    {
+      category: "SPONSORZY STRATEGICZNI",
+      logos: ["/images/coig.svg", "/images/brainaccess.png"],
+    },
+    {
+      category: "POZOSTALI SPONSORZY",
+      logos: [
+        "/images/stosowana.png",
+        "/images/adescom.png",
+        "/images/solet.png",
+      ],
+    },
+    {
+      category: "PARTNERZY MEDIALNI",
+      logos: ["/images/radioluz.png", "/images/wit.svg"],
+    },
+    {
+      category: "PATRONAT HONOROWY REKTORA",
+      logos: ["/images/pwr_bez_tla_pl.png"],
+    },
   ];
 
   const partnersEN = [
-    { category: "STRATEGIC SPONSORS",  logos: ["/images/coig.svg", "/images/brainaccess.png"]},
-    { category: "OTHER SPONSORS", logos: ["/images/stosowana.png", "/images/adescom.png", "/images/solet.png"] },
-    { category: "MEDIA PARTNERS", logos: ["/images/radioluz.png", "/images/wit.svg"] },
-    { category: "HONORARY PATRONAGE OF THE RECTOR", logos: ["/images/pwr_bez_tla_eng.png"] }
+    {
+      category: "STRATEGIC SPONSORS",
+      logos: ["/images/coig.svg", "/images/brainaccess.png"],
+    },
+    {
+      category: "OTHER SPONSORS",
+      logos: [
+        "/images/stosowana.png",
+        "/images/adescom.png",
+        "/images/solet.png",
+      ],
+    },
+    {
+      category: "MEDIA PARTNERS",
+      logos: ["/images/radioluz.png", "/images/wit.svg"],
+    },
+    {
+      category: "HONORARY PATRONAGE OF THE RECTOR",
+      logos: ["/images/pwr_bez_tla_eng.png"],
+    },
   ];
 
+  const partners = derived(isPolish, ($isPolish) =>
+    $isPolish ? partnersPL : partnersEN
+  );
 
-  const partners = derived(isPolish, $isPolish => $isPolish ? partnersPL : partnersEN);
-
+  let strategicPartners;
   let currentPartners;
 
-  partners.subscribe(value => {
-    currentPartners = value;
+  partners.subscribe((value) => {
+    strategicPartners = value[0];
+    currentPartners = value.slice(1);
   });
 </script>
 
 <section class="text-center text-white bg-gray-900 py-20 px-4">
-  <UnderlinedHeader title={$isPolish ? "Zeszłoroczni Sponsorzy" : "Last Year Sponsors"} />
+  <UnderlinedHeader
+    title={$isPolish ? "Zeszłoroczni Sponsorzy" : "Last Year Sponsors"}
+  />
+  <div class="flex flex-row justify-center gap-5">
+    <div class="mb-12" data-aos="fade-right">
+      <h2 class="text-xl font-semibold mb-4">{strategicPartners.category}</h2>
+      <div class="flex flex-wrap justify-center gap-4">
+        {#each strategicPartners.logos as logo}
+          <a href={strategicPartners.link} target="_blank">
+            <LogoTiles {logo} {strategicPartners} isStrategic={true} />
+          </a>
+        {/each}
+      </div>
+    </div>
+  </div>
   {#each currentPartners as partner}
     <div class="mb-12" data-aos="fade-right">
       <h2 class="text-xl font-semibold mb-4">{partner.category}</h2>
@@ -42,4 +91,3 @@
     </div>
   {/each}
 </section>
-
