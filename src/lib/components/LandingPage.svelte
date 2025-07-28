@@ -154,7 +154,7 @@
     </p>
   </div>
   <div class="button-group">
-    <a href={applyLink} target="_blank" class="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-700 transition-all shadow-md">{applyText}</a>
+    <!-- <a href={applyLink} target="_blank" class="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-700 transition-all shadow-md">{applyText}</a> -->
     <a href="#HackatonInfo" class="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-700 transition-all shadow-md">{learnMoreText}</a>
   </div>
   
