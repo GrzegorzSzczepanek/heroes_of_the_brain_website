@@ -7,8 +7,8 @@
 </script>
 
 <svelte:head>
-  <title>Organisers</title>
-  <meta name="description" content="Heroes of The Brain BCI Hackaton" />
+  <title>Heroes of the Brain 2024</title>
+  <meta name="description" content="Heroes of the Brain BCI Hackaton" />
   <meta
     name="keywords"
     content="brain, bci, hackaton, heroes, brainaccess, solet, pwr, politechnika wroclawska"

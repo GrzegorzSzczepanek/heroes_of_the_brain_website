@@ -177,7 +177,7 @@
 
 <svelte:head>
   <title>{c?.pageTitle || 'Heroes of the Brain 2025'}</title>
-  <meta name="description" content="Heroes of The Brain 2025 – Brain‑Computer Interface hackathon edition." />
+  <meta name="description" content="Heroes of the Brain 2025 – Brain‑Computer Interface hackathon edition." />
   <meta name="keywords" content="brain, BCI, hackathon, 2025, heroes of the brain" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
   <link rel="preconnect" href="https://fonts.googleapis.com">

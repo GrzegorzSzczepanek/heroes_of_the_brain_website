@@ -1,37 +1,41 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<!-- <link rel="icon" href="%sveltekit.assets%/favicon.png" /> -->
-		<link rel="icon" type="image/x-icon" href="/images/logo_no_background.png">
-		<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="author" content="Grzegorz Szczepanek" />
-		<title>Hot Brain</title>
-		%sveltekit.head%
-	</head>
-	<body data-sveltekit-preload-data="hover">
-		<div style="display: contents">%sveltekit.body%</div>
-	</body>
-	<script>
-		document.addEventListener('DOMContentLoaded', () => {
-		  const fadeElements = document.querySelectorAll('.fade-in-left');
-		  const observer = new IntersectionObserver(entries => {
-			entries.forEach(entry => {
-			  if (entry.isIntersecting) {
-				entry.target.classList.add('show');
-			  }
-			});
-		  }, { threshold: 0.1 });
-	
-		  fadeElements.forEach(element => {
-			observer.observe(element);
-		  });
-		});
-		
-	  </script>
-	    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-		<script>
-			AOS.init();
-		</script>
+  <head>
+    <meta charset="utf-8" />
+    <!-- <link rel="icon" href="%sveltekit.assets%/favicon.png" /> -->
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="/images/logo_no_background.png" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Grzegorz Szczepanek" />
+    %sveltekit.head%
+  </head>
+  <body data-sveltekit-preload-data="hover">
+    <div style="display: contents">%sveltekit.body%</div>
+  </body>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const fadeElements = document.querySelectorAll(".fade-in-left");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("show");
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+
+      fadeElements.forEach((element) => {
+        observer.observe(element);
+      });
+    });
+  </script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 </html>
