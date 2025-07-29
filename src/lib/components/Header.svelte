@@ -36,7 +36,7 @@
     { name: "FAQ", href: "#faq" },
     { name: "Kontakt", href: "#contact" },
     // { name: "Zapisy", href: "#zapisy" },
-    { name: "Organizatorzy", href: "/2024/organizatorzy" },
+    { name: "Organizatorzy", href: "/2024/organisers" },
   ];
 
   let navItemsMain2024EN = [
@@ -45,7 +45,7 @@
     { name: "FAQ", href: "#faq" },
     { name: "Contact", href: "#contact" },
     // { name: "Apply", href: "#zapisy" },
-    { name: "Organizers", href: "/2024/organizatorzy" },
+    { name: "Organizers", href: "/2024/organisers" },
   ];
 
   let navItemsOrganizatorzyPL = [
