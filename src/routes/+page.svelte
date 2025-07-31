@@ -245,7 +245,9 @@
     <!-- Scroll indicator -->
     <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2">
       <div class="animate-bounce flex flex-col items-center">
-        <span class="text-white text-sm mb-1">Scroll</span>
+        <span class="text-white text-sm mb-1"
+          >{$isPolish ? "Przewiń w dół" : "Scroll down"}</span
+        >
         <svg
           class="w-6 h-6 text-white"
           fill="none"
@@ -280,7 +282,7 @@
         <div
           class="mt-10 grid gap-8 grid-cols-1 lg:grid-cols-2 max-w-6xl mx-auto"
         >
-          {#each [{ year: 2025, desc: tr.edition2025, image: "/images/editions/2025.jpg", accent: "bg-purple-600", status: "New" }, { year: 2024, desc: tr.edition2024, image: "/images/editions/2024.jpg", accent: "bg-blue-600", status: "Past" }] as edition, i}
+          {#each [{ year: 2025, desc: tr.edition2025, image: "/images/editions/2025.jpg", accent: "bg-purple-600", status: $isPolish ? "Nowe" : "New" }, { year: 2024, desc: tr.edition2024, image: "/images/editions/2024.jpg", accent: "bg-blue-600", status: $isPolish ? "Poprzednie" : "Past" }] as edition, i}
             <div in:fly={{ y: 50, duration: 800, delay: 400 + i * 200 }}>
               <a
                 href={`/${edition.year}`}
