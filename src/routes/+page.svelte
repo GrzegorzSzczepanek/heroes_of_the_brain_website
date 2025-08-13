@@ -286,7 +286,7 @@
             <div in:fly={{ y: 50, duration: 800, delay: 400 + i * 200 }}>
               <a
                 href={`/${edition.year}`}
-                data-sveltekit-preload-data="tap"
+                data-sveltekit-reload
                 class="card bg-white rounded-xl shadow-md overflow-hidden block h-full"
               >
                 <div class="relative">
