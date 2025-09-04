@@ -17,7 +17,7 @@
     { name: "FAQ", href: "#faq" },
     { name: "Kontakt", href: "#contact" },
     { name: "Zapisy", href: "#zapisy" },
-    // Organizers link removed for 2025 as it's not available yet
+    { name: "Organizatorzy", href: "/2025/organizatorzy" }
   ];
 
   let navItemsMainEN = [
@@ -26,7 +26,7 @@
     { name: "FAQ", href: "#faq" },
     { name: "Contact", href: "#contact" },
     { name: "Apply", href: "#zapisy" },
-    // Organizers link removed for 2025 as it's not available yet
+    { name: "Organizers", href: "/2025/organizatorzy" }
   ];
 
   // For 2024 edition, we keep the organizers link
