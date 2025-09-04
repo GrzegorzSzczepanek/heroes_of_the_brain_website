@@ -297,7 +297,7 @@
     organization: 'WRSS W4'
   },
   {
-    name: 'Kacper Kruszelnickie',
+    name: 'Kacper Kruszelnicki',
     role: 'Zespół Techniczny',
     bio: '',
     image: '/images/placeholder-man.jpg',
