@@ -21,6 +21,7 @@
       "Heroes of the Brain to prestiżowy hackathon koncentrujący się na innowacjach w dziedzinie interfejsów mózg-komputer. Dołącz do nas i twórz przełomowe rozwiązania na styku neurobiologii i technologii.",
     highlights: "Najważniejsze informacje",
     date: "29-30 listopada 2025",
+    registrationDate: "Zapisy od 29 września 2025",
     location: "Politechnika Wrocławska",
     prizes: "Nagrody zostaną ogłoszone wkrótce",
     applyNow: "Zgłoś się teraz",
@@ -48,6 +49,7 @@
       "Heroes of the Brain is a prestigious hackathon focused on innovations in brain-computer interfaces. Join us and create breakthrough solutions at the intersection of neuroscience and technology.",
     highlights: "Key Highlights",
     date: "November 29-30, 2025",
+    registrationDate: "Registration opens on September 29, 2025",
     location: "Wrocław University of Science and Technology",
     prizes: "Prizes TBA",
     applyNow: "Apply Now",
@@ -92,7 +94,7 @@
 
 <main class="min-h-screen w-full bg-white">
   <!-- Hero Section -->
-  <section class="hero-bg min-h-screen flex items-center w-full">
+  <section class="hero-bg flex items-center w-full">
     <div class="neural-paths"></div>
 
     <!-- Main content container -->
@@ -118,6 +120,12 @@
                 >
                   <span class="text-2xl">🗓️</span>
                   <span class="font-medium">{tr.date}</span>
+                </div>
+                <div
+                  class="highlight-item rounded-xl p-4 flex items-center space-x-3"
+                >
+                  <span class="text-2xl">📝</span>
+                  <span class="font-medium">{tr.registrationDate}</span>
                 </div>
                 <div
                   class="highlight-item rounded-xl p-4 flex items-center space-x-3"
@@ -438,6 +446,7 @@
     background: linear-gradient(135deg, #4c1d95 0%, #5b21b6 50%, #4338ca 100%);
     position: relative;
     overflow: hidden;
+    min-height: calc(100vh - 5em);
   }
 
   .hero-bg::before {

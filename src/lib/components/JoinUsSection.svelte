@@ -15,7 +15,7 @@
       Zapisy rozpoczną się wkrótce - śledź nasze media społecznościowe, aby nie przegapić startu rejestracji!
     `,
     buttonText: "Zapisy wkrótce",
-    buttonSubtext: "Rejestracja zostanie uruchomiona na przełomie sierpnia i września 2025",
+    buttonSubtext: "Rejestracja zostanie uruchomiona 29 września 2025",
     countdown: {
       days: "Dni",
       hours: "Godz",
@@ -35,7 +35,7 @@
       Registration will open soon - follow our social media to be notified when applications start!
     `,
     buttonText: "Registration Coming Soon",
-    buttonSubtext: "Registration will open in late August/early September 2025",
+    buttonSubtext: "Registration will open on September 29, 2025",
     countdown: {
       days: "Days",
       hours: "Hours",
