@@ -8,12 +8,12 @@
     {
       title: "Neurohackathon – Commerce Challenge",
       description:
-        "Wyzwanie 'Social Impact' skupia się na wprowadzaniu pozytywnych zmian społecznych poprzez innowacyjne rozwiązania. Uczestnicy będą tworzyć projekty poprawiające codzienne życie w niecodzienny sposób. Ta kategoria promuje nieszablonowe myślenie, kreatywność i działania mające na celu pomoc innym. Neurohackathon to maraton kodowania, burzy mózgów i współpracy, prowadzący do tworzenia innowacyjnych projektów.",
+        "Kategoria \"Commerce\" skupia się na innowacjach dla handlu i nowych modeli biznesowych, oferując uczestnikom przestrzeń do tworzenia rozwiązań, które można rozwijać i komercjalizować, takich jak technologie do testowania aplikacji, gry sterowane za pomocą interfejsów BCI czy produkty zaprojektowane tak, by podczas użytkowania wywoływać u klientów najlepsze emocje.",
     },
     {
       title: "Neurohackathon – Wellness Challenge",
       description:
-        "To wyzwanie Neurohackathonu 'Heroes of the Brain' koncentruje się na obszarze ENTERTAINMENT, czyli nowoczesnej rozrywce. W dzisiejszym świecie pełnym doznań tworzenie nowych form spędzania wolnego czasu jest coraz bardziej wymagające. Uczestnicy będą musieli wykazać się kreatywnością, aby sprostać oczekiwaniom i dostarczyć niezapomnianych przeżyć. Tematyka obejmuje futurystyczne gry, łamigłówki oraz inne formy rozrywki.",
+        "Kategoria \"Wellness\" koncentruje się na tworzeniu rozwiązań, które dzięki AI i interfejsom mózg–komputer poprawiają zdrowie, komfort i dobrostan człowieka, na przykład poprzez systemy wspomagające rehabilitację po urazach neurologicznych czy aplikacje ułatwiające redukcję stresu i poprawę jakości snu. ",
     },
   ];
 
@@ -21,12 +21,12 @@
     {
       title: "Neurohackathon – Commerce Challenge",
       description:
-        "The 'Social Impact' challenge focuses on making positive social changes through innovative solutions. Participants will create projects that improve everyday life in an extraordinary way. This category promotes unconventional thinking, creativity, and actions aimed at helping others. Neurohackathon is a coding marathon, brainstorming, and collaboration leading to the creation of innovative projects.",
+        "The \"Commerce\" category focuses on innovations for trade and new business models, offering participants a space to create solutions that can be developed and commercialized, such as technologies for testing applications, games controlled through BCI interfaces, or products designed to evoke the best emotions in customers during use.",
     },
     {
       title: "Neurohackathon – Wellness Challenge",
       description:
-        "The 'Heroes of the Brain' Neurohackathon's challenge focuses on the ENTERTAINMENT area, modern entertainment. In today's world full of experiences, creating new forms of spending free time is becoming increasingly demanding. Participants will have to show creativity to meet expectations and provide unforgettable experiences. The topics include futuristic games, puzzles, and other forms of entertainment.",
+        "The \"Wellness\" category focuses on creating solutions that, through AI and brain–computer interfaces, improve human health, comfort, and well-being, for example through systems supporting rehabilitation after neurological injuries or applications that help reduce stress and improve sleep quality.",
     },
   ];
 
