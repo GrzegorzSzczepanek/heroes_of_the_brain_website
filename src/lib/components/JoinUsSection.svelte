@@ -14,7 +14,7 @@
       
       Zapisy rozpoczną się wkrótce - śledź nasze media społecznościowe, aby nie przegapić startu rejestracji!
     `,
-    buttonText: "Zapisy wkrótce",
+    buttonText: "Zapisz się",
     buttonSubtext: "Rejestracja zostanie uruchomiona 29 września 2025",
     countdown: {
       days: "Dni",
@@ -34,7 +34,7 @@
       
       Registration will open soon - follow our social media to be notified when applications start!
     `,
-    buttonText: "Registration Coming Soon",
+    buttonText: "Register",
     buttonSubtext: "Registration will open on September 29, 2025",
     countdown: {
       days: "Days",
@@ -331,6 +331,10 @@
       font-size: 1rem;
     }
   }
+
+   .pointer {
+      cursor: pointer;
+    }
 </style>
 
 <section class="py-16 px-4" id="zapisy">
@@ -413,11 +417,11 @@
               </div>
               
               <div class="mt-8 text-center">
-                <div class="cta-button">
-                  {currentContent.buttonText}
-                  <span class="notification-badge">Soon</span>
-                </div>
-                <p class="button-subtext">{currentContent.buttonSubtext}</p>
+                <a href="https://eventownik.solvro.pl/neurohackaton-2025" target="_blank" rel="noopener noreferrer">
+                  <div class="cta-button pointer">
+                      {currentContent.buttonText}
+                  </div>
+                </a>
               </div>
             </div>
           </div>
