@@ -64,7 +64,7 @@
 
 <section class="text-center text-white bg-gray-900 py-20 px-4">
   <UnderlinedHeader
-    title={$isPolish ? "Zeszłoroczni Sponsorzy" : "Last Year Sponsors"}
+    title={$isPolish ? "Sponsorzy" : "Sponsors"}
   />
   <div class="flex flex-row justify-center gap-5">
     <div class="mb-12" data-aos="fade-right">
