@@ -35,6 +35,7 @@
     newsletter: "Zapisz się do newslettera",
     yourEmail: "Twój email",
     subscribe: "Zapisz się",
+    goTo: "Przejdź",
   };
 
   const tEN = {
@@ -62,6 +63,7 @@
     newsletter: "Subscribe to our newsletter",
     yourEmail: "Your email",
     subscribe: "Subscribe",
+    goTo: "Go to",
   };
 
   export const t = derived(isPolish, ($p) => ($p ? tPL : tEN));
@@ -121,12 +123,22 @@
                   <span class="text-2xl">🗓️</span>
                   <span class="font-medium">{tr.date}</span>
                 </div>
-                <div
-                  class="highlight-item rounded-xl p-4 flex items-center space-x-3"
+                <a
+                  href="https://eventownik.solvro.pl/neurohackaton-2025"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex items-center space-x-3 w-full"
                 >
-                  <span class="text-2xl">📝</span>
-                  <span class="font-medium">{tr.registrationDate}</span>
-                </div>
+                  <div
+                    class="highlight-item rounded-xl p-4 flex justify-between items-center space-x-3 w-full register-link"
+                  >
+                    <div class="flex items-center space-x-3">
+                      <span class="text-2xl">📝</span>
+                      <span class="font-medium">{tr.registrationDate}</span>
+                    </div>
+                    <span>{tr.goTo} ➜</span>
+                  </div>
+                </a>
                 <div
                   class="highlight-item rounded-xl p-4 flex items-center space-x-3"
                 >
@@ -567,5 +579,9 @@
     background: linear-gradient(to right, #c4b5fd, #818cf8, #c4b5fd);
     margin: 0 auto;
     border-radius: 3px;
+  }
+
+  .register-link:hover {
+    filter: brightness(1.1);
   }
 </style>
