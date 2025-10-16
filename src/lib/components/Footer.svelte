@@ -113,7 +113,60 @@
         <li>Niniejszy regulamin został sporządzony w dwóch wersjach językowych: w j. polskim oraz w j. angielskim. W przypadku rozbieżności lub interpretacji obowiązująca jest wersja w j. polskim.</li>
       </ol>
     `,
-    privacyContent: "To jest przykładowa treść polityki prywatności. Twoje dane są bezpieczne i przechowywane zgodnie z przepisami.",
+    privacyContent: `
+      <h2>Polityka Prywatności</h2>
+      <p>Zgodnie z art. 13 ust. 1 i ust. 2 Rozporządzenia Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (ogólne rozporządzenie o ochronie danych, dalej „RODO"), informujemy, iż:</p>
+      
+      <ol>
+        <li>Administratorem Pani/Pana danych osobowych w związku z Wydarzeniem pn. "Heroes of the Brain" (dalej „Administratorem") jest Politechnika Wrocławska z siedzibą przy ul. Wybrzeże Stanisława Wyspiańskiego 27, 50-370 Wrocław.</li>
+        
+        <li>W sprawach związanych z przetwarzaniem danych osobowych można kontaktować się z Administratorem Ochrony Danych pod adresem e-mail: eventownik@pwr.edu.pl lub bezpośrednio z organizatorem Wydarzenia "Heroes of the Brain" pod adresem 272731@student.pwr.edu.pl</li>
+        
+        <li>Dane osobowe będą przetwarzane wyłącznie w celu realizacji Wydarzenia, w szczególności do weryfikacji uczestnictwa, kontaktu oraz dokumentacji. W przypadku wyrażenia zgody w formularzu zgłoszeniowym, dane osobowe mogą zostać przekazane sponsorom wydarzenia w celach rekrutacyjnych. Przekazanie danych sponsorom następuje wyłącznie na podstawie dobrowolnej zgody udzielonej podczas rejestracji, zgodnie z art. 6 ust. 1 lit. a RODO. Uczestnik ma prawo do cofnięcia zgody w dowolnym momencie, a nie będzie to miało znaczenia dla legalności działań Administratora danych dokonanych do chwili wycofania zgody.</li>
+        
+        <li>Dane będą przetwarzane do 29.11.2026 r.</li>
+        
+        <li>Przetwarzane będą Pani/Pana poniższe dane:
+          <ol>
+            <li>Imię i Nazwisko</li>
+            <li>Adres email</li>
+            <li>Informacje o kraju oraz mieście zamieszkania</li>
+            <li>Dane dotyczące urządzenia tj. adres IP, dane sesji, identyfikator użytkownika</li>
+            <li>Informacje na temat uczelni, kierunku i roku studiów uczestnika</li>
+            <li>Informacje o doświadczeniu zawodowym</li>
+            <li>Informacje o poziomie danych umiejętności uczestnika.</li>
+          </ol>
+        </li>
+        
+        <li>Pani/Pana danych osobowe mogą być przekazywane:
+          <ol>
+            <li>uprawnionym podmiotom na podstawie obowiązujących przepisów (np. sądowi lub Policji);</li>
+            <li>wolontariuszom świadczącym usługi w imieniu Administratora w niezbędnym do tego celu zakresie;</li>
+            <li>podmiotom utrzymującym infrastrukturę Administratora oraz świadczącym usługi na Pani/Pana rzecz w imieniu Administratora;</li>
+            <li>a w przypadku wyrażenia zgody przez uczestnika również, sponsorom wydarzenia w zakresie umożliwiającym przeprowadzenie procesu rekrutacji</li>
+          </ol>
+        </li>
+        
+        <li>Posiada Pani/Pan prawo żądania:
+          <ol>
+            <li>dostępu do swoich danych osobowych;</li>
+            <li>kopii przetwarzanych danych osobowych;</li>
+            <li>przeniesienia danych osobowych przetwarzanych w sposób zautomatyzowany;</li>
+            <li>sprostowania swoich danych osobowych;</li>
+            <li>usunięcia swoich danych osobowych;</li>
+            <li>ograniczenia przetwarzania swoich danych osobowych;</li>
+            <li>cofnięcia zgody na przetwarzanie danych osobowych (jeżeli podstawą przetwarzania byłaby taka zgoda);</li>
+            <li>wniesienia sprzeciwu wobec przetwarzania swoich danych osobowych z przyczyn związanych z szczególną Pani/Pana sytuacją zgodnie z art. 21 RODO.</li>
+          </ol>
+        </li>
+      </ol>
+      
+      <ol>
+        <li>Niezależnie od powyższego, przysługuje Pani/Panu uprawnienie do wniesienia skargi do organu nadzorczego, tj. Prezesa Urzędu Ochrony Danych Osobowych, gdy uznają Państwo, iż przetwarzanie Państwa danych osobowych narusza przepisy RODO.</li>
+        
+        <li>Podanie przez Pana/Panią danych osobowych jest niezbędne do wzięcia udziału w Wydarzeniu.</li>
+      </ol>
+    `,
     copy: "&copy; {year} Neuronki. Wszelkie prawa zastrzeżone."
   };
 
@@ -219,7 +272,60 @@
         <li>These regulations are drawn up in two language versions: Polish and English. In case of discrepancies or interpretation doubts, the Polish version shall prevail.</li>
       </ol>
     `,
-    privacyContent: "This is a sample privacy policy content. Your data is safe and stored in accordance with regulations.",
+    privacyContent: `
+      <h2>Polityka Prywatności</h2>
+      <p>Zgodnie z art. 13 ust. 1 i ust. 2 Rozporządzenia Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (ogólne rozporządzenie o ochronie danych, dalej „RODO"), informujemy, iż:</p>
+      
+      <ol>
+        <li>Administratorem Pani/Pana danych osobowych w związku z Wydarzeniem pn. "Heroes of the Brain" (dalej „Administratorem") jest Politechnika Wrocławska z siedzibą przy ul. Wybrzeże Stanisława Wyspiańskiego 27, 50-370 Wrocław.</li>
+        
+        <li>W sprawach związanych z przetwarzaniem danych osobowych można kontaktować się z Administratorem Ochrony Danych pod adresem e-mail: eventownik@pwr.edu.pl lub bezpośrednio z organizatorem Wydarzenia "Heroes of the Brain" pod adresem 272731@student.pwr.edu.pl</li>
+        
+        <li>Dane osobowe będą przetwarzane wyłącznie w celu realizacji Wydarzenia, w szczególności do weryfikacji uczestnictwa, kontaktu oraz dokumentacji. W przypadku wyrażenia zgody w formularzu zgłoszeniowym, dane osobowe mogą zostać przekazane sponsorom wydarzenia w celach rekrutacyjnych. Przekazanie danych sponsorom następuje wyłącznie na podstawie dobrowolnej zgody udzielonej podczas rejestracji, zgodnie z art. 6 ust. 1 lit. a RODO. Uczestnik ma prawo do cofnięcia zgody w dowolnym momencie, a nie będzie to miało znaczenia dla legalności działań Administratora danych dokonanych do chwili wycofania zgody.</li>
+        
+        <li>Dane będą przetwarzane do 29.11.2026 r.</li>
+        
+        <li>Przetwarzane będą Pani/Pana poniższe dane:
+          <ol>
+            <li>Imię i Nazwisko</li>
+            <li>Adres email</li>
+            <li>Informacje o kraju oraz mieście zamieszkania</li>
+            <li>Dane dotyczące urządzenia tj. adres IP, dane sesji, identyfikator użytkownika</li>
+            <li>Informacje na temat uczelni, kierunku i roku studiów uczestnika</li>
+            <li>Informacje o doświadczeniu zawodowym</li>
+            <li>Informacje o poziomie danych umiejętności uczestnika.</li>
+          </ol>
+        </li>
+        
+        <li>Pani/Pana danych osobowe mogą być przekazywane:
+          <ol>
+            <li>uprawnionym podmiotom na podstawie obowiązujących przepisów (np. sądowi lub Policji);</li>
+            <li>wolontariuszom świadczącym usługi w imieniu Administratora w niezbędnym do tego celu zakresie;</li>
+            <li>podmiotom utrzymującym infrastrukturę Administratora oraz świadczącym usługi na Pani/Pana rzecz w imieniu Administratora;</li>
+            <li>a w przypadku wyrażenia zgody przez uczestnika również, sponsorom wydarzenia w zakresie umożliwiającym przeprowadzenie procesu rekrutacji</li>
+          </ol>
+        </li>
+        
+        <li>Posiada Pani/Pan prawo żądania:
+          <ol>
+            <li>dostępu do swoich danych osobowych;</li>
+            <li>kopii przetwarzanych danych osobowych;</li>
+            <li>przeniesienia danych osobowych przetwarzanych w sposób zautomatyzowany;</li>
+            <li>sprostowania swoich danych osobowych;</li>
+            <li>usunięcia swoich danych osobowych;</li>
+            <li>ograniczenia przetwarzania swoich danych osobowych;</li>
+            <li>cofnięcia zgody na przetwarzanie danych osobowych (jeżeli podstawą przetwarzania byłaby taka zgoda);</li>
+            <li>wniesienia sprzeciwu wobec przetwarzania swoich danych osobowych z przyczyn związanych z szczególną Pani/Pana sytuacją zgodnie z art. 21 RODO.</li>
+          </ol>
+        </li>
+      </ol>
+      
+      <ol>
+        <li>Niezależnie od powyższego, przysługuje Pani/Panu uprawnienie do wniesienia skargi do organu nadzorczego, tj. Prezesa Urzędu Ochrony Danych Osobowych, gdy uznają Państwo, iż przetwarzanie Państwa danych osobowych narusza przepisy RODO.</li>
+        
+        <li>Podanie przez Pana/Panią danych osobowych jest niezbędne do wzięcia udziału w Wydarzeniu.</li>
+      </ol>
+    `,
     copy: "&copy; {year} Neuronki. All rights reserved."
   };
 
