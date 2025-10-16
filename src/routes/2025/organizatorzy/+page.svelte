@@ -66,7 +66,7 @@
   // Placeholder team stats
   const teamStats = [
     { value: '35+', label: c.members, icon: 'users' },
-    { value: '8+', label: c.experience, icon: 'calendar' },
+    { value: '2+', label: c.experience, icon: 'calendar' },
     { value: '2', label: c.editions, icon: 'trophy' },
     { value: '5', label: c.departments, icon: 'building' }
   ];
