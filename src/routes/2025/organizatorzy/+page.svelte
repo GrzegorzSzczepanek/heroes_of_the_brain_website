@@ -107,43 +107,252 @@
   
   // Placeholder team members for demonstration
   const teamMembers = [
-    {
-      name: 'Anna Kowalska',
-      role: 'Lead Coordinator',
-      bio: 'Anna has been organizing tech events for over 5 years and leads our coordination team.',
-      image: '/images/placeholder-woman.jpg'
-    },
-    {
-      name: 'Piotr Nowak',
-      role: 'Technical Director',
-      bio: 'Expert in BCI technology with a background in computer science and neuroscience.',
-      image: '/images/placeholder-man.jpg'
-    },
-    {
-      name: 'Marta Wiśniewska',
-      role: 'Marketing Lead',
-      bio: 'Marta handles our marketing strategy and social media presence.',
-      image: '/images/placeholder-woman.jpg'
-    },
-    {
-      name: 'Adam Johnson',
-      role: 'Logistics Manager',
-      bio: 'Ensures everything runs smoothly during the event from venue to catering.',
-      image: '/images/placeholder-man.jpg'
-    },
-    {
-      name: 'Joanna Smith',
-      role: 'Mentor Coordinator',
-      bio: 'PhD in Neuroscience who manages our mentor team and specialized workshops.',
-      image: '/images/placeholder-woman.jpg'
-    },
-    {
-      name: 'Tomasz Brown',
-      role: 'Partner Relations',
-      bio: 'Works with our sponsors and partners to ensure mutual benefit and support.',
-      image: '/images/placeholder-man.jpg'
-    }
-  ];
+  {
+    name: 'Iuliia Kapustinskaia',
+    role: 'Koordynator Główny',
+    bio: '',
+    image: '/images/koordynatorzy/iuliia_kapustinskaia.jpg',
+    organization: 'KN Neuron'
+  },
+  {
+    name: 'Filip Puszko',
+    role: 'Koordynator Główny',
+    bio: '',
+    image: '/images/sekcja_techniczna/filip_puszko.webp',
+    organization: 'KN Neuron'
+  },
+  {
+    name: 'Grzegorz Szczepanek',
+    role: 'Koordynator Techniczny',
+    bio: '',
+    image: '/images/sekcja_techniczna/grzegorz_szczepanek.webp',
+    organization: 'KN Neuron'
+  },
+  {
+    name: 'Milena Mironczuk',
+    role: 'Koordynator Organizacyjny',
+    bio: '',
+    image: '/images/placeholder-woman.jpg',
+    organization: 'KN Neuron'
+  },
+  {
+    name: 'Maja Wiśniewska',
+    role: 'Koordynator Sponsorski',
+    bio: '',
+    image: '/images/sekcja_sponsorska/maja_wisniewska.JPG',
+    organization: 'Brak'
+  },
+  {
+    name: 'Anna Gralewska',
+    role: 'Koordynator Promocji',
+    bio: '',
+    image: '/images/koordynatorzy/anna-gralewska.jpeg',
+    organization: 'Brak'
+  },
+  {
+    name: 'Oliwia Borkowska',
+    role: 'Koordynator Promocji',
+    bio: '',
+    image: '/images/sekcja_promocji/oliwia_borkowska.webp',
+    organization: 'KN Neuron'
+  },
+  {
+    name: 'Weronika Kaźmierczak',
+    role: 'Koordynator Promocji',
+    bio: '',
+    image: '/images/placeholder-woman.jpg',
+    organization: 'KN Neuron'
+  },
+  {
+    name: 'Roch Rupar',
+    role: 'Koordynator Logistyki',
+    bio: '',
+    image: '/images/placeholder-man.jpg',
+    organization: 'WRSS W4'
+  },
+  {
+    name: 'Kacper Daniel',
+    role: 'Zespół Techniczny',
+    bio: '',
+    image: '/images/sekcja_techniczna/kacper_daniel.jpg',
+    organization: 'KN Neuron'
+  },
+  {
+    name: 'Barbara Dereń',
+    role: 'Zespół Logistyki',
+    bio: '',
+    image: '/images/placeholder-woman.jpg',
+    organization: 'KN Neuron'
+  },
+  {
+    name: 'Adam Broszkiewicz',
+    role: 'Zespół Techniczny',
+    bio: '',
+    image: '/images/sekcja_techniczna/adam_broszkiewicz.jpg',
+    organization: 'KN Neuron'
+  },
+  {
+    name: 'Jakub Kulik',
+    role: 'Zespół Promocji',
+    bio: '',
+    image: '/images/placeholder-man.jpg',
+    organization: 'WRSS W4'
+  },
+  {
+    name: 'Amelia Sroczyńska',
+    role: 'Zespół Organizacyjny',
+    bio: '',
+    image: '/images/sekcja_organizacyjna/amelia_sroczynska.JPG',
+    organization: 'WRSS W4'
+  },
+  {
+    name: 'Wiktor Golimowski',
+    role: 'Zespół Organizacyjny',
+    bio: '',
+    image: '/images/placeholder-man.jpg',
+    organization: 'KN Neuron'
+  },
+  {
+    name: 'Marcel Sobecki',
+    role: 'Zespół Organizacyjny',
+    bio: '',
+    image: '/images/placeholder-man.jpg',
+    organization: 'KN Neuron'
+  },
+  {
+    name: 'Konrad Bąchór',
+    role: 'Zespół Grafiki',
+    bio: '',
+    image: '/images/sekcja_promocji/konrad_bachor.webp',
+    organization: 'WRSS W4'
+  },
+  {
+    name: 'Maria Cicirko',
+    role: 'Zespół Promocji',
+    bio: '',
+    image: '/images/placeholder-woman.jpg',
+    organization: 'KN Neuron'
+  },
+  {
+    name: 'Tomasz Koralewski',
+    role: 'Zespół Techniczny',
+    bio: '',
+    image: '/images/sekcja_techniczna/tomasz_koralewski.webp',
+    organization: 'KN Neuron'
+  },
+  {
+    name: 'Mieszko Połończyk',
+    role: 'Zespół Sponsorski',
+    bio: '',
+    image: '/images/placeholder-man.jpg',
+    organization: 'W4 INS'
+  },
+  {
+    name: 'Jakub Kłosowski',
+    role: 'Zespół Sponsorski',
+    bio: '',
+    image: '/images/placeholder-man.jpg',
+    organization: 'W4N INS'
+  },
+  {
+    name: 'Karol Kosmala',
+    role: 'Zespół Promocji',
+    bio: '',
+    image: '/images/placeholder-man.jpg',
+    organization: 'WRSS W4'
+  },
+  {
+    name: 'Magdalena Skiba',
+    role: 'Zespół Promocji',
+    bio: '',
+    image: '/images/placeholder-woman.jpg',
+    organization: 'TK Games'
+  },
+  {
+    name: 'Jakub Szot',
+    role: 'Zespół Sponsorski',
+    bio: '',
+    image: '/images/placeholder-man.jpg',
+    organization: 'WRSS W4'
+  },
+  {
+    name: 'Kajetan Mróz',
+    role: 'Zespół Logistyki',
+    bio: '',
+    image: '/images/placeholder-man.jpg',
+    organization: 'WRSS W4'
+  },
+  {
+    name: 'Paulina Włosińska',
+    role: 'Zespół Logistyki',
+    bio: '',
+    image: '/images/placeholder-woman.jpg',
+    organization: 'WRSS W4'
+  },
+  {
+    name: 'Dominika Jarząbek',
+    role: 'Zespół Organizacyjny',
+    bio: '',
+    image: '/images/placeholder-woman.jpg',
+    organization: 'WRSS W4'
+  },
+  {
+    name: 'Kacper Kruszelnicki',
+    role: 'Zespół Techniczny',
+    bio: '',
+    image: '/images/placeholder-man.jpg',
+    organization: 'KN Neuron'
+  },
+  {
+    name: 'Michał Mendzelewski',
+    role: 'Zespół Organizacyjny',
+    bio: '',
+    image: '/images/placeholder-man.jpg',
+    organization: 'KN Neuron'
+  },
+  {
+    name: 'Maciej Zych',
+    role: 'Zespół Logistyki',
+    bio: '',
+    image: '/images/placeholder-man.jpg',
+    organization: 'WRSS W4'
+  },
+  {
+    name: 'Zofia Turalska',
+    role: 'Zespół Sponsorski',
+    bio: '',
+    image: '/images/placeholder-woman.jpg',
+    organization: 'Brak'
+  },
+  {
+    name: 'Maksymilian Awdziejczyk',
+    role: 'Zespół Techniczny',
+    bio: '',
+    image: '/images/placeholder-man.jpg',
+    organization: 'KN Neuron'
+  },
+  {
+    name: 'Izabela Paniczek',
+    role: 'Zespół Promocji',
+    bio: '',
+    image: '/images/koordynatorzy/izabela_paniczek.webp',
+    organization: 'KN Neuron'
+  },
+  {
+    name: 'Dawid Janikowski',
+    role: 'Zespół Techniczny',
+    bio: '',
+    image: '/images/placeholder-man.jpg',
+    organization: 'KN Neuron'
+  },
+  {
+    name: 'Camille Lisek',
+    role: 'Zespół Techniczny',
+    bio: '',
+    image: '/images/placeholder-woman.jpg',
+    organization: 'KN Neuron'
+  }
+];
   
   // Intersection observer for scroll animations
   onMount(() => {
