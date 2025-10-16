@@ -273,57 +273,57 @@
       </ol>
     `,
     privacyContent: `
-      <h2>Polityka Prywatności</h2>
-      <p>Zgodnie z art. 13 ust. 1 i ust. 2 Rozporządzenia Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (ogólne rozporządzenie o ochronie danych, dalej „RODO"), informujemy, iż:</p>
+      <h2>Privacy Policy</h2>
+      <p>In accordance with Article 13(1) and (2) of Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation, hereinafter "GDPR"), we inform you that:</p>
       
       <ol>
-        <li>Administratorem Pani/Pana danych osobowych w związku z Wydarzeniem pn. "Heroes of the Brain" (dalej „Administratorem") jest Politechnika Wrocławska z siedzibą przy ul. Wybrzeże Stanisława Wyspiańskiego 27, 50-370 Wrocław.</li>
+        <li>The controller of your personal data in connection with the Event "Heroes of the Brain" (hereinafter "Controller") is Wrocław University of Science and Technology with its registered office at Wybrzeże Stanisława Wyspiańskiego 27, 50-370 Wrocław.</li>
         
-        <li>W sprawach związanych z przetwarzaniem danych osobowych można kontaktować się z Administratorem Ochrony Danych pod adresem e-mail: eventownik@pwr.edu.pl lub bezpośrednio z organizatorem Wydarzenia "Heroes of the Brain" pod adresem 272731@student.pwr.edu.pl</li>
+        <li>In matters related to the processing of personal data, you can contact the Data Protection Administrator at the following e-mail address: eventownik@pwr.edu.pl or directly with the organizer of the "Heroes of the Brain" Event at 272731@student.pwr.edu.pl</li>
         
-        <li>Dane osobowe będą przetwarzane wyłącznie w celu realizacji Wydarzenia, w szczególności do weryfikacji uczestnictwa, kontaktu oraz dokumentacji. W przypadku wyrażenia zgody w formularzu zgłoszeniowym, dane osobowe mogą zostać przekazane sponsorom wydarzenia w celach rekrutacyjnych. Przekazanie danych sponsorom następuje wyłącznie na podstawie dobrowolnej zgody udzielonej podczas rejestracji, zgodnie z art. 6 ust. 1 lit. a RODO. Uczestnik ma prawo do cofnięcia zgody w dowolnym momencie, a nie będzie to miało znaczenia dla legalności działań Administratora danych dokonanych do chwili wycofania zgody.</li>
+        <li>Personal data will be processed solely for the purpose of organizing the Event, in particular for verification of participation, contact, and documentation. If consent is given in the registration form, personal data may be shared with event sponsors for recruitment purposes. The transfer of data to sponsors takes place solely on the basis of voluntary consent given during registration, in accordance with Article 6(1)(a) of the GDPR. The participant has the right to withdraw consent at any time, and this will not affect the lawfulness of the Controller's actions taken before the withdrawal of consent.</li>
         
-        <li>Dane będą przetwarzane do 29.11.2026 r.</li>
+        <li>Data will be processed until November 29, 2026.</li>
         
-        <li>Przetwarzane będą Pani/Pana poniższe dane:
+        <li>The following data will be processed:
           <ol>
-            <li>Imię i Nazwisko</li>
-            <li>Adres email</li>
-            <li>Informacje o kraju oraz mieście zamieszkania</li>
-            <li>Dane dotyczące urządzenia tj. adres IP, dane sesji, identyfikator użytkownika</li>
-            <li>Informacje na temat uczelni, kierunku i roku studiów uczestnika</li>
-            <li>Informacje o doświadczeniu zawodowym</li>
-            <li>Informacje o poziomie danych umiejętności uczestnika.</li>
+            <li>Name and Surname</li>
+            <li>Email address</li>
+            <li>Information about country and city of residence</li>
+            <li>Device data, i.e., IP address, session data, user identifier</li>
+            <li>Information about the participant's university, field of study, and year of study</li>
+            <li>Information about professional experience</li>
+            <li>Information about the participant's skill levels.</li>
           </ol>
         </li>
         
-        <li>Pani/Pana danych osobowe mogą być przekazywane:
+        <li>Your personal data may be transferred to:
           <ol>
-            <li>uprawnionym podmiotom na podstawie obowiązujących przepisów (np. sądowi lub Policji);</li>
-            <li>wolontariuszom świadczącym usługi w imieniu Administratora w niezbędnym do tego celu zakresie;</li>
-            <li>podmiotom utrzymującym infrastrukturę Administratora oraz świadczącym usługi na Pani/Pana rzecz w imieniu Administratora;</li>
-            <li>a w przypadku wyrażenia zgody przez uczestnika również, sponsorom wydarzenia w zakresie umożliwiającym przeprowadzenie procesu rekrutacji</li>
+            <li>authorized entities based on applicable regulations (e.g., court or police);</li>
+            <li>volunteers providing services on behalf of the Controller to the extent necessary for this purpose;</li>
+            <li>entities maintaining the Controller's infrastructure and providing services on your behalf on behalf of the Controller;</li>
+            <li>and in the event of the participant's consent, also to event sponsors to the extent enabling the recruitment process</li>
           </ol>
         </li>
         
-        <li>Posiada Pani/Pan prawo żądania:
+        <li>You have the right to request:
           <ol>
-            <li>dostępu do swoich danych osobowych;</li>
-            <li>kopii przetwarzanych danych osobowych;</li>
-            <li>przeniesienia danych osobowych przetwarzanych w sposób zautomatyzowany;</li>
-            <li>sprostowania swoich danych osobowych;</li>
-            <li>usunięcia swoich danych osobowych;</li>
-            <li>ograniczenia przetwarzania swoich danych osobowych;</li>
-            <li>cofnięcia zgody na przetwarzanie danych osobowych (jeżeli podstawą przetwarzania byłaby taka zgoda);</li>
-            <li>wniesienia sprzeciwu wobec przetwarzania swoich danych osobowych z przyczyn związanych z szczególną Pani/Pana sytuacją zgodnie z art. 21 RODO.</li>
+            <li>access to your personal data;</li>
+            <li>a copy of the processed personal data;</li>
+            <li>transfer of personal data processed in an automated manner;</li>
+            <li>rectification of your personal data;</li>
+            <li>erasure of your personal data;</li>
+            <li>restriction of processing of your personal data;</li>
+            <li>withdrawal of consent to the processing of personal data (if such consent was the basis for processing);</li>
+            <li>to object to the processing of your personal data for reasons related to your particular situation in accordance with Article 21 of the GDPR.</li>
           </ol>
         </li>
       </ol>
       
       <ol>
-        <li>Niezależnie od powyższego, przysługuje Pani/Panu uprawnienie do wniesienia skargi do organu nadzorczego, tj. Prezesa Urzędu Ochrony Danych Osobowych, gdy uznają Państwo, iż przetwarzanie Państwa danych osobowych narusza przepisy RODO.</li>
+        <li>Regardless of the above, you have the right to lodge a complaint with the supervisory authority, i.e., the President of the Personal Data Protection Office, if you believe that the processing of your personal data violates the GDPR provisions.</li>
         
-        <li>Podanie przez Pana/Panią danych osobowych jest niezbędne do wzięcia udziału w Wydarzeniu.</li>
+        <li>Providing your personal data is necessary to participate in the Event.</li>
       </ol>
     `,
     copy: "&copy; {year} Neuronki. All rights reserved."
