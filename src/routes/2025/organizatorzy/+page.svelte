@@ -132,28 +132,29 @@
     },
     {
       name: 'Maja Wiśniewska',
-      role: 'Koordynator Sponsorski',
+      role: 'Koordynator Współprac Zewnętrzych',
       bio: '',
       image: '/images/maja_wisniewska.jpg',
       organization: 'Brak',
       category: 'sponsorship',
       isCoordinator: true
     },
-    {
-      name: 'Anna Gralewska',
-      role: 'Koordynator Promocji',
-      bio: '',
-      image: '/images/AnnaGrelewska.jpeg',
-      organization: 'Brak',
-      category: 'promotion',
-      isCoordinator: true
-    },
+
     {
       name: 'Oliwia Borkowska',
       role: 'Koordynator Promocji',
       bio: '',
       image: '/images/Oliwia Borkowska.jpg',
       organization: 'KN Neuron',
+      category: 'promotion',
+      isCoordinator: true
+    },
+    {
+      name: 'Anna Grelewska',
+      role: 'Koordynator Promocji',
+      bio: '',
+      image: '/images/AnnaGrelewska.jpeg',
+      organization: 'Brak',
       category: 'promotion',
       isCoordinator: true
     },
@@ -168,7 +169,7 @@
     },
     {
       name: 'Natalia Malinowska',
-      role: 'Koordynator Grafiki',
+      role: 'Zespół Grafiki',
       bio: '',
       image: '/images/placeholder-woman.jpg',
       organization: 'KN Neuron',
@@ -266,7 +267,7 @@
     },
     {
       name: 'Mieszko Połończyk',
-      role: 'Zespół Sponsorski',
+      role: 'Zespół Współprac Zewnętrzych',
       bio: '',
       image: '/images/Mieszko Połonczyk.jpg',
       organization: 'W4 INS',
@@ -274,7 +275,7 @@
     },
     {
       name: 'Jakub Kłosowski',
-      role: 'Zespół Sponsorski',
+      role: 'Zespół Współprac Zewnętrzych',
       bio: '',
       image: '/images/placeholder-man.jpg',
       organization: 'W4N INS',
@@ -354,7 +355,7 @@
     },
     {
       name: 'Zofia Turalska',
-      role: 'Zespół Sponsorski',
+      role: 'Zespół Współprac Zewnętrzych',
       bio: '',
       image: '/images/placeholder-woman.jpg',
       organization: 'Brak',
@@ -1366,20 +1367,4 @@
     </div>
   </section>
   
-  <!-- Join Team CTA -->
-  <section class="cta-section py-16">
-    <div class="container mx-auto px-4">
-      <div 
-        class="max-w-3xl mx-auto text-center"
-        in:fade={{ duration: 1000, delay: 300 }}
-      >
-        <h2 class="text-3xl font-bold mb-4">{c?.joinTeamTitle || contentEN.joinTeamTitle}</h2>
-        <p class="text-xl text-purple-100 mb-8 opacity-90">{c?.joinTeamDesc || contentEN.joinTeamDesc}</p>
-        
-        <a href="/contact" class="cta-btn">
-          {c?.joinTeamButton || contentEN.joinTeamButton}
-        </a>
-      </div>
-    </div>
-  </section>
 </div>
