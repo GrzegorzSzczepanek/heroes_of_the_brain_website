@@ -1,17 +1,10 @@
 <script lang="ts">
   import '../../../app.css';
   import { onMount } from 'svelte';
-  import { fade, fly, scale } from 'svelte/transition';
+  import { fade, fly } from 'svelte/transition';
   import { derived } from 'svelte/store';
   import { isPolish } from '../../../stores/languageStore';
-  import { spring } from 'svelte/motion';
-  
-  // Use existing components
-  import TeamIntro from '$lib/components/TeamIntro.svelte';
-  import OrganizationLandingPage from '$lib/components/OrganizationLandingPage.svelte';
-  import TeamSection from '$lib/components/TeamSection.svelte';
-  import TeamMember from '$lib/components/TeamMember.svelte'; 
-  import UnderlinedHeader from '$lib/components/UnderlinedHeader.svelte';
+  import { writable } from 'svelte/store';
   
   // For animations
   let scrollY;
@@ -19,6 +12,9 @@
   let visible = Array(6).fill(false);
   let currentHover = -1;
   let teamSectionRef;
+  
+  // For filtering
+  let selectedCategory = writable('all');
   
   // Content based on language
   const contentPL = {
@@ -28,8 +24,8 @@
     teamStatsTitle: 'Nasz zespół w liczbach',
     members: 'Członków zespołu',
     experience: 'Lat doświadczenia',
-    editions: 'Edycji hackathonu',
-    departments: 'Działów',
+    editions: 'Edycje hackathonu',
+    departments: 'Sekcji',
     departmentsTitle: 'Struktura organizacyjna',
     teamTitle: 'Członkowie zespołu',
     teamSubtitle: 'Poznaj ludzi, którzy tworzą Heroes of the Brain 2025',
@@ -37,7 +33,17 @@
     quoteAuthor: 'Zespół Heroes of the Brain',
     joinTeamTitle: 'Dołącz do naszego zespołu',
     joinTeamDesc: 'Jesteśmy zawsze otwarci na nowych członków zespołu pasjonujących się nowymi technologiami',
-    joinTeamButton: 'Skontaktuj się z nami'
+    joinTeamButton: 'Skontaktuj się z nami',
+    allCategories: 'Wszyscy',
+    coordination: 'Koordynacja',
+    technical: 'Sekcja Techniczna',
+    organization: 'Sekcja Organizacyjna',
+    promotion: 'Sekcja Promocji',
+    sponsorship: 'Sekcja Współprac Zewnętrznych',
+    logistics: 'Sekcja Logistyki',
+    graphic: 'Grafika',
+    noResults: 'Nie znaleziono członków zespołu w tej kategorii',
+    mainCoordinator: 'Koordynator Główny'
   };
   
   const contentEN = {
@@ -56,314 +62,504 @@
     quoteAuthor: 'Heroes of the Brain Team',
     joinTeamTitle: 'Join our team',
     joinTeamDesc: 'We are always open to new team members passionate about new technologies',
-    joinTeamButton: 'Contact us'
+    joinTeamButton: 'Contact us',
+    allCategories: 'All',
+    coordination: 'Coordination',
+    technical: 'Technical Team',
+    organization: 'Organizational Team',
+    promotion: 'Promotion Team',
+    sponsorship: 'External Partnerships Team',
+    logistics: 'Logistics Team',
+    graphic: 'Graphics',
+    noResults: 'No team members found in this category',
+    mainCoordinator: 'Main Coordinator'
   };
   
   const content = derived(isPolish, ($p) => ($p ? contentPL : contentEN));
   let c; 
   content.subscribe(v => c = v);
   
-  // Placeholder team stats
-  const teamStats = [
-    { value: '35+', label: c.members, icon: 'users' },
-    { value: '2+', label: c.experience, icon: 'calendar' },
-    { value: '2', label: c.editions, icon: 'trophy' },
-    { value: '5', label: c.departments, icon: 'building' }
+  // Department categories for filtering
+  const categories = [
+    { id: 'all', name: () => c?.allCategories || contentEN.allCategories },
+    { id: 'coordination', name: () => c?.coordination || contentEN.coordination },
+    { id: 'technical', name: () => c?.technical || contentEN.technical },
+    { id: 'organization', name: () => c?.organization || contentEN.organization },
+    { id: 'promotion', name: () => c?.promotion || contentEN.promotion },
+    { id: 'sponsorship', name: () => c?.sponsorship || contentEN.sponsorship },
+    { id: 'logistics', name: () => c?.logistics || contentEN.logistics },
+    { id: 'graphic', name: () => c?.graphic || contentEN.graphic }
   ];
   
-  // Placeholder departments
-  const departments = [
-    { 
-      name: 'Coordination',
-      description: 'Overall event management and coordination', 
-      members: 4,
-      color: 'from-purple-500 to-indigo-500'
+  // Team members data with correct image paths and roles
+  const teamMembers = [
+    {
+      name: 'Filip Puszko',
+      role: 'Koordynator Główny',
+      bio: '',
+      image: '/images/sekcja_techniczna/filip_puszko.webp',
+      organization: 'KN Neuron',
+      category: 'coordination',
+      isMainCoordinator: true
     },
-    { 
-      name: 'Marketing',
-      description: 'Promotion, social media, and communications', 
-      members: 6,
-      color: 'from-blue-500 to-cyan-500'
+    {
+      name: 'Iuliia Kapustinskaia',
+      role: 'Koordynator Główny',
+      bio: '',
+      image: '/images/Iuliia_Kapustinskaia.jpg',
+      organization: 'KN Neuron',
+      category: 'coordination',
+      isMainCoordinator: true,
+      specialImageAdjustment: true // Flag for special image handling
     },
-    { 
-      name: 'Technical',
-      description: 'Technical infrastructure and support', 
-      members: 8,
-      color: 'from-indigo-500 to-purple-500'
+    {
+      name: 'Grzegorz Szczepanek',
+      role: 'Koordynator Główny',
+      bio: '',
+      image: '/images/sekcja_techniczna/grzegorz_szczepanek.webp',
+      organization: 'KN Neuron',
+      category: 'coordination',
+      isMainCoordinator: true
     },
-    { 
-      name: 'Logistics',
-      description: 'Venue, catering, and participant support', 
-      members: 5,
-      color: 'from-violet-500 to-fuchsia-500'
+    {
+      name: 'Milena Mironczuk',
+      role: 'Koordynator Sekcji Organizacyjnej',
+      bio: '',
+      image: '/images/placeholder-woman.jpg',
+      organization: 'KN Neuron',
+      category: 'organization',
+      isCoordinator: true
     },
-    { 
-      name: 'Mentoring',
-      description: 'Guidance and support for participants', 
-      members: 12,
-      color: 'from-purple-500 to-pink-500'
+    {
+      name: 'Maja Wiśniewska',
+      role: 'Koordynator Sponsorski',
+      bio: '',
+      image: '/images/maja_wisniewska.jpg',
+      organization: 'Brak',
+      category: 'sponsorship',
+      isCoordinator: true
+    },
+    {
+      name: 'Anna Gralewska',
+      role: 'Koordynator Promocji',
+      bio: '',
+      image: '/images/AnnaGrelewska.jpeg',
+      organization: 'Brak',
+      category: 'promotion',
+      isCoordinator: true
+    },
+    {
+      name: 'Oliwia Borkowska',
+      role: 'Koordynator Promocji',
+      bio: '',
+      image: '/images/Oliwia Borkowska.jpg',
+      organization: 'KN Neuron',
+      category: 'promotion',
+      isCoordinator: true
+    },
+    {
+      name: 'Weronika Kaźmierczak',
+      role: 'Koordynator Grafiki',
+      bio: '',
+      image: '/images/weronika_kazmierczak.jpg',
+      organization: 'KN Neuron',
+      category: 'graphic',
+      isCoordinator: true
+    },
+    {
+      name: 'Natalia Malinowska',
+      role: 'Koordynator Grafiki',
+      bio: '',
+      image: '/images/placeholder-woman.jpg',
+      organization: 'KN Neuron',
+      category: 'graphic',
+      isCoordinator: true
+    },
+    {
+      name: 'Roch Rupar',
+      role: 'Koordynator Logistyki',
+      bio: '',
+      image: '/images/placeholder-man.jpg',
+      organization: 'WRSS W4',
+      category: 'logistics',
+      isCoordinator: true
+    },
+    {
+      name: 'Kacper Daniel',
+      role: 'Zespół Techniczny',
+      bio: '',
+      image: '/images/kacper_daniel.jpg',
+      organization: 'KN Neuron',
+      category: 'technical'
+    },
+    {
+      name: 'Barbara Dereń',
+      role: 'Zespół Logistyki',
+      bio: '',
+      image: '/images/barbara_deren.jpg',
+      organization: 'KN Neuron',
+      category: 'logistics'
+    },
+    {
+      name: 'Adam Broszkiewicz',
+      role: 'Zespół Techniczny',
+      bio: '',
+      image: '/images/adam_broszkiewicz.jpg',
+      organization: 'KN Neuron',
+      category: 'technical'
+    },
+    {
+      name: 'Jakub Kulik',
+      role: 'Zespół Promocji',
+      bio: '',
+      image: '/images/placeholder-man.jpg',
+      organization: 'WRSS W4',
+      category: 'promotion'
+    },
+    {
+      name: 'Amelia Sroczyńska',
+      role: 'Zespół Organizacyjny',
+      bio: '',
+      image: '/images/amelia_sroczynska.jpg',
+      organization: 'WRSS W4',
+      category: 'organization'
+    },
+    {
+      name: 'Wiktor Golimowski',
+      role: 'Zespół Organizacyjny',
+      bio: '',
+      image: '/images/WiktorGolimowski.jpg',
+      organization: 'KN Neuron',
+      category: 'organization'
+    },
+    {
+      name: 'Marcel Sobecki',
+      role: 'Zespół Organizacyjny',
+      bio: '',
+      image: '/images/marcel_sobecki.jpg',
+      organization: 'KN Neuron',
+      category: 'organization'
+    },
+    {
+      name: 'Konrad Bąchór',
+      role: 'Zespół Grafiki',
+      bio: '',
+      image: '/images/konrad_bachor.jpg',
+      organization: 'WRSS W4',
+      category: 'graphic'
+    },
+    {
+      name: 'Maria Cicirko',
+      role: 'Zespół Promocji',
+      bio: '',
+      image: '/images/placeholder-woman.jpg',
+      organization: 'KN Neuron',
+      category: 'promotion'
+    },
+    {
+      name: 'Tomasz Koralewski',
+      role: 'Zespół Techniczny',
+      bio: '',
+      image: '/images/sekcja_techniczna/tomasz_koralewski.webp',
+      organization: 'KN Neuron',
+      category: 'technical'
+    },
+    {
+      name: 'Mieszko Połończyk',
+      role: 'Zespół Sponsorski',
+      bio: '',
+      image: '/images/Mieszko Połonczyk.jpg',
+      organization: 'W4 INS',
+      category: 'sponsorship'
+    },
+    {
+      name: 'Jakub Kłosowski',
+      role: 'Zespół Sponsorski',
+      bio: '',
+      image: '/images/placeholder-man.jpg',
+      organization: 'W4N INS',
+      category: 'sponsorship'
+    },
+    {
+      name: 'Karol Kosmala',
+      role: 'Zespół Promocji',
+      bio: '',
+      image: '/images/karol_kosmala.jpg',
+      organization: 'WRSS W4',
+      category: 'promotion'
+    },
+    {
+      name: 'Magdalena Skiba',
+      role: 'Zespół Promocji',
+      bio: '',
+      image: '/images/placeholder-woman.jpg',
+      organization: 'TK Games',
+      category: 'promotion'
+    },
+    {
+      name: 'Kamil Kula',
+      role: 'Zespół Grafiki',
+      bio: '',
+      image: '/images/kamil_kula.jpg',
+      organization: 'WRSS W4',
+      category: 'graphic'
+    },
+    {
+      name: 'Kajetan Mróz',
+      role: 'Zespół Logistyki',
+      bio: '',
+      image: '/images/placeholder-man.jpg',
+      organization: 'WRSS W4',
+      category: 'logistics'
+    },
+    {
+      name: 'Paulina Włosińska',
+      role: 'Zespół Logistyki',
+      bio: '',
+      image: '/images/placeholder-woman.jpg',
+      organization: 'WRSS W4',
+      category: 'logistics'
+    },
+    {
+      name: 'Dominika Jarząbek',
+      role: 'Zespół Organizacyjny',
+      bio: '',
+      image: '/images/placeholder-woman.jpg',
+      organization: 'WRSS W4',
+      category: 'organization'
+    },
+    {
+      name: 'Kacper Kruszelnicki',
+      role: 'Zespół Techniczny',
+      bio: '',
+      image: '/images/placeholder-man.jpg',
+      organization: 'KN Neuron',
+      category: 'technical'
+    },
+    {
+      name: 'Michał Mendzelewski',
+      role: 'Zespół Organizacyjny',
+      bio: '',
+      image: '/images/placeholder-man.jpg',
+      organization: 'KN Neuron',
+      category: 'organization'
+    },
+    {
+      name: 'Maciej Zych',
+      role: 'Zespół Logistyki',
+      bio: '',
+      image: '/images/placeholder-man.jpg',
+      organization: 'WRSS W4',
+      category: 'logistics'
+    },
+    {
+      name: 'Zofia Turalska',
+      role: 'Zespół Sponsorski',
+      bio: '',
+      image: '/images/placeholder-woman.jpg',
+      organization: 'Brak',
+      category: 'sponsorship'
+    },
+    {
+      name: 'Maksymilian Awdziejczyk',
+      role: 'Zespół Techniczny',
+      bio: '',
+      image: '/images/placeholder-man.jpg',
+      organization: 'KN Neuron',
+      category: 'technical'
+    },
+    {
+      name: 'Izabela Paniczek',
+      role: 'Zespół Promocji',
+      bio: '',
+      image: '/images/koordynatorzy/izabela_paniczek.webp',
+      organization: 'KN Neuron',
+      category: 'promotion'
+    },
+    {
+      name: 'Dawid Janikowski',
+      role: 'Zespół Techniczny',
+      bio: '',
+      image: '/images/placeholder-man.jpg',
+      organization: 'KN Neuron',
+      category: 'technical'
+    },
+    {
+      name: 'Camille Lisek',
+      role: 'Zespół Techniczny',
+      bio: '',
+      image: '/images/placeholder-woman.jpg',
+      organization: 'KN Neuron',
+      category: 'technical'
     }
   ];
-  
-  // Placeholder team members for demonstration
-  const teamMembers = [
-  {
-    name: 'Iuliia Kapustinskaia',
-    role: 'Koordynator Główny',
-    bio: '',
-    image: '/images/koordynatorzy/iuliia_kapustinskaia.jpg',
-    organization: 'KN Neuron'
-  },
-  {
-    name: 'Filip Puszko',
-    role: 'Koordynator Główny',
-    bio: '',
-    image: '/images/sekcja_techniczna/filip_puszko.webp',
-    organization: 'KN Neuron'
-  },
-  {
-    name: 'Grzegorz Szczepanek',
-    role: 'Koordynator Techniczny',
-    bio: '',
-    image: '/images/sekcja_techniczna/grzegorz_szczepanek.webp',
-    organization: 'KN Neuron'
-  },
-  {
-    name: 'Milena Mironczuk',
-    role: 'Koordynator Organizacyjny',
-    bio: '',
-    image: '/images/placeholder-woman.jpg',
-    organization: 'KN Neuron'
-  },
-  {
-    name: 'Maja Wiśniewska',
-    role: 'Koordynator Sponsorski',
-    bio: '',
-    image: '/images/sekcja_sponsorska/maja_wisniewska.JPG',
-    organization: 'Brak'
-  },
-  {
-    name: 'Anna Gralewska',
-    role: 'Koordynator Promocji',
-    bio: '',
-    image: '/images/koordynatorzy/anna-gralewska.jpeg',
-    organization: 'Brak'
-  },
-  {
-    name: 'Oliwia Borkowska',
-    role: 'Koordynator Promocji',
-    bio: '',
-    image: '/images/sekcja_promocji/oliwia_borkowska.webp',
-    organization: 'KN Neuron'
-  },
-  {
-    name: 'Weronika Kaźmierczak',
-    role: 'Koordynator Promocji',
-    bio: '',
-    image: '/images/placeholder-woman.jpg',
-    organization: 'KN Neuron'
-  },
-  {
-    name: 'Roch Rupar',
-    role: 'Koordynator Logistyki',
-    bio: '',
-    image: '/images/placeholder-man.jpg',
-    organization: 'WRSS W4'
-  },
-  {
-    name: 'Kacper Daniel',
-    role: 'Zespół Techniczny',
-    bio: '',
-    image: '/images/sekcja_techniczna/kacper_daniel.jpg',
-    organization: 'KN Neuron'
-  },
-  {
-    name: 'Barbara Dereń',
-    role: 'Zespół Logistyki',
-    bio: '',
-    image: '/images/placeholder-woman.jpg',
-    organization: 'KN Neuron'
-  },
-  {
-    name: 'Adam Broszkiewicz',
-    role: 'Zespół Techniczny',
-    bio: '',
-    image: '/images/sekcja_techniczna/adam_broszkiewicz.jpg',
-    organization: 'KN Neuron'
-  },
-  {
-    name: 'Jakub Kulik',
-    role: 'Zespół Promocji',
-    bio: '',
-    image: '/images/placeholder-man.jpg',
-    organization: 'WRSS W4'
-  },
-  {
-    name: 'Amelia Sroczyńska',
-    role: 'Zespół Organizacyjny',
-    bio: '',
-    image: '/images/sekcja_organizacyjna/amelia_sroczynska.JPG',
-    organization: 'WRSS W4'
-  },
-  {
-    name: 'Wiktor Golimowski',
-    role: 'Zespół Organizacyjny',
-    bio: '',
-    image: '/images/placeholder-man.jpg',
-    organization: 'KN Neuron'
-  },
-  {
-    name: 'Marcel Sobecki',
-    role: 'Zespół Organizacyjny',
-    bio: '',
-    image: '/images/placeholder-man.jpg',
-    organization: 'KN Neuron'
-  },
-  {
-    name: 'Konrad Bąchór',
-    role: 'Zespół Grafiki',
-    bio: '',
-    image: '/images/sekcja_promocji/konrad_bachor.webp',
-    organization: 'WRSS W4'
-  },
-  {
-    name: 'Maria Cicirko',
-    role: 'Zespół Promocji',
-    bio: '',
-    image: '/images/placeholder-woman.jpg',
-    organization: 'KN Neuron'
-  },
-  {
-    name: 'Tomasz Koralewski',
-    role: 'Zespół Techniczny',
-    bio: '',
-    image: '/images/sekcja_techniczna/tomasz_koralewski.webp',
-    organization: 'KN Neuron'
-  },
-  {
-    name: 'Mieszko Połończyk',
-    role: 'Zespół Sponsorski',
-    bio: '',
-    image: '/images/placeholder-man.jpg',
-    organization: 'W4 INS'
-  },
-  {
-    name: 'Jakub Kłosowski',
-    role: 'Zespół Sponsorski',
-    bio: '',
-    image: '/images/placeholder-man.jpg',
-    organization: 'W4N INS'
-  },
-  {
-    name: 'Karol Kosmala',
-    role: 'Zespół Promocji',
-    bio: '',
-    image: '/images/placeholder-man.jpg',
-    organization: 'WRSS W4'
-  },
-  {
-    name: 'Magdalena Skiba',
-    role: 'Zespół Promocji',
-    bio: '',
-    image: '/images/placeholder-woman.jpg',
-    organization: 'TK Games'
-  },
-  {
-    name: 'Jakub Szot',
-    role: 'Zespół Sponsorski',
-    bio: '',
-    image: '/images/placeholder-man.jpg',
-    organization: 'WRSS W4'
-  },
-  {
-    name: 'Kajetan Mróz',
-    role: 'Zespół Logistyki',
-    bio: '',
-    image: '/images/placeholder-man.jpg',
-    organization: 'WRSS W4'
-  },
-  {
-    name: 'Paulina Włosińska',
-    role: 'Zespół Logistyki',
-    bio: '',
-    image: '/images/placeholder-woman.jpg',
-    organization: 'WRSS W4'
-  },
-  {
-    name: 'Dominika Jarząbek',
-    role: 'Zespół Organizacyjny',
-    bio: '',
-    image: '/images/placeholder-woman.jpg',
-    organization: 'WRSS W4'
-  },
-  {
-    name: 'Kacper Kruszelnicki',
-    role: 'Zespół Techniczny',
-    bio: '',
-    image: '/images/placeholder-man.jpg',
-    organization: 'KN Neuron'
-  },
-  {
-    name: 'Michał Mendzelewski',
-    role: 'Zespół Organizacyjny',
-    bio: '',
-    image: '/images/placeholder-man.jpg',
-    organization: 'KN Neuron'
-  },
-  {
-    name: 'Maciej Zych',
-    role: 'Zespół Logistyki',
-    bio: '',
-    image: '/images/placeholder-man.jpg',
-    organization: 'WRSS W4'
-  },
-  {
-    name: 'Zofia Turalska',
-    role: 'Zespół Sponsorski',
-    bio: '',
-    image: '/images/placeholder-woman.jpg',
-    organization: 'Brak'
-  },
-  {
-    name: 'Maksymilian Awdziejczyk',
-    role: 'Zespół Techniczny',
-    bio: '',
-    image: '/images/placeholder-man.jpg',
-    organization: 'KN Neuron'
-  },
-  {
-    name: 'Izabela Paniczek',
-    role: 'Zespół Promocji',
-    bio: '',
-    image: '/images/koordynatorzy/izabela_paniczek.webp',
-    organization: 'KN Neuron'
-  },
-  {
-    name: 'Dawid Janikowski',
-    role: 'Zespół Techniczny',
-    bio: '',
-    image: '/images/placeholder-man.jpg',
-    organization: 'KN Neuron'
-  },
-  {
-    name: 'Camille Lisek',
-    role: 'Zespół Techniczny',
-    bio: '',
-    image: '/images/placeholder-woman.jpg',
-    organization: 'KN Neuron'
+
+  // Function to count members by category
+  function countMembersByCategory(category) {
+    return teamMembers.filter(member => member.category === category).length;
   }
-];
+
+  // Total number of team members
+  const totalMembers = teamMembers.length;
+  
+  // Department data with translation support and dynamic counting
+  const departmentsData = {
+    EN: [
+      { 
+        name: 'Coordination',
+        description: 'Overall event management and coordination', 
+        color: 'from-purple-500 to-indigo-500',
+        category: 'coordination'
+      },
+      { 
+        name: 'Promotion',
+        description: 'Marketing, social media, and communications', 
+        color: 'from-blue-500 to-cyan-500',
+        category: 'promotion'
+      },
+      { 
+        name: 'Technical',
+        description: 'Technical infrastructure and support', 
+        color: 'from-indigo-500 to-purple-500',
+        category: 'technical'
+      },
+      { 
+        name: 'Logistics',
+        description: 'Venue, catering, and participant support', 
+        color: 'from-violet-500 to-fuchsia-500',
+        category: 'logistics'
+      },
+      { 
+        name: 'Sponsorship',
+        description: 'External partners and sponsorships', 
+        color: 'from-purple-500 to-pink-500',
+        category: 'sponsorship'
+      },
+      {
+        name: 'Organization',
+        description: 'Event planning and execution',
+        color: 'from-green-500 to-teal-500',
+        category: 'organization'
+      },
+      {
+        name: 'Graphics',
+        description: 'Visual design and materials',
+        color: 'from-rose-500 to-pink-500',
+        category: 'graphic'
+      }
+    ],
+    PL: [
+      { 
+        name: 'Koordynacja',
+        description: 'Ogólne zarządzanie i koordynacja wydarzenia', 
+        color: 'from-purple-500 to-indigo-500',
+        category: 'coordination'
+      },
+      { 
+        name: 'Promocja',
+        description: 'Marketing, media społecznościowe i komunikacja', 
+        color: 'from-blue-500 to-cyan-500',
+        category: 'promotion'
+      },
+      { 
+        name: 'Sekcja Techniczna',
+        description: 'Infrastruktura techniczna i wsparcie', 
+        color: 'from-indigo-500 to-purple-500',
+        category: 'technical'
+      },
+      { 
+        name: 'Logistyka',
+        description: 'Miejsce, catering i wsparcie uczestników', 
+        color: 'from-violet-500 to-fuchsia-500',
+        category: 'logistics'
+      },
+      { 
+        name: 'Sponsoring',
+        description: 'Partnerzy zewnętrzni i sponsorzy', 
+        color: 'from-purple-500 to-pink-500',
+        category: 'sponsorship'
+      },
+      {
+        name: 'Organizacja',
+        description: 'Planowanie i realizacja wydarzenia',
+        color: 'from-green-500 to-teal-500',
+        category: 'organization'
+      },
+      {
+        name: 'Grafika',
+        description: 'Projekty wizualne i materiały',
+        color: 'from-rose-500 to-pink-500',
+        category: 'graphic'
+      }
+    ]
+  };
+
+  // Add dynamic count to departments
+  $: {
+    departmentsData.EN.forEach(dept => {
+      dept.members = countMembersByCategory(dept.category);
+    });
+    departmentsData.PL.forEach(dept => {
+      dept.members = countMembersByCategory(dept.category);
+    });
+  }
+  
+  // Use a derived store to get the correct departments based on language
+  $: departments = $isPolish ? departmentsData.PL : departmentsData.EN;
+  
+  // Placeholder team stats
+  let teamStats = [];
+  $: {
+    // Count unique departments that have at least one member
+    const uniqueDepartments = new Set(teamMembers.map(m => m.category));
+    const departmentCount = uniqueDepartments.size;
+    
+    teamStats = [
+      { value: totalMembers.toString() + '+', label: c?.members || contentEN.members, icon: 'users' },
+      { value: '2+', label: c?.experience || contentEN.experience, icon: 'calendar' },
+      { value: '2', label: c?.editions || contentEN.editions, icon: 'trophy' },
+      { value: departmentCount.toString(), label: c?.departments || contentEN.departments, icon: 'building' }
+    ];
+  }
+
+  // Translate roles based on language
+  $: {
+    teamMembers.forEach(member => {
+      if (member.isMainCoordinator) {
+        member.translatedRole = $isPolish ? contentPL.mainCoordinator : contentEN.mainCoordinator;
+      }
+    });
+  }
+  
+  // Filter team members by category
+  let filteredTeamMembers = teamMembers;
+  let coordinators = [];
+  let regularMembers = [];
+  
+  $: {
+    if ($selectedCategory === 'all') {
+      filteredTeamMembers = teamMembers;
+    } else {
+      filteredTeamMembers = teamMembers.filter(member => member.category === $selectedCategory);
+    }
+    
+    // Separate main coordinators and regular members for better layout
+    coordinators = filteredTeamMembers.filter(m => m.isMainCoordinator);
+    regularMembers = filteredTeamMembers.filter(m => !m.isMainCoordinator);
+  }
   
   // Intersection observer for scroll animations
   onMount(() => {
-    document.title = c.pageTitle;
+    document.title = c?.pageTitle || contentEN.pageTitle;
     
     if (typeof IntersectionObserver !== 'undefined') {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             const index = sections.indexOf(entry.target);
-            visible[index] = true;
+            if (index >= 0) {
+              visible[index] = true;
+            }
             observer.unobserve(entry.target);
           }
         });
@@ -383,10 +579,14 @@
       };
     }
   });
+  
+  function selectCategory(categoryId) {
+    selectedCategory.set(categoryId);
+  }
 </script>
 
 <svelte:head>
-  <title>{c.pageTitle}</title>
+  <title>{c?.pageTitle || contentEN.pageTitle}</title>
   <meta name="description" content="Meet the organizing team behind Heroes of The Brain 2025." />
   <meta name="keywords" content="organizers, team, heroes of the brain 2025, bci hackathon" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -402,7 +602,6 @@
     --purple-primary: #8b5cf6;
     --purple-dark: #6d28d9;
     --indigo-primary: #6366f1;
-    /* width: 100vw; */
   }
   
   /* Section animations */
@@ -627,16 +826,17 @@
     background: white;
     border-radius: 1rem;
     overflow: hidden;
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
     height: 100%;
     display: flex;
     flex-direction: column;
+    border: 1px solid rgba(0, 0, 0, 0.05);
   }
   
   .department-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 25px 40px -15px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 25px 40px -15px rgba(0, 0, 0, 0.15), 0 10px 20px -5px rgba(0, 0, 0, 0.1);
   }
   
   .department-header {
@@ -650,6 +850,7 @@
     flex: 1;
     display: flex;
     flex-direction: column;
+    background-color: #ffffff;
   }
   
   .department-description {
@@ -664,6 +865,8 @@
     display: flex;
     align-items: center;
     color: #6b7280;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
   }
   
   .department-icon {
@@ -686,6 +889,44 @@
     pointer-events: none;
   }
   
+  .team-filter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .filter-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border: 1px solid #e5e7eb;
+    background-color: white;
+    color: #4b5563;
+  }
+  
+  .filter-btn:hover {
+    background-color: #f9fafb;
+    border-color: #d1d5db;
+  }
+  
+  .filter-btn.active {
+    background-color: #8b5cf6;
+    border-color: #8b5cf6;
+    color: white;
+  }
+  
+  .coordinators-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto 3rem auto;
+  }
+
   .team-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -702,6 +943,9 @@
     transition: all 0.4s ease;
     transform-style: preserve-3d;
     perspective: 1000px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
   }
   
   .team-card:hover {
@@ -709,17 +953,31 @@
     box-shadow: 0 30px 40px -20px rgba(0, 0, 0, 0.2);
   }
   
+  .team-card.featured {
+    border: 2px solid #8b5cf6;
+  }
+  
   .team-image-container {
     position: relative;
-    height: 300px;
+    width: 100%;
+    padding-top: 100%; /* Creates a square aspect ratio */
     overflow: hidden;
   }
   
   .team-image {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center 25%; /* Position focus point higher to show faces better */
     transition: transform 0.5s ease;
+  }
+  
+  /* Special adjustment for Iuliia's photo to prevent head cutoff */
+  .team-image.iuliia-image {
+    object-position: center 15%; /* Move focus point higher for Iuliia's photo */
   }
   
   .team-card:hover .team-image {
@@ -731,6 +989,13 @@
     border-top: 4px solid var(--purple-primary);
     position: relative;
     background: white;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .featured .team-content {
+    border-top-width: 6px;
   }
   
   .team-name {
@@ -751,6 +1016,16 @@
     color: #6b7280;
     font-size: 0.9rem;
     line-height: 1.5;
+  }
+  
+  .team-organization {
+    display: inline-block;
+    background-color: #f3f4f6;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
+    color: #4b5563;
   }
   
   /* Join CTA section */
@@ -805,6 +1080,14 @@
     margin: 1rem auto 2rem;
     border-radius: 2px;
   }
+
+  .section-subtitle {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #4c1d95;
+  }
   
   /* Responsive adjustments */
   @media (max-width: 768px) {
@@ -813,8 +1096,21 @@
     }
     
     .departments-grid,
-    .team-grid {
+    .team-grid,
+    .coordinators-grid {
       grid-template-columns: 1fr;
+    }
+    
+    .team-filter {
+      flex-direction: row;
+      overflow-x: auto;
+      padding-bottom: 1rem;
+      margin-left: -1rem;
+      margin-right: -1rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      justify-content: flex-start;
+      -webkit-overflow-scrolling: touch;
     }
   }
 </style>
@@ -851,8 +1147,8 @@
     </div>
     
     <div class="container mx-auto relative z-10">
-      <h1 class="hero-title">{c.heroTitle}</h1>
-      <p class="hero-subtitle">{c.heroSubtitle}</p>
+      <h1 class="hero-title">{c?.heroTitle || contentEN.heroTitle}</h1>
+      <p class="hero-subtitle">{c?.heroSubtitle || contentEN.heroSubtitle}</p>
     </div>
   </section>
   
@@ -861,7 +1157,7 @@
     <div class="container mx-auto px-4">
       <div class="section" class:visible={visible[0]} bind:this={sections[0]}>
         <div class="section-title">
-          <h2>{c.teamStatsTitle}</h2>
+          <h2>{c?.teamStatsTitle || contentEN.teamStatsTitle}</h2>
           <div class="section-divider"></div>
         </div>
         
@@ -907,9 +1203,9 @@
       <div class="section" class:visible={visible[1]} bind:this={sections[1]}>
         <div class="quote-content">
           <p class="quote-text">
-            {c.quote}
+            {c?.quote || contentEN.quote}
           </p>
-          <div class="quote-author">— {c.quoteAuthor}</div>
+          <div class="quote-author">— {c?.quoteAuthor || contentEN.quoteAuthor}</div>
         </div>
       </div>
     </div>
@@ -920,7 +1216,7 @@
     <div class="container mx-auto px-4">
       <div class="section" class:visible={visible[2]} bind:this={sections[2]}>
         <div class="section-title">
-          <h2>{c.departmentsTitle}</h2>
+          <h2>{c?.departmentsTitle || contentEN.departmentsTitle}</h2>
           <div class="section-divider"></div>
         </div>
         
@@ -929,6 +1225,11 @@
             <div 
               class="department-card"
               in:fly={{ y: 30, duration: 800, delay: 200 * i }}
+              on:click={() => selectCategory(dept.category)}
+              on:keypress={(e) => e.key === 'Enter' && selectCategory(dept.category)}
+              role="button"
+              tabindex="0"
+              style="cursor: pointer;"
             >
               <div class="department-header bg-gradient-to-r {dept.color}">
                 <h3 class="text-xl font-semibold">{dept.name}</h3>
@@ -941,7 +1242,7 @@
                   <svg class="department-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
                   </svg>
-                  <span>{dept.members} {c.members.toLowerCase()}</span>
+                  <span>{dept.members} team member{dept.members !== 1 ? 's' : ''}</span>
                 </div>
               </div>
             </div>
@@ -958,64 +1259,113 @@
     <div class="container mx-auto px-4">
       <div class="section" class:visible={visible[3]} bind:this={sections[3]}>
         <div class="section-title">
-          <h2>{c.teamTitle}</h2>
-          <p>{c.teamSubtitle}</p>
+          <h2>{c?.teamTitle || contentEN.teamTitle}</h2>
+          <p>{c?.teamSubtitle || contentEN.teamSubtitle}</p>
           <div class="section-divider"></div>
         </div>
         
-        <div class="team-grid" bind:this={teamSectionRef}>
-          {#each teamMembers as member, i}
-            <div 
-              class="team-card"
-              in:fly={{ y: 30, duration: 800, delay: 200 * i }}
-              on:mouseenter={() => currentHover = i}
-              on:mouseleave={() => currentHover = -1}
+        <!-- Filter buttons -->
+        <div class="team-filter">
+          {#each categories as category}
+            <button 
+              class="filter-btn {$selectedCategory === category.id ? 'active' : ''}" 
+              on:click={() => selectCategory(category.id)}
             >
-              <div class="team-image-container">
-                <img src={member.image} alt={member.name} class="team-image" />
-              </div>
-              
-              <div class="team-content">
-                <h3 class="team-name">{member.name}</h3>
-                <p class="team-role">{member.role}</p>
-                <p class="team-bio">{member.bio}</p>
-                
-                <!-- Social links could go here -->
-                <div class="flex mt-4 space-x-3">
-                  {#each ['linkedin', 'twitter', 'github'] as social}
-                    <a 
-                      href="#" 
-                      class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center text-gray-500 hover:bg-purple-100 hover:text-purple-600 transition-colors"
-                    >
-                      <span class="sr-only">{social}</span>
-                      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 6.628 5.374 12 12 12 6.627 0 12-5.372 12-12 0-6.627-5.373-12-12-12zm5 17h-2v-6.999c0-1.92-.847-2.991-2.366-2.991-1.653 0-2.634 1.116-2.634 2.991v6.999h-2v-11h2v1.462c.58-.886 1.65-1.462 2.934-1.462 2.099 0 4.066 1.28 4.066 3.916v7.084zm-12-9.75v-2.5h2v2.5h-2z"></path>
-                      </svg>
-                    </a>
-                  {/each}
-                </div>
-              </div>
-            </div>
+              {category.name()}
+            </button>
           {/each}
         </div>
+        
+        {#if coordinators.length > 0}
+          <!-- Main coordinators section with separate grid -->
+          <div class="section-subtitle">
+            {c?.coordination || contentEN.coordination}
+          </div>
+          
+          <div class="coordinators-grid" bind:this={teamSectionRef}>
+            {#each coordinators as member, i (member.name)}
+              <div 
+                class="team-card featured"
+                in:fly={{ y: 30, duration: 800, delay: Math.min(100 * i, 600) }}
+              >
+                <div class="team-image-container">
+                  <img 
+                    src={member.image} 
+                    alt={member.name} 
+                    class="team-image {member.specialImageAdjustment ? 'iuliia-image' : ''}" 
+                    style={member.name === 'Iuliia Kapustinskaia' ? 'object-position: center 10%;' : ''}
+                  />
+                </div>
+                
+                <div class="team-content">
+                  <h3 class="team-name">{member.name}</h3>
+                  <p class="team-role">{$isPolish ? contentPL.mainCoordinator : contentEN.mainCoordinator}</p>
+                  
+                  {#if member.organization && member.organization !== "Brak"}
+                    <div class="team-organization">{member.organization}</div>
+                  {/if}
+                  
+                  {#if member.bio}
+                    <p class="team-bio mt-3">{member.bio}</p>
+                  {/if}
+                </div>
+              </div>
+            {/each}
+          </div>
+        {/if}
+        
+        {#if regularMembers.length > 0}
+          <!-- Regular team members -->
+          {#if coordinators.length > 0}
+            <div class="section-subtitle mt-8">
+              {$selectedCategory === 'all' ? 
+                ($isPolish ? contentPL.allCategories : contentEN.allCategories) + ' ' + 
+                ($isPolish ? contentPL.members.toLowerCase() : contentEN.members.toLowerCase()) :
+                categories.find(c => c.id === $selectedCategory)?.name() || ''}
+            </div>
+          {/if}
+          
+          <div class="team-grid">
+            {#each regularMembers as member, i (member.name)}
+              <div 
+                class="team-card"
+                in:fly={{ y: 30, duration: 800, delay: Math.min(100 * i, 600) }}
+              >
+                <div class="team-image-container">
+                  <img 
+                    src={member.image} 
+                    alt={member.name} 
+                    class="team-image {member.specialImageAdjustment ? 'iuliia-image' : ''}" 
+                    style={member.name === 'Iuliia Kapustinskaia' ? 'object-position: center 10%;' : ''}
+                  />
+                </div>
+                
+                <div class="team-content">
+                  <h3 class="team-name">{member.name}</h3>
+                  <p class="team-role">{member.role}</p>
+                  
+                  {#if member.organization && member.organization !== "Brak"}
+                    <div class="team-organization">{member.organization}</div>
+                  {/if}
+                  
+                  {#if member.bio}
+                    <p class="team-bio mt-3">{member.bio}</p>
+                  {/if}
+                </div>
+              </div>
+            {/each}
+          </div>
+        {/if}
+        
+        {#if filteredTeamMembers.length === 0}
+          <div class="col-span-full text-center py-8 text-gray-500">
+            {c?.noResults || contentEN.noResults}
+          </div>
+        {/if}
       </div>
     </div>
   </section>
   
-  <!-- Organization Landing Section -->
-  <!-- <section class="section py-16 bg-white" class:visible={visible[4]} bind:this={sections[4]}>
-    <div class="container mx-auto px-4">
-      <OrganizationLandingPage year={2025} />
-    </div>
-  </section>
-   -->
-  <!-- Team Section (from the component) -->
-  <!-- <section class="section py-16 bg-gray-50" class:visible={visible[5]} bind:this={sections[5]}>
-    <div class="container mx-auto px-4">
-      <TeamSection year={2025} />
-    </div>
-  </section>
-   -->
   <!-- Join Team CTA -->
   <section class="cta-section py-16">
     <div class="container mx-auto px-4">
@@ -1023,11 +1373,11 @@
         class="max-w-3xl mx-auto text-center"
         in:fade={{ duration: 1000, delay: 300 }}
       >
-        <h2 class="text-3xl font-bold mb-4">{c.joinTeamTitle}</h2>
-        <p class="text-xl text-purple-100 mb-8 opacity-90">{c.joinTeamDesc}</p>
+        <h2 class="text-3xl font-bold mb-4">{c?.joinTeamTitle || contentEN.joinTeamTitle}</h2>
+        <p class="text-xl text-purple-100 mb-8 opacity-90">{c?.joinTeamDesc || contentEN.joinTeamDesc}</p>
         
         <a href="/contact" class="cta-btn">
-          {c.joinTeamButton}
+          {c?.joinTeamButton || contentEN.joinTeamButton}
         </a>
       </div>
     </div>

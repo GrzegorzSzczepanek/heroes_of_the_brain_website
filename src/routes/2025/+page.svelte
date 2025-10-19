@@ -14,8 +14,31 @@
   import ContactSection from '$lib/components/ContactSection.svelte';
   import Faq from '$lib/components/Faq.svelte';
   import UnderlinedHeader from '$lib/components/UnderlinedHeader.svelte';
-  import JoinUsSection from '$lib/components/JoinUsSection.svelte';
-  import CountdownTimer from '$lib/components/CountdownTimer.svelte';
+  import LogoTiles from '$lib/components/LogoTiles.svelte';
+  
+  
+  const partnersPL = [
+    { category: "SPONSOR STRATEGICZNY", logos: ["/images/brainaccess.png"]},
+    { category: "SPONSORZY", logos: [ "/images/automee.png", "/images/cortivision.png", "/images/axa.png"]},
+    { category: "PARTNERZY MEDIALNI", logos: ["/images/radioluz.png", "/images/wit.svg"] },
+    { category: "PATRONAT HONOROWY REKTORA", logos: ["/images/pwr_bez_tla_pl.png"] }
+  ];
+
+  // Updated sponsor list for the English version
+  const partnersEN = [
+    { category: "STRATEGIC SPONSOR",  logos: ["/images/brainaccess.png"]},
+    { category: "SPONSORS",  logos: [ "/images/automee.png", "/images/cortivision.png", "/images/axa.png"]},
+    { category: "MEDIA PARTNERS", logos: ["/images/radioluz.png", "/images/wit.svg"] },
+    { category: "HONORARY PATRONAGE OF THE RECTOR", logos: ["/images/pwr_bez_tla_eng.png"] }
+  ];
+
+  const partners = derived(isPolish, $isPolish => $isPolish ? partnersPL : partnersEN);
+
+  let currentPartners;
+
+  partners.subscribe(value => {
+    currentPartners = value;
+  });
   
   // For animations and scroll effects
   let scrollY;
@@ -83,6 +106,33 @@
       'Design the future of human-computer interaction'
     ]
   };
+  const categoriesPL2025 = [
+    {
+      title: "Neurohackathon – Commerce Challenge",
+      description:
+        "Kategoria \"Commerce\" skupia się na innowacjach dla handlu i nowych modeli biznesowych, oferując uczestnikom przestrzeń do tworzenia rozwiązań, które można rozwijać i komercjalizować, takich jak technologie do testowania aplikacji, gry sterowane za pomocą interfejsów BCI czy produkty zaprojektowane tak, by podczas użytkowania wywoływać u klientów najlepsze emocje.",
+    },
+    {
+      title: "Neurohackathon – Wellness Challenge",
+      description:
+        "Kategoria \"Wellness\" koncentruje się na tworzeniu rozwiązań, które dzięki AI i interfejsom mózg–komputer poprawiają zdrowie, komfort i dobrostan człowieka, na przykład poprzez systemy wspomagające rehabilitację po urazach neurologicznych czy aplikacje ułatwiające redukcję stresu i poprawę jakości snu.",
+    },
+    
+  ];
+
+  const categoriesEN2025 = [
+    {
+      title: "Neurohackathon – Commerce Challenge",
+      description:
+        "The \"Commerce\" category focuses on innovations for trade and new business models, offering participants a space to create solutions that can be developed and commercialized, such as technologies for testing applications, games controlled through BCI interfaces, or products designed to evoke the best emotions in customers during use.",
+    },
+    {
+      title: "Neurohackathon – Wellness Challenge",
+      description:
+        "The \"Wellness\" category focuses on creating solutions that, through AI and brain–computer interfaces, improve human health, comfort, and well-being, for example through systems supporting rehabilitation after neurological injuries or applications that help reduce stress and improve sleep quality.",
+    },
+    
+  ];
   
   const content = derived(isPolish, ($p) => ($p ? contentPL : contentEN));
   let c; 
@@ -1097,12 +1147,24 @@
   
   <!-- Categories section -->
   <section class="section" class:visible={visible[6]} bind:this={sections[6]}>
-    <CategorySection year={2025} />
+    <CategorySection categoriesEN={categoriesEN2025} categoriesPL={categoriesPL2025} year={2025} />
   </section>
   
   <!-- Partners section -->
-  <section class="section" class:visible={visible[7]} bind:this={sections[7]}>
-    <Partners year={2025} />
+  <section class="text-center text-white bg-gray-900 py-20 px-4">
+    <UnderlinedHeader title={$isPolish ? "Nasi Sponsorzy" : "Our Sponsors"} />
+    {#each currentPartners as partner}
+      <div class="mb-12" data-aos="fade-right">
+        <h2 class="text-xl font-semibold mb-4">{partner.category}</h2>
+        <div class="flex flex-wrap justify-center gap-4">
+          {#each partner.logos as logo}
+            <a href={partner.link} target="_blank" rel="noopener noreferrer">
+              <LogoTiles {logo} />
+            </a>
+          {/each}
+        </div>
+      </div>
+    {/each}
   </section>
   
   <!-- FAQ section -->

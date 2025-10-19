@@ -28,7 +28,7 @@
 </script>
 
 <section class="text-center text-white bg-gray-900 py-20 px-4">
-  <UnderlinedHeader title={$isPolish ? "Zeszłoroczni Sponsorzy" : "Last Year Sponsors"} />
+  <UnderlinedHeader title={$isPolish ? "Sponsorzy" : "Sponsors"} />
   {#each currentPartners as partner}
     <div class="mb-12" data-aos="fade-right">
       <h2 class="text-xl font-semibold mb-4">{partner.category}</h2>
