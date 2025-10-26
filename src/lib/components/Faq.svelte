@@ -12,6 +12,11 @@
       open: false
     },
     {
+      question: "Ile osób może być w jednej drużynie?",
+      answer: "W Hackathonie mogą wziąć udział zespoło od 3-5 osób.",
+      open: false
+    },
+    {
       question: "Czy osoby z różnych dziedzin również mogą wziąć udział?",
       answer: "Tak, osoby z różnych dziedzin również mogą wziąć udział w Hackathonie. Projekty mogą być interdyscyplinarne, dlatego zapraszamy zarówno specjalistów z game devu, programistów, pasjonatów sztucznej inteligencji, jak i grafików.",
       open: false
@@ -47,6 +52,12 @@
     {
       question: "Who can participate in the event?",
       answer: "The Hackathon is open to all neuroinformatics enthusiasts from Poland and other countries. The event is open to everyone interested in the field, regardless of their experience level. We invite both individuals who have experience in neuroinformatics and those who are just beginning to explore it. Furthermore, we welcome enthusiasts of computer science and artificial intelligence, ready to expand their horizons and work together on innovative projects.",
+      open: false
+    },
+
+    {
+      question: "How many people can be in one team?",
+      answer: "Each team should consist 3-5 members.",
       open: false
     },
     {
