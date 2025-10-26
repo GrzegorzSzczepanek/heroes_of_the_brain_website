@@ -7,6 +7,7 @@
   import { derived } from "svelte/store";
   import Gallery from "$lib/components/Gallery.svelte";
 
+
   let visible = false;
 
   // Translations
