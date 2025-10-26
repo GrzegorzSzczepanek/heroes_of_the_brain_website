@@ -5,6 +5,7 @@
   import JoinUsSection from "$lib/components/JoinUsSection.svelte";
   import { fade, fly } from "svelte/transition";
   import { derived } from "svelte/store";
+  import Gallery from "$lib/components/Gallery.svelte";
 
   let visible = false;
 
@@ -360,6 +361,17 @@
               </a>
             </div>
           {/each}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-6">
+      <div in:fade={{ duration: 800, delay: 300 }}>
+
+        <div class="mt-10 max-w-6xl mx-auto">
+          <Gallery />
         </div>
       </div>
     </div>

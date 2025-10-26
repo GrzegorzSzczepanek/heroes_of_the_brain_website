@@ -13,7 +13,7 @@
     },
     {
       question: "Ile osób może być w jednej drużynie?",
-      answer: "W Hackathonie mogą wziąć udział zespoło od 3-5 osób.",
+      answer: "Każdy zespół powinien składać się z 3 do 5 członków, przy czym każdy uczestnik musi wypełnić formularz rejestracyjny indywidualnie. Samodzielne zgłoszenia również są mile widziane — pomożemy znaleźć dla Ciebie odpowiedni zespół! Zespoły dwuosobowe mogą zostać połączone z innymi niekompletnymi zespołami lub sparowane z solowymi uczestnikami, aby utworzyć pełną grupę.",
       open: false
     },
     {
@@ -57,7 +57,7 @@
 
     {
       question: "How many people can be in one team?",
-      answer: "Each team should consist 3-5 members.",
+      answer: "Each team should consist of 3 to 5 members, with every participant required to fill out the registration form individually. Solo applications are also welcome — we will help find a suitable team for you! Teams of 2 people may be joined with other incomplete teams or paired with solo participants to form a full group.",
       open: false
     },
     {
