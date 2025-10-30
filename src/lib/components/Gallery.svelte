@@ -15,7 +15,7 @@
       "Neurohackathon-136.jpg", "Neurohackathon-169.jpg", "Neurohackathon-191.jpg",
       "Neurohackathon-216.jpg", "Neurohackathon-243.jpg", "Neurohackathon-258.jpg",
       "Neurohackathon-98.jpg", "Neurohackathon-138.jpg", "Neurohackathon-175.jpg",
-      "Neurohackathon-196.jpg", "Neurohackathon-219.jpg", "Neurohackathon-246.jpg",
+      "Neurohackathon-196.jpg", "Neurohackathon-219.jpg", 
       "Neurohackathon-27.jpg", "Neurohackathon-99.jpg", "Neurohackathon-151.jpg",
       "Neurohackathon-183.jpg", "Neurohackathon-202.jpg", "Neurohackathon-222.jpg",
       "Neurohackathon-248.jpg", "Neurohackathon-51.jpg", "Neurohackathon-152.jpg",

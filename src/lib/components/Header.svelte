@@ -49,13 +49,13 @@
   ];
 
   let navItemsOrganizatorzyPL = [
-    { name: "O nas", href: "#about-us" },
-    { name: "Zespół", href: "#team" },
+    { name: "O nas", href: "#stats" },
+    { name: "Zespół", href: "#team-section" },
   ];
 
   let navItemsOrganizatorzyEN = [
-    { name: "About Us", href: "#about-us" },
-    { name: "Team", href: "#team" },
+    { name: "About Us", href: "#stats" },
+    { name: "Team", href: "#team-section" },
   ];
 
   let navItems = [];

@@ -94,15 +94,6 @@
   // Team members data with correct image paths and roles
   const teamMembers = [
     {
-      name: 'Filip Puszko',
-      role: 'Koordynator Główny',
-      bio: '',
-      image: '/images/sekcja_techniczna/filip_puszko.webp',
-      organization: 'KN Neuron',
-      category: 'coordination',
-      isMainCoordinator: true
-    },
-    {
       name: 'Iuliia Kapustinskaia',
       role: 'Koordynator Główny',
       bio: '',
@@ -111,6 +102,15 @@
       category: 'coordination',
       isMainCoordinator: true,
       specialImageAdjustment: true // Flag for special image handling
+    },
+    {
+      name: 'Filip Puszko',
+      role: 'Koordynator Główny',
+      bio: '',
+      image: '/images/sekcja_techniczna/filip_puszko.webp',
+      organization: 'KN Neuron',
+      category: 'coordination',
+      isMainCoordinator: true
     },
     {
       name: 'Grzegorz Szczepanek',
@@ -1154,7 +1154,7 @@
   </section>
   
   <!-- Team Stats Section -->
-  <section class="py-16 bg-white">
+  <section class="py-16 bg-white stats" id="stats">
     <div class="container mx-auto px-4">
       <div class="section" class:visible={visible[0]} bind:this={sections[0]}>
         <div class="section-title">
@@ -1254,7 +1254,7 @@
   </section>
   
   <!-- Team Members Section -->
-  <section class="team-section py-16">
+  <section class="team-section py-16" id="team-section">
     <div class="team-bg"></div>
     
     <div class="container mx-auto px-4">
