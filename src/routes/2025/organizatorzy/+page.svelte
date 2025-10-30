@@ -373,7 +373,7 @@
       name: 'Dawid Janikowski',
       role: 'Zespół Techniczny',
       bio: '',
-      image: '/images/placeholder-man.jpg',
+      image: '/images/DawidJanikowski.jpeg',
       organization: 'KN Neuron',
       category: 'technical'
     },
