@@ -98,7 +98,7 @@
       role: 'Koordynator Główny',
       bio: '',
       image: '/images/Iuliia_Kapustinskaia.jpg',
-      organization: 'KN Neuron',
+      organization: 'KN Neuron & WRSS W4',
       category: 'coordination',
       isMainCoordinator: true,
       specialImageAdjustment: true // Flag for special image handling
@@ -135,7 +135,7 @@
       role: 'Koordynator Współprac Zewnętrzych',
       bio: '',
       image: '/images/maja_wisniewska.jpg',
-      organization: 'Brak',
+      organization: 'WRSS W4',
       category: 'sponsorship',
       isCoordinator: true
     },
@@ -154,7 +154,7 @@
       role: 'Koordynator Promocji',
       bio: '',
       image: '/images/AnnaGrelewska.jpeg',
-      organization: 'Brak',
+      organization: 'WRSS W4',
       category: 'promotion',
       isCoordinator: true
     },
@@ -180,7 +180,7 @@
       name: 'Roch Rupar',
       role: 'Koordynator Logistyki',
       bio: '',
-      image: '/images/placeholder-man.jpg',
+      image: '/images/RochRupar.jpg',
       organization: 'WRSS W4',
       category: 'logistics',
       isCoordinator: true
@@ -277,7 +277,7 @@
       name: 'Jakub Kłosowski',
       role: 'Zespół Współprac Zewnętrzych',
       bio: '',
-      image: '/images/placeholder-man.jpg',
+      image: '/images/JakubKlosowski.jpg',
       organization: 'W4N INS',
       category: 'sponsorship'
     },
@@ -360,14 +360,6 @@
       image: '/images/placeholder-woman.jpg',
       organization: 'Brak',
       category: 'sponsorship'
-    },
-    {
-      name: 'Maksymilian Awdziejczyk',
-      role: 'Zespół Techniczny',
-      bio: '',
-      image: '/images/placeholder-man.jpg',
-      organization: 'KN Neuron',
-      category: 'technical'
     },
     {
       name: 'Izabela Paniczek',
@@ -475,7 +467,7 @@
         category: 'logistics'
       },
       { 
-        name: 'Sponsoring',
+        name: 'Współprace Zewnętrzne',
         description: 'Partnerzy zewnętrzni i sponsorzy', 
         color: 'from-purple-500 to-pink-500',
         category: 'sponsorship'

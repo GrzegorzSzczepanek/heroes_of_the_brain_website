@@ -20,7 +20,7 @@
   const partnersPL = [
     { category: "SPONSOR STRATEGICZNY", logos: ["/images/brainaccess.png"]},
     { category: "SPONSORZY", logos: [ "/images/automee.png", "/images/cortivision.png", "/images/axa.png"]},
-    { category: "PARTNERZY MEDIALNI", logos: ["/images/radioluz.png", "/images/wit.svg"] },
+    { category: "PARTNERZY MEDIALNI", logos: ["/images/radioluz.png", "/images/wit.svg", "/images/chatboty.png"] },
     { category: "PATRONAT HONOROWY REKTORA", logos: ["/images/pwr_bez_tla_pl.png"] }
   ];
 
@@ -28,7 +28,7 @@
   const partnersEN = [
     { category: "STRATEGIC SPONSOR",  logos: ["/images/brainaccess.png"]},
     { category: "SPONSORS",  logos: [ "/images/automee.png", "/images/cortivision.png", "/images/axa.png"]},
-    { category: "MEDIA PARTNERS", logos: ["/images/radioluz.png", "/images/wit.svg"] },
+    { category: "MEDIA PARTNERS", logos: ["/images/radioluz.png", "/images/wit.svg", "/images/chatboty.png"] },
     { category: "HONORARY PATRONAGE OF THE RECTOR", logos: ["/images/pwr_bez_tla_eng.png"] }
   ];
 

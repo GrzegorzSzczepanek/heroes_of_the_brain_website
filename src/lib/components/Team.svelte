@@ -151,7 +151,7 @@
         {#if tab === 'Technical'}
           {$isPolish ? 'Techniczna' : 'Technical'}
         {:else if tab === 'Sponsor'}
-          {$isPolish ? 'Sponsorska' : 'Sponsor'}
+          {$isPolish ? 'Współprac zewnętrznych' : 'External partnerships'}
         {:else if tab === 'Organisator'}
           {$isPolish ? 'Organizatorska' : 'Organisational'}
         {:else if tab === 'Coordinator'}
