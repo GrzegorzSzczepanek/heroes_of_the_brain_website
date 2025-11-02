@@ -357,7 +357,15 @@
       name: 'Zofia Turalska',
       role: 'Zespół Współprac Zewnętrzych',
       bio: '',
-      image: '/images/placeholder-woman.jpg',
+      image: '/images/ZofiaTuralska.png',
+      organization: 'W4 INS',
+      category: 'sponsorship'
+    },
+    {
+      name: 'Lukerya Prakofyeva',
+      role: 'Zespół Współprac Zewnętrzych',
+      bio: '',
+      image: '/images/LukeryaPrakofyeva.JPG',
       organization: 'Brak',
       category: 'sponsorship'
     },
