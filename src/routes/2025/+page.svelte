@@ -64,7 +64,7 @@
     keyInfo: [
       { title: 'Gdzie', content: 'Politechnika Wrocławska', icon: 'location' },
       { title: 'Kiedy', content: '29-30 listopada 2025', icon: 'calendar' },
-      { title: 'Nagrody', content: 'Pula nagród TBA', icon: 'trophy' }
+      { title: 'Nagrody', content: 'Pula nagród 21 000zł', icon: 'trophy' }
     ],
     quoteTitle: 'Odkryj potencjał mózgu',
     quote: 'Interfejsy mózg-komputer to przyszłość interakcji człowieka z technologią. Dołącz do nas, aby tworzyć innowacje, które zmienią świat.',
@@ -93,7 +93,7 @@
     keyInfo: [
       { title: 'Where', content: 'Wrocław University of Science and Technology', icon: 'location' },
       { title: 'When', content: 'November 29-30, 2025', icon: 'calendar' },
-      { title: 'Prizes', content: 'Prizes TBA', icon: 'trophy' }
+      { title: 'Prizes', content: 'Prizes 21 000zł', icon: 'trophy' }
     ],
     quoteTitle: 'Discover the brain potential',
     quote: 'Brain-computer interfaces are the future of human-technology interaction. Join us to create innovations that will change the world.',
