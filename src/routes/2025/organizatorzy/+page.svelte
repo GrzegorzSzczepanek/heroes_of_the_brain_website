@@ -114,12 +114,12 @@
     },
     {
       name: 'Grzegorz Szczepanek',
-      role: 'Koordynator Główny',
+      role: 'Koordynator Sekcji Technicznej',
       bio: '',
       image: '/images/sekcja_techniczna/grzegorz_szczepanek.webp',
       organization: 'KN Neuron',
-      category: 'coordination',
-      isMainCoordinator: true
+      category: 'technical',
+      isMainCoordinator: false
     },
     {
       name: 'Milena Mironczuk',
@@ -385,14 +385,14 @@
       organization: 'KN Neuron',
       category: 'technical'
     },
-    {
-      name: 'Camille Lisek',
-      role: 'Zespół Techniczny',
-      bio: '',
-      image: '/images/placeholder-woman.jpg',
-      organization: 'KN Neuron',
-      category: 'technical'
-    }
+    // {
+    //   name: 'Camille Lisek',
+    //   role: 'Zespół Techniczny',
+    //   bio: '',
+    //   image: '/images/placeholder-woman.jpg',
+    //   organization: 'KN Neuron',
+    //   category: 'technical'
+    // }
   ];
 
   // Function to count members by category
